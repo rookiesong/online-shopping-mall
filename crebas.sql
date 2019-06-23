@@ -4,7 +4,8 @@
 /*==============================================================*/
 
 
-drop table if exists "order";
+
+drop table if exists orders;
 
 drop table if exists payment;
 
@@ -13,16 +14,16 @@ drop table if exists product;
 drop table if exists user;
 
 /*==============================================================*/
-/* Table: "order"                                               */
+/* Table: "orders"                                               */
 /*==============================================================*/
-create table "order"
+create table orders
 (
-   order_id             varchar(20) not null,
+   orders_id             varchar(20) not null,
    paying_method        varchar(20),
    product_id           varchar(20),
    user_id              varchar(20),
    number               varchar(20) not null,
-   primary key (order_id)
+   primary key (orders_id)
 );
 
 /*==============================================================*/
@@ -63,12 +64,12 @@ create table user
    primary key (user_id)
 );
 
-alter table "order" add constraint FK_Relationship_1 foreign key (product_id)
+alter table orders add constraint FK_Relationship_1 foreign key (product_id)
       references product (product_id) on delete restrict on update restrict;
 
-alter table "order" add constraint FK_Relationship_2 foreign key (user_id)
+alter table orders add constraint FK_Relationship_2 foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
 
-alter table "order" add constraint FK_Relationship_3 foreign key (paying_method)
+alter table orders add constraint FK_Relationship_3 foreign key (paying_method)
       references payment (paying_method) on delete restrict on update restrict;
 
