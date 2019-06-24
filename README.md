@@ -1,4 +1,4 @@
-﻿# online-shopping-mall
+﻿# 在线网络商城
 Team 14
 ### 系统架构
 #### 系统图
