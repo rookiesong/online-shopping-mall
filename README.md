@@ -2,7 +2,7 @@
 Team 14
 ```shell
 # 1.执行下面命令将代码下载到本地（需安装git客户端，如果没有安装则在此页面选择Download as zip 方式下载到本地）
-git clone https://github.com/IcedSoul/Shopping.git
+git clone https://github.com/rookiesong/online-shopping-mall.git
 
 # 2.在本地或者远程MySQL数据库中执行Shopping/db/路径下的Shooping SQL语句以创建数据库。（需本机安装MySQL，版本建议在5.7或以下，高版本连接会出问题。执行SQL语句可使用命令行或者Navicat等工具。）
 
