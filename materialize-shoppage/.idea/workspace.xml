@@ -15,20 +15,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.idea/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+            <state relative-caret-position="312">
+              <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/register/register.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="54" column="40" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
+            <state relative-caret-position="1508">
+              <caret line="52" column="18" lean-forward="true" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
               <folding>
                 <element signature="n#style#0;n#b#0;n#a#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -99,10 +99,10 @@
         <option value="$PROJECT_DIR$/.idea/css/materialize.css" />
         <option value="$PROJECT_DIR$/.idea/css/index.css" />
         <option value="$PROJECT_DIR$/.idea/search.js" />
-        <option value="$PROJECT_DIR$/.idea/index.html" />
         <option value="$PROJECT_DIR$/.idea/css/register.css" />
         <option value="$PROJECT_DIR$/.idea/Sign_in/Sign_in.html" />
         <option value="$PROJECT_DIR$/.idea/register/register.html" />
+        <option value="$PROJECT_DIR$/.idea/index.html" />
       </list>
     </option>
   </component>
@@ -112,7 +112,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="46" />
     <option name="y" value="-9" />
     <option name="width" value="974" />
@@ -240,12 +240,12 @@
       <workItem from="1561353948452" duration="10092000" />
       <workItem from="1561364785778" duration="2753000" />
       <workItem from="1561373371147" duration="261000" />
-      <workItem from="1561373658693" duration="3934000" />
+      <workItem from="1561373658693" duration="4008000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17517000" />
+    <option name="totallyTimeSpent" value="17591000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -406,13 +406,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/Sign_in/Sign_in.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
@@ -422,11 +415,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/register/register.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="54" column="40" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
+        <state relative-caret-position="1508">
+          <caret line="52" column="18" lean-forward="true" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
           <folding>
             <element signature="n#style#0;n#b#0;n#a#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
         </state>
       </provider>
     </entry>
