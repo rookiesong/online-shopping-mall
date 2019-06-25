@@ -4,7 +4,8 @@
 /*==============================================================*/
 
 
-
+create database team14;
+use team14;
 drop table if exists orders;
 
 drop table if exists payment;

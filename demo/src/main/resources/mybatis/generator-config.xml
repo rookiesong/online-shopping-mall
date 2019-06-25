@@ -10,7 +10,7 @@
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/hotel?useUnicode=yes&amp;characterEncoding=UTF-8&amp;useSSL=false"
+                        connectionURL="jdbc:mysql://localhost:3306/team14?useUnicode=yes&amp;characterEncoding=UTF-8&amp;useSSL=false"
                         userId="root"
                         password="123456">
             <property name="useInformationSchema" value="true"/>
@@ -33,11 +33,27 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table schema="hotel" tableName="customer" domainObjectName="customer">
+       <!-- <table schema="hotel" tableName="customer" domainObjectName="customer">
             <property name="constructorBased" value="true"/>
-<!--
+&lt;!&ndash;
             <generatedKey column="id" sqlStatement="select uuid_short()" identity="false"/>
--->
+&ndash;&gt;
+        </table>-->
+        <table schema="team14" tableName="orders" domainObjectName="orders">
+            <property name="constructorBased" value="true"/>
+
+        </table>
+        <table schema="team14" tableName="payment" domainObjectName="payment">
+            <property name="constructorBased" value="true"/>
+
+        </table>
+        <table schema="team14" tableName="product" domainObjectName="product">
+            <property name="constructorBased" value="true"/>
+
+        </table>
+        <table schema="team14" tableName="user" domainObjectName="user">
+            <property name="constructorBased" value="true"/>
+
         </table>
 
 
