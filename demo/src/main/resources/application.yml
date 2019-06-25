@@ -18,3 +18,9 @@ upload:
 logging:
   level:
     net.suncaper.demo.mapper: DEBUG
+
+Security:
+  user:
+  name: user
+  password: user
+
