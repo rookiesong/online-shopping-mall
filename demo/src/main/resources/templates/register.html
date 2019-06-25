@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="./static/css/index.css">
+    <link rel="stylesheet" type="text/css" href="./layui/css/layui.css">
+    <script type="text/javascript" src="./layui/layui.js"></script>
+    <script type="text/javascript" src="./static/js/index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+</head>
+<body>
+
+<div class="site-nav-bg">
+    <div class="site-nav w1200">
+        <p class="sn-back-home">
+            <i class="layui-icon layui-icon-home"></i>
+            <a href="./index.html">首页</a>
+        </p>
+        <div class="sn-quick-menu">
+            <div class="login"><a href="./login.html">登录</a></div>
+            <div class="sp-cart"><a href="./shopping-cart.html">购物车</a></div>
+            <div class="layui-icon layui-icon-cart" style="color: #ee0000"></div>
+        </div>
+    </div>
+</div>
+
+<div class="header">
+    <div class="headerLayout w1200">
+        <div class="headerCon">
+            <h1 class="mallLogo">
+                <a href="./index.html" title="Mall">
+                    <img src="./static/img/logo.png">
+                </a>
+            </h1>
+            <div class="mallSearch">
+                <form action="./commodity.html" class="layui-form" novalidate method="post">
+                    <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="搜索商品">
+                    <!--提交搜索字段到searchstr-->
+                    <input type="hidden" name="searchstr" value="">
+                    <button class="layui-btn">
+                        <i class="layui-icon layui-icon-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content content-nav-base  login-content">
+    <div class="main-nav">
+        <div class="inner-cont0">
+                <div class="inner-cont2">
+                </div>
+        </div>
+    </div>
+    <div class="login-bg">
+        <div class="login-cont w1200">
+            <div class="form-box">
+                <form class="layui-form" action="">
+                    <legend>邮箱注册</legend>
+                    <div class="layui-form-item">
+                        <div class="layui-inline iphone">
+                            <div class="layui-input-inline">
+                                <i class="layui-icon layui-icon-website iphone-icon"></i>
+                                <input type="tel" name="phone" id="phone" lay-verify="required|phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline iphone">
+                            <div class="layui-input-inline">
+                                <i class="layui-icon layui-icon-cellphone iphone-icon"></i>
+                                <input type="tel" name="phone" id="phone" lay-verify="required|phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline veri-code">
+                            <div class="layui-input-inline">
+                                <input id="pnum" type="text" name="pnum" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                                <input type="button" class="layui-btn" id="find"  value="验证码" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item login-btn">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="demo1" onclick="return false">登录</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="ng-promise-box">
+        <div class="ng-promise w1200">
+            <p class="text">
+                <a class="icon1" href="javascript:;">7天无理由退换货</a>
+                <a class="icon2" href="javascript:;">满99元全场免邮</a>
+                <a class="icon3" style="margin-right: 0" href="javascript:;">100%品质保证</a>
+            </p>
+        </div>
+    </div>
+    <div class="mod_help w1200">
+        <p>
+            <a href="javascript:;">关于我们</a>
+            <span>|</span>
+            <a href="javascript:;">帮助中心</a>
+            <span>|</span>
+            <a href="javascript:;">售后服务</a>
+            <span>|</span>
+            <a href="javascript:;">母婴资讯</a>
+            <span>|</span>
+            <a href="javascript:;">关于货源</a>
+        </p>
+        <p class="coty">母婴商城版权所有 &copy; 2012-2020</p>
+    </div>
+</div>
+
+
+</body>
+</html>
