@@ -34,16 +34,6 @@
                     <img src="../static/main/img/logo.png">
                 </a>
             </h1>
-            <div class="mallSearch">
-                <form action="commodity.html" class="layui-form" novalidate method="post">
-                    <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="搜索商品">
-                    <!--提交搜索字段到searchstr-->
-                    <input type="hidden" name="searchstr" value="">
-                    <button class="layui-btn">
-                        <i class="layui-icon layui-icon-search"></i>
-                    </button>
-                </form>
-            </div>
         </div>
     </div>
 </div>
@@ -63,20 +53,26 @@
                     <div class="layui-form-item">
                         <div class="layui-inline iphone">
                             <div class="layui-input-inline">
-                                <i class="layui-icon layui-icon-website iphone-icon"></i>
-                                <input type="tel" name="phone" id="phone" lay-verify="required|phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                                <i class="layui-icon layui-icon-username iphone-icon"></i>
+                                <input type="text" name="username" id="username" lay-verify="required|phone" placeholder="请输入用户号" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline iphone">
                             <div class="layui-input-inline">
-                                <i class="layui-icon layui-icon-cellphone iphone-icon"></i>
-                                <input type="tel" name="phone" id="phone" lay-verify="required|phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                                <i class="layui-icon layui-icon-password iphone-icon"></i>
+                                <input type="text" name="password" id="password" lay-verify="required|phone" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline iphone">
+                            <div class="layui-input-inline">
+                                <i class="layui-icon layui-icon-website iphone-icon"></i>
+                                <input type="text" name="email" id="email" lay-verify="required|phone" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline veri-code">
                             <div class="layui-input-inline">
                                 <input id="pnum" type="text" name="pnum" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
-                                <input type="button" class="layui-btn" id="find"  value="验证码" />
+                                <input type="button" class="layui-btn" id="find"  value="获取验证码" />
                             </div>
                         </div>
                     </div>
@@ -90,6 +86,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="footer">
     <div class="ng-promise-box">
