@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mall</title>
+    <link rel="stylesheet" type="text/css" href="../static/main/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css">
+    <script type="text/javascript" src="../static/layui/layui.js"></script>
+    <script type="text/javascript" src="../static/main/js/index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+</head>
+<body id="list-cont">
+<div class="site-nav-bg">
+    <div class="site-nav w1200">
+        <p class="sn-back-home">
+            <i class="layui-icon layui-icon-home"></i>
+            <a href="./index.html">首页</a>
+        </p>
+        <div class="sn-quick-menu">
+            <div class="login"><a href="login.html">登录</a></div>
+            <div class="login"><a href="register.html">注册</a></div>
+            <div class="sp-cart"><a href="shopping-cart.html">购物车</a></div>
+            <div class="layui-icon layui-icon-cart" style="color: #ee0000"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="header">
+    <div class="headerLayout w1200">
+        <div class="headerCon">
+            <h1 class="mallLogo">
+                <a href="index.html" title="Mall">
+                    <img src="../static/main/img/logo.png">
+                </a>
+            </h1>
+            <div class="mallSearch">
+                <form action="commodity.html" class="layui-form" novalidate method="post">
+                    <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="搜索商品">
+                    <!--提交搜索字段到searchstr-->
+                    <input type="hidden" name="searchstr" value="">
+                    <button class="layui-btn">
+                        <i class="layui-icon layui-icon-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
