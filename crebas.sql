@@ -55,12 +55,13 @@ create table product
 /*==============================================================*/
 create table user
 (
-   user_name            varchar(20) not null,
+   user_name            varchar(20) ,
    pass_word			varchar(20) not null,
    user_phone           numeric(11,0) ,
    user_mailaddress     varchar(40) not null,
    user_sex             bool,
-   birthday             timestamp,
+   birthday             date,
+   build_day			timestamp default 0,
    head                 longblob,
    primary key (user_mailaddress)
 );
