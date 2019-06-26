@@ -9,14 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-    @RestController public class RestUserController {
+    @RestController
+    public class RestUserController {
         @Autowired
         private UserService userService;
-/*
-        @PostMapping( "/user/register")
-        public List<User> listAllCustomers() {
-            //return userService.findUser(null);
-        }*/
+
+        @PostMapping("/customer/register")
+        public String register(User user){
+            try {
+                userService.saveUser(user);
+            }catch (Exception exception){
+                return "no";
+            }
+            return "ok";
+        }
     }
 
 
