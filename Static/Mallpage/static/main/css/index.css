@@ -140,11 +140,6 @@ i{font-style: normal;}
 .commodity-content .commod-cont .right-cont .cont-list .pri{color: #ee0000;}
 .commodity-content .commod-cont .right-cont .cont-list .nub{position: absolute; right: 13px; color:#999999;}
 /*end-commodity*/
-
-
-
-
-
 /*details*/
 .datails-content{padding-bottom: 80px;}
 .datails-content .crumb{line-height: 76px;}
@@ -326,3 +321,9 @@ i{font-style: normal;}
 .shopcart-content .FloatBarHolder .total span{color: #ee0000; font-size: 26px; font-weight: bold; padding-left: 5px;}
 .shopcart-content .FloatBarHolder .th-chk .select-all label{letter-spacing: 4px;}
 /*end-shopcart-content*/
+
+.layui-carouselextra {position: relative;
+    left: 0px;
+    top: 0;
+    background-color: #f8f8f8;
+}

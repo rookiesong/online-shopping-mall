@@ -5,12 +5,12 @@
     <title>Mall</title>
     <link rel="stylesheet" type="text/css" href="../static/main/css/index.css">
     <link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css">
-    <script type="text/javascript" src="../static/layui/layui.js"></script>
-    <script type="text/javascript" src="../static/main/js/index.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 </head>
 <body id="list-cont">
+     <script type="text/javascript" src="../static/layui/layui.js"></script>
+     <script type="text/javascript" src="../static/main/js/index.js"></script>
 <div class="site-nav-bg">
     <div class="site-nav w1200">
         <p class="sn-back-home">
@@ -121,147 +121,37 @@
                 <div><img src="../static/main/img/banner3.jpg"></div>
             </div>
         </div>
-
-        <script src="../static/layui/layui.js"></script>
-        <script>
-            layui.use('carousel', function(){
-                var carousel = layui.carousel;
-                //建造实例
-                carousel.render({
-                    elem: '#invert'
-                    ,width: '75%' //设置容器宽度
-                    ,height:'400px'//设置容器高度
-                    ,margin:'0px 0px 0px 200px'
-                    ,arrow: 'always' //始终显示箭头
-                });
-            });
-        </script>
     </div>
-
-
-
     <div class="floors">
         <div class="sk">
             <div class="sk_inner w1200">
                 <div class="sk_hd">
-                    <a href="javascript:;">
+                    <a href="#">
                         <img src="../static/main/img/shout.jpg">
                     </a>
                 </div>
-                <div class="sk_bd">
-                    <div class="layui-carousel" id="test1">
-                        <div carousel-item>
-                            <div class="item-box">
-                                <div class="item">
-                                    <a href="javascript:;"><img src="../res/static/img/s_img2.jpg"></a>
-                                    <div class="title">宝宝五彩袜棉质舒服</div>
-                                    <div class="price">
-                                        <span>￥49.00</span>
-                                        <del>￥99.00</del>
+            </div>
+            <div class="sk_bd">
+                    <div class={"layui-carousel"} id="invert2">
+                            <div carousel-item>
+                                <div class="item-box">
+                                    <div class="item">
+                                        <a href="#"><img src="../static/main/img/proexam_1.jpg"></a>
                                     </div>
-                                </div>
-                                <div class="item">
-                                    <a href="javascript:;"><img src="../res/static/img/s_img3.jpg"></a>
-                                    <div class="title">宝宝五彩袜棉质舒服</div>
-                                    <div class="price">
-                                        <span>￥49.00</span>
-                                        <del>￥99.00</del>
+                                    <div class="item">
+                                        <a href="#"><img src="../static/main/img/proexam_2.jpg"></a>
                                     </div>
-                                </div>
-                                <div class="item">
-                                    <a href="javascript:;"><img src="../res/static/img/s_img4.jpg"></a>
-                                    <div class="title">宝宝五彩袜棉质舒服</div>
-                                    <div class="price">
-                                        <span>￥49.00</span>
-                                        <del>￥99.00</del>
+                                    <div class="item">
+                                        <a href="#"><img src="../static/main/img/proexam_3.jpg"></a>
                                     </div>
-                                </div>
-                                <div class="item">
-                                    <a href="javascript:;"><img src="../res/static/img/s_img5.jpg"></a>
-                                    <div class="title">宝宝五彩袜棉质舒服</div>
-                                    <div class="price">
-                                        <span>￥49.00</span>
-                                        <del>￥99.00</del>
+                                    <div class="item">
+                                        <a href="#"><img src="../static/main/img/proexam_4.jpg"></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="item-box">
-                                <div class="item">
-                                    <a href="javascript:;"><img src="../res/static/img/s_img2.jpg"></a>
-                                    <div class="title">宝宝五彩袜棉质舒服</div>
-                                    <div class="price">
-                                        <span>￥49.00</span>
-                                        <del>￥99.00</del>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <a href="javascript:;"><img src="../res/static/img/s_img3.jpg"></a>
-                                    <div class="title">宝宝五彩袜棉质舒服</div>
-                                    <div class="price">
-                                        <span>￥49.00</span>
-                                        <del>￥99.00</del>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <a href="javascript:;"><img src="../res/static/img/s_img4.jpg"></a>
-                                    <div class="title">宝宝五彩袜棉质舒服</div>
-                                    <div class="price">
-                                        <span>￥49.00</span>
-                                        <del>￥99.00</del>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <a href="javascript:;"><img src="../res/static/img/s_img5.jpg"></a>
-                                    <div class="title">宝宝五彩袜棉质舒服</div>
-                                    <div class="price">
-                                        <span>￥49.00</span>
-                                        <del>￥99.00</del>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
-
-
-
-
-
-
-    <div class="hot-recommend-con">
-        <div class="hot-con1 w1200 layui-clear">
-            <div class="item">
-                <h4>热销推荐</h4>
-                <div class="big-img">
-                    <a href="javascript:;"><img src="../res/static/img/hot1.png"></a>
-                </div>
-                <div class="small-img">
-                    <a href="javascript:;"><img src="../res/static/img/hot2.png" alt=""></a>
-                </div>
-            </div>
-            <div class="item">
-                <div class="top-img">
-                    <a href="javascript:;"><img src="../res/static/img/hot5.jpg"></a>
-                </div>
-                <div class="bottom-img">
-                    <a href="javascript:;"><img src="../res/static/img/hot6.jpg"></a>
-                    <a class="baby-cream" href="javascript:;"><img src="../res/static/img/hot7.jpg"></a>
-                </div>
-            </div>
-            <div class="item item1 margin0 padding0">
-                <a href="javascript:;"><img src="../res/static/img/hot8.jpg"></a>
-                <a href="javascript:;"><img class="btm-img" src="../res/static/img/hot9.jpg"></a>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
+</div>
 <div class="footer">
     <div class="ng-promise-box">
         <div class="ng-promise w1200">
@@ -283,42 +173,26 @@
         <p class="coty">IT企业实习Team14版权所有</p>
     </div>
 </div>
-
-<script type="text/javascript">
-
-    layui.config({
-        base: '../res/static/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
-    }).use(['mm','carousel'],function(){
-        var carousel = layui.carousel,
-            mm = layui.mm;
-        var option = {
-            elem: '#test1'
-            ,width: '100%' //设置容器宽度
-            ,arrow: 'always'
-            ,height:'298'
-            ,indicator:'none'
-        }
-        carousel.render(option);
-        // 模版引擎导入
-        // var ins = carousel.render(option);
-        // var html = demo.innerHTML;
-        // var listCont = document.getElementById('list-cont');
-        // // console.log(layui.router("#/about.html"))
-        //  mm.request({
-        //    url: '../json/index.json',
-        //    success : function(res){
-        //      console.log(res)
-        //      listCont.innerHTML = mm.renderHtml(html,res)
-        //      ins.reload(option);
-        //    },
-        //    error: function(res){
-        //      console.log(res);
-        //    }
-        //  })
-
-
-    });
-</script>
-
+     <script src="../static/layui/layui.js"></script>
+     <script>
+         layui.use('carousel', function(){
+             var carousel = layui.carousel;
+             //建造实例
+             carousel.render({
+                 elem: '#invert'
+                 ,width: '1157px' //设置容器宽度
+                 ,height:'400px'//设置容器高度
+                 ,margin:'0px 0px 0px 200px'
+                 ,arrow: 'always' //始终显示箭头
+             });
+             carousel.render({
+                 elem: '#invert2'
+                 ,width: '100%' //设置容器宽度
+                 ,arrow: 'always'
+                 ,height:'298'
+                 ,indicator:'none'
+             })
+         });
+     </script>
 </body>
 </html>
