@@ -26,6 +26,12 @@ public class UserController {
         return "/pages/user/login.html";
     }
 
+    @PostMapping("/register")
+    public String register(User user){
+        userService.saveUser(user);
+        return "redirect:/home";
+    }
+
     @GetMapping("/getBackPassword")
     public String getBackPasswordPage(){
         return "/getbackpasswordpage";

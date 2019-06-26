@@ -9,14 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-    @RestController public class RestUserController {
+    @RestController
+    public class RestUserController {
         @Autowired
         private UserService userService;
 
-        @PostMapping( "/user/register")
+       /* @PostMapping( "/user/register")
         public List<User> listAllCustomers() {
             //return userService.findUser(null);
-        }
+        }*/
     }
 
 
