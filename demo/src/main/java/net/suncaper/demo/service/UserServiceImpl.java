@@ -1,48 +1,50 @@
 package net.suncaper.demo.service;
 
-import net.suncaper.demo.domain.customer;
-import net.suncaper.demo.domain.customerExample;
-import net.suncaper.demo.mapper.customerMapper;
+import net.suncaper.demo.domain.User;
+import net.suncaper.demo.domain.UserExample;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import net.suncaper.demo.mapper.UserMapper;
 
+import java.sql.Timestamp;
 import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private customerMapper customerMapper;
-    @Override
-    public List<customer> findUser(String name) {
 
-        customerExample example = new customerExample();
+    @Autowired
+    private UserMapper userMapper;
+
+    @Override
+    public List<User> findUser(String name) {
+        UserExample example = new UserExample();
         if(name != null && !name.equals("")) {
-            example.createCriteria().andNameLike("%" + name + "%");
+            example.createCriteria().andUserMailaddressLike("%" + name + "%");
         }
 
-        return customerMapper.selectByExample(example);    }
-
-
+        return userMapper.selectByExample(example);
+    }
 
     @Override
-    public void saveCustomer(customer customer) {
-        if(customer.getId() == null || customer.getId().equals("")) {
-            customerMapper.insert(customer);
+    public void saveUser(User user) {
+        Timestamp build_day = new Timestamp(System.currentTimeMillis());
+        user.setBuildDay(build_day);
+        if(user.getUserMailaddress() != null &&  (!user.getUserMailaddress().equals(""))) {
+            userMapper.insertSelective(user);
         } else {
-            customerMapper.updateByPrimaryKey(customer);
+            userMapper.updateByPrimaryKey(user);
         }
     }
 
     @Override
     public void deleteUserById(String id) {
-        customerExample customerExample = new customerExample();
-        customerExample.createCriteria().andIdEqualTo(id);
-        customerMapper.deleteByExample(customerExample);
+        userMapper.deleteByPrimaryKey(id);
     }
 
-    @Cacheable("customer")
-    public customer findUserByID(String id){
-        return customerMapper.selectByPrimaryKey(id);
+
+    @Override
+    public User findUserById(String id) {
+        return userMapper.selectByPrimaryKey(id);
     }
 
 

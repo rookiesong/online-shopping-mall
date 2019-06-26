@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>购物车</title>
-    <link rel="stylesheet" type="text/css" href="../static/main/css/index.css">
-    <link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css">
-    <script type="text/javascript" src="../static/layui/layui.js"></script>
-    <script type="text/javascript" src="../static/main/js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="/main/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
+    <script type="text/javascript" src="/layui/layui.js"></script>
+    <script type="text/javascript" src="/main/js/index.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 </head>
@@ -15,11 +15,13 @@
     <div class="site-nav w1200">
         <p class="sn-back-home">
             <i class="layui-icon layui-icon-home"></i>
-            <a href="index.html">首页</a>
+            <a th:href="@{'/home'}">首页</a>
         </p>
         <div class="sn-quick-menu">
-            <div class="login"><a href="login.html">登录</a></div>
-            <div class="login"><a href="register.html">注册</a></div>
+            <div class="login"><a th:href="@{'/customer/login'}">登录</a></div>
+            <div class="login"><a th:href="@{'/customer/register'}">注册</a></div>
+            <div class="sp-cart"><a th:href="@{'/shopping-cart'}">购物车</a></div>
+            <div class="layui-icon layui-icon-cart" style="color: #ee0000"></div>
         </div>
     </div>
 </div>
@@ -29,7 +31,7 @@
         <div class="headerCon">
             <h1 class="mallLogo">
                 <a href="index.html" title="Mall">
-                    <img src="../static/main/img/logo.png">
+                    <img src=/main/img/logo.png">
                 </a>
             </h1>
         </div>
@@ -92,7 +94,7 @@
                     </li>
                     <li class="th th-item">
                         <div class="item-cont">
-                            <a href="javascript:;"><img src="../res/static/img/paging_img1.jpg" alt=""></a>
+                            <a href="javascript:;"><img src="/img/paging_img1.jpg" alt=""></a>
                             <div class="text">
                                 <div class="title">宝宝T恤棉质小衫</div>
                                 <p><span>粉色</span>  <span>130</span>cm</p>
@@ -126,7 +128,7 @@
                     </li>
                     <li class="th th-item">
                         <div class="item-cont">
-                            <a href="javascript:;"><img src="../res/static/img/paging_img2.jpg" alt=""></a>
+                            <a href="javascript:;"><img src="/img/paging_img2.jpg" alt=""></a>
                             <div class="text">
                                 <div class="title">宝宝T恤棉质小衫</div>
                                 <p><span>粉色</span>  <span>130</span>cm</p>
@@ -160,7 +162,7 @@
                     </li>
                     <li class="th th-item">
                         <div class="item-cont">
-                            <a href="javascript:;"><img src="../res/static/img/paging_img3.jpg" alt=""></a>
+                            <a href="javascript:;"><img src="/img/paging_img3.jpg" alt=""></a>
                             <div class="text">
                                 <div class="title">宝宝T恤棉质小衫</div>
                                 <p><span>粉色</span>  <span>130</span>cm</p>
@@ -186,48 +188,6 @@
                 </ul>
             </div>
         </div>
-
-
-        <!-- 模版导入数据 -->
-        <!-- <script type="text/html" id="demo">
-          {{# layui.each(d.infoList,function(index,item){}}
-            <ul class="item-content layui-clear">
-              <li class="th th-chk">
-                <div class="select-all">
-                  <div class="cart-checkbox">
-                    <input class="CheckBoxShop check" id="" type="checkbox" num="all" name="select-all" value="true">
-                  </div>
-                </div>
-              </li>
-              <li class="th th-item">
-                <div class="item-cont">
-                  <a href="javascript:;"><img src="../res/static/img/paging_img1.jpg" alt=""></a>
-                  <div class="text">
-                    <div class="title">宝宝T恤棉质小衫</div>
-                    <p><span>粉色</span>  <span>130</span>cm</p>
-                  </div>
-                </div>
-              </li>
-              <li class="th th-price">
-                <span class="th-su">189.00</span>
-              </li>
-              <li class="th th-amount">
-                <div class="box-btn layui-clear">
-                  <div class="less layui-btn">-</div>
-                  <input class="Quantity-input" type="" name="" value="1" disabled="disabled">
-                  <div class="add layui-btn">+</div>
-                </div>
-              </li>
-              <li class="th th-sum">
-                <span class="sum">189.00</span>
-              </li>
-              <li class="th th-op">
-                <span class="dele-btn">删除</span>
-              </li>
-            </ul>
-          {{# });}}
-        </script> -->
-
 
         <div class="FloatBarHolder layui-clear">
             <div class="th th-chk">

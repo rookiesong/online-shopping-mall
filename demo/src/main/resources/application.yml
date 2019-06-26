@@ -9,6 +9,19 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
+  mail:
+    default-encoding: UTF-8
+    host: smtp.qq.com
+    username: 870807320@qq.com
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    password: pihuokoyciymbdif
+
 
 
 
@@ -17,10 +30,21 @@ upload:
 
 logging:
   level:
-    net.suncaper.demo.mapper: DEBUG
+    root: info
+    com:
+      demo:
+        mapper: debug
+
+
+
 
 Security:
   user:
   name: user
   password: user
+
+
+
+
+
 
