@@ -68,6 +68,7 @@ public class Product {
         this.producer = producer;
         this.producingArea = producingArea;
         this.stock = stock;
+
     }
 
     /**

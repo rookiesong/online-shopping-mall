@@ -1,0 +1,12 @@
+﻿{
+  "status":0,
+  "menu":
+    {"milk":{
+        "content":[
+          {"img":"main/img/proexam_1.jpg","title":"森系小清新四件套","pri":"￥200","nub":"1266付款"},
+          {"img":"main/img/proexam_2.jpg","title":"森系小清新四件套","pri":"￥200","nub":"1266付款"},
+          {"img":"main/img/proexam_3.jpg","title":"森系小清新四件套","pri":"￥200","nub":"1266付款"},
+        ]
+      }
+    }
+}
