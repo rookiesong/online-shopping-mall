@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/product")
@@ -18,11 +21,15 @@ public class ProductController {
 
     @GetMapping("/search")
     public String searchPage(String text){
+
         return "/pages/commodity.html";
     }
 
     @PostMapping("/search")
-    public String search(Product product, Model model){
-        return "pages/commodity.html";
+    public String search(@RequestParam(value = "productName", required = false) String productName, Model model){
+        List<Product> productList = productService.findProduct(productName);
+        System.out.println(productName);
+        model.addAttribute("product",productList);
+        return "/pages/commodity.html";
     }
 }

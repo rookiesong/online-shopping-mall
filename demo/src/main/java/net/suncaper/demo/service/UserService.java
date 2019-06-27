@@ -17,4 +17,7 @@ public interface UserService {
     String loginService(String id,String code);
 
     Boolean isExist(String userMailAddress);
+
+    void editUser(User user);
+
 }
