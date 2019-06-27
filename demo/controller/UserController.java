@@ -56,6 +56,7 @@ public class UserController {
 
 
     @PostMapping("/login")
+    @ResponseBody
     public String login(HttpServletResponse response, User user, Model model) {
         if(userService.isExist(user.getUserMailaddress()))
         {
@@ -67,18 +68,18 @@ public class UserController {
                 cookie.setPath("/");
                 response.addCookie(cookie);
                 model.addAttribute("status","成功");
-                return "redirect:/home";
+                return "1";
             }
             else {
                 model.addAttribute("status","密码错误");
-                return "redirect:/customer/login";
+                return "2";
 
             }
         }
         else
         {
             model.addAttribute("status","账号不存在");
-            return "redirect:/customer/login";
+            return "3";
         }
 
     }
