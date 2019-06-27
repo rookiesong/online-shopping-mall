@@ -119,7 +119,7 @@ i{font-style: normal;}
 .commodity-content .commod-cont-wrap{background: #f8f8f8; padding: 50px 0 90px 0;}
 .commodity-content .commod-cont .left-nav{width: 200px; line-height: 38px; background: #fff; float: left; margin-right: 58px;}
 .commodity-content .commod-cont .left-nav .list-box{border:1px solid #eeeeee;}
-.commodity-content .commod-cont .left-nav .title{color: #fff; font-size: 16px; background: #333333; text-align: center;}
+.commodity-content .commod-cont .left-nav .title{color: #fff; font-size: 16px; background: #ee0000; text-align: center;}
 .commodity-content .commod-cont .left-nav .list-box dt,.commodity-content .commod-cont .left-nav .list-box dd{border-bottom:1px dashed #eeeeee; cursor: pointer;}
 .commodity-content .commod-cont .left-nav .list-box dd:hover a{color:#ff5500;}
 .commodity-content .commod-cont .left-nav .list-box dt{font-size: 14px; color: #333; padding-left: 30px; cursor: pointer;}

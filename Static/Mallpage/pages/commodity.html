@@ -3,8 +3,369 @@
 <head>
     <meta charset="UTF-8">
     <title>商品</title>
+    <link rel="stylesheet" type="text/css" href="../static/main/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 </head>
-<body>
+<body id="list-cont">
+<script type="text/javascript" src="../static/layui/layui.js"></script>
+<script type="text/javascript" src="../static/main/js/index.js"></script>
+<div class="site-nav-bg">
+    <div class="site-nav w1200">
+        <p class="sn-back-home">
+            <i class="layui-icon layui-icon-home"></i>
+            <a href="index.html">首页</a>
+        </p>
+        <div class="sn-quick-menu">
+            <div class="login"><a href="login.html">登录</a></div>
+            <div class="login"><a href="register.html">注册</a></div>
+            <div class="sp-cart"><a href="shopping-cart.html">购物车</a></div>
+            <div class="layui-icon layui-icon-cart" style="color: #ee0000"></div>
+        </div>
+    </div>
+</div>
+
+<div class="header">
+    <div class="headerLayout w1200">
+        <div class="headerCon">
+            <h1 class="mallLogo">
+                <a href="index.html" title="Mall">
+                    <img src="../static/main/img/logo.png">
+                </a>
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="main-nav">
+        <div class="inner-cont0">
+            <div class="inner-cont1 w1200">
+                <div class="inner-cont2">
+                    <a>&nbsp;</a>
+                    <a>&nbsp;</a>
+                    <a>&nbsp;</a>
+                    <a>&nbsp;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="category-con">
+        <div class="category-inner-con w1200">
+            <div class="category-type">
+                <h3>商品分类</h3>
+            </div>
+            <div class="category-tab-content">
+                <div class="nav-con">
+                    <ul class="normal-nav layui-clear">
+                        <li class="nav-item">
+                            <div class="title">服装</div>
+                            <p><a href="#" class="littletit">男装</a><a href="#" class="littletit">女装</a><a href="#" class="littletit">儿童装</a></p>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <div class="title">运动户外</div>
+                            <p><a href="#" class="littletit">登山鞋</a><a href="#" class="littletit">旅行箱</a><a href="#" class="littletit">户外</a></p>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <div class="title">化妆品</div>
+                            <p><a href="#" class="littletit">护肤品</a><a href="#" class="littletit">漱口水</a><a href="#" class="littletit">彩妆</a></p>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <div class="title">饰品</div>
+                            <p><a href="#" class="littletit">腕表</a><a href="#" class="littletit">烟具</a><a href="#" class="littletit">眼镜</a></p>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <div class="title">数码</div>
+                            <p><a href="#" class="littletit">智能手机</a><a href="#" class="littletit">主机</a><a href="#" class="littletit">电脑</a></p>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <div class="title">母婴用品</div>
+                            <p><a href="#" class="littletit">童装</a><a href="#" class="littletit">玩具</a><a href="#" class="littletit">奶粉</a></p>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </li>
+                        <li class="nav-item">
+                            <div class="title">家电</div>
+                            <p><a href="#" class="littletit">空调</a><a href="#" class="littletit">冰箱</a><a href="#" class="littletit">洗衣机</a></p>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </li>
+                        <li class="nav-item nobor">
+                            <div class="title">图书音像</div>
+                            <p><a href="#" class="littletit">小说</a><a href="#" class="littletit">教材</a><a href="#" class="littletit">学习考试</a></p>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-cont-wrap">
+    <div class="right-cont">
+        <div class="sort layui-clear">
+            <a class="active" href="javascript:;" event = 'volume'>销量</a>
+            <a href="javascript:;" event = 'price'>价格</a>
+            <a href="javascript:;" event = 'newprod'>新品</a>
+            <a href="javascript:;" event = 'collection'>收藏</a>
+        </div>
+        <div class="prod-number">
+            <span>200个</span>
+        </div>
+        <div class="cont-list layui-clear" id="list-cont">
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img1.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img2.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img3.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img1.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img2.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img3.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img1.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img2.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img3.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img1.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img2.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img3.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img1.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img2.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="img">
+                    <a href="javascript:;"><img src="../res/static/img/paging_img3.jpg"></a>
+                </div>
+                <div class="text">
+                    <p class="title">森系小清新四件套</p>
+                    <p class="price">
+                        <span class="pri">￥200</span>
+                        <span class="nub">1266付款</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- 模版引擎导入 -->
+        <!-- <script type="text/html" id="demo">
+          {{# layui.each(d.menu.milk.content,function(index,item){}}
+            <div class="item">
+              <div class="img">
+                <a href="javascript:;"><img src="{{item.img}}"></a>
+              </div>
+              <div class="text">
+                <p class="title"></p>
+                <p class="price">
+                  <span class="pri">{{item.pri}}</span>
+                  <span class="nub">{{item.nub}}</span>
+                </p>
+              </div>
+            </div>
+          {{# }); }}
+        </script> -->
+        <div id="demo0" style="text-align: center;"></div>
+    </div>
+</div>
+</div>
+
+<script>
+
+    layui.config({
+        base: '../res/static/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
+    }).use(['mm','laypage','jquery'],function(){
+        var laypage = layui.laypage,$ = layui.$,
+            mm = layui.mm;
+        laypage.render({
+            elem: 'demo0'
+            ,count: 100 //数据总数
+        });
+
+
+        // 模版引擎导入
+        //  var html = demo.innerHTML;
+        //  var listCont = document.getElementById('list-cont');
+        //  // console.log(layui.router("#/about.html"))
+        // mm.request({
+        //     url: '../json/commodity.json',
+        //     success : function(res){
+        //       console.log(res)
+        //       listCont.innerHTML = mm.renderHtml(html,res)
+        //     },
+        //     error: function(res){
+        //       console.log(res);
+        //     }
+        //   })
+
+        $('.sort a').on('click',function(){
+            $(this).addClass('active').siblings().removeClass('active');
+        })
+        $('.list-box dt').on('click',function(){
+            if($(this).attr('off')){
+                $(this).removeClass('active').siblings('dd').show()
+                $(this).attr('off','')
+            }else{
+                $(this).addClass('active').siblings('dd').hide()
+                $(this).attr('off',true)
+            }
+        })
+
+    });
+</script>
+
+
+
 
 </body>
 </html>
