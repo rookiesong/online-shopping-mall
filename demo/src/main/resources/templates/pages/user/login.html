@@ -48,13 +48,13 @@
     <div class="login-bg">
         <div class="login-cont w1200">
             <div class="form-boxone">
-                <form class="layui-form" action="">
+                <form class="layui-form" action="/customer/login" method="post">
                     <legend>邮箱登录</legend>
                     <div class="layui-form-item">
                         <div class="layui-inline iphone">
                             <div class="layui-input-inline">
                                 <i class="layui-icon layui-icon-username iphone-icon"></i>
-                                <input type="text" name="userName" id="userName" lay-verify="required|email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                                <input type="email" name="userMailaddress" id="userName" lay-verify="required|email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
@@ -68,7 +68,7 @@
                     </div>
                     <div class="layui-form-item login-btn">
                         <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit type="submit" lay-filter="demo1" onclick="return false" th:href="@{'/home'}">登录</button>
+                            <button class="layui-btn" lay-submit type="submit" lay-filter="demo1"  >登录</button>
                         </div>
                     </div>
                 </form>
@@ -76,6 +76,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="footer">
     <div class="ng-promise-box">
@@ -98,5 +99,7 @@
         <p class="coty">IT企业实习Team14版权所有</p>
     </div>
 </div>
+
+
 </body>
 </html>

@@ -37,14 +37,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUserById(String id) {
-        userMapper.deleteByPrimaryKey(id);
+    public void deleteUserById(String userMailAddress) {
+        userMapper.deleteByPrimaryKey(userMailAddress);
     }
 
 
     @Override
-    public User findUserById(String id) {
-        return userMapper.selectByPrimaryKey(id);
+    public User findUserByUserMailAddress(String userMailAddress) {
+        return userMapper.selectByPrimaryKey(userMailAddress);
+    }
+
+    @Override
+    public String loginService(String id, String code) {
+        return null;
+    }
+
+    @Override
+    public Boolean isExist(String userMailAddress) {
+        if(userMapper.selectByPrimaryKey(userMailAddress)==null)
+            return false;
+        else
+            return true;
     }
 
 

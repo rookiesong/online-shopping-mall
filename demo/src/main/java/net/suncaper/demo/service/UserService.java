@@ -12,5 +12,9 @@ public interface UserService {
 
     void deleteUserById(String id);
 
-    User findUserById(String id);
+    User findUserByUserMailAddress(String userMailAddress);
+
+    String loginService(String id,String code);
+
+    Boolean isExist(String userMailAddress);
 }
