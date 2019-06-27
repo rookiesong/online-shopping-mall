@@ -18,6 +18,7 @@
             <a th:href="@{'/home'}">首页</a>
         </p>
         <div class="sn-quick-menu">
+            <div class="login" id="status" th:value=""></div>
             <div class="login"><a th:href="@{'/customer/login'}">登录</a></div>
             <div class="login"><a th:href="@{'/customer/register'}">注册</a></div>
             <div class="sp-cart"><a th:href="@{'/shopping-cart'}">购物车</a></div>
@@ -173,6 +174,7 @@
         <p class="coty">IT企业实习Team14版权所有</p>
     </div>
 </div>
+
      <script src="/layui/layui.js"></script>
      <script>
          layui.use('carousel', function(){
@@ -195,4 +197,5 @@
          });
      </script>
 </body>
+
 </html>

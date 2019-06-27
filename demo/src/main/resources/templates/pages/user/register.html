@@ -124,6 +124,7 @@
                     success:function (text) {
                         if ("ok" == text){
                             layer.alert("注册成功");
+                            window.location.href='/home';
                         }else{
                             layer.alert("注册失败");
                         }

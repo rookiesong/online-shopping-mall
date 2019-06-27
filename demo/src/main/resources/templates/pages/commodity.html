@@ -113,64 +113,75 @@
             <div class="right-cont-wrap">
                 <div class="right-cont">
                     <div class="sort layui-clear">
-                        <a class="active" href="javascript:;" event = 'volume'>销量</a>
+                        <a class="active" href="javascript:;" event = 'volume'>库存</a>
                         <a href="javascript:;" event = 'price'>价格</a>
-                        <a href="javascript:;" event = 'newprod'>新品</a>
-                        <a href="javascript:;" event = 'collection'>收藏</a>
                     </div>
                     <div class="cont-list layui-clear" id="list-cont">
                         <div class="item">
-                            <div class="img">
-                                <a href="javascript:;"><img src="/main/img/proexam_1.jpg"></a>
+                            <div class="img" align="center">
+                                <a href="javascript:;"><img src="/main/img/proexam_3.jpg" ></a>
                             </div>
                             <div class="text">
-                                <p class="title">森系小清新四件套</p>
+                                <p class="title">茶杯</p>
                                 <p class="price">
                                     <span class="pri">200￥</span>
-                                    <span class="nub">1200付款</span>
+                                    <span class="nub">库存：1200</span>
                                 </p>
                             </div>
                         </div>
                         <div class="item">
-                            <div class="img">
-                                <a href="javascript:;"><img src="../res/static/img/paging_img3.jpg"></a>
+                            <div class="img" align="center">
+                                <a href="javascript:;"><img src="/main/img/proexam_4.jpg" ></a>
                             </div>
                             <div class="text">
-                                <p class="title">森系小清新四件套</p>
+                                <p class="title">茶具组件</p>
                                 <p class="price">
                                     <span class="pri">200￥</span>
-                                    <span class="nub">800付款</span>
+                                    <span class="nub">库存：800</span>
+                      f          </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img" align="center">
+                                <a href="javascript:;"><img src="/main/img/proexam_5.jpg" ></a>
+                            </div>
+                            <div class="text">
+                                <p class="title">茶具组件</p>
+                                <p class="price">
+                                    <span class="pri">300￥</span>
+                                    <span class="nub">库存：1000</span>
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <!-- 模版引擎导入 -->
-                    <!-- <script type="text/html" id="demo">
-                      {{# layui.each(d.menu.milk.content,function(index,item){}}
+                <!--    引入产品信息-->
+                  <!--  <script type="text/html" id="demo">
+                        {# layui.each(d.menu.milk.content,function(index,item){}}
                         <div class="item">
-                          <div class="img">
-                            <a href="javascript:;"><img src="{{item.img}}"></a>
-                          </div>
-                          <div class="text">
-                            <p class="title"></p>
-                            <p class="price">
-                              <span class="pri">{{item.pri}}</span>
-                              <span class="nub">{{item.nub}}</span>
-                            </p>
-                          </div>
+                            <div class="img">
+                                <a href="javascript:;"><img src="{{item.img}}"></a>
+                            </div>
+                            <div class="text">
+                                <p class="title"></p>
+                                <p class="price">
+                                    <span class="pri">{{item.pri}}</span>
+                                    <span class="nub">{{item.nub}}</span>
+                                </p>
+                            </div>
                         </div>
-                      {{# }); }}
-                    </script> -->
+                        {{# }); }}
+                    </script>-->
                     <div id="demo0" style="text-align: center;"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!--
 <script>
 
     layui.config({
-        base: '../res/static/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
+        base: '/main/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
     }).use(['mm','laypage','jquery'],function(){
         var laypage = layui.laypage,$ = layui.$,
             mm = layui.mm;
@@ -193,7 +204,7 @@
         //     error: function(res){
         //       console.log(res);
         //     }
-        //   })
+        //   })*/
 
         $('.sort a').on('click',function(){
             $(this).addClass('active').siblings().removeClass('active');
@@ -210,10 +221,6 @@
 
     });
 </script>
-
-
-
-
-
+-->
 </body>
 </html>
