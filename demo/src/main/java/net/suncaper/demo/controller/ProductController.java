@@ -29,7 +29,7 @@ public class ProductController {
     public String search(@RequestParam(value = "productName", required = false) String productName, Model model){
         List<Product> productList = productService.findProduct(productName);
         System.out.println(productName);
-        model.addAttribute("product",productList);
+        model.addAttribute("products",productList);
         return "/pages/commodity.html";
     }
 }
