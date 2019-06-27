@@ -36,10 +36,10 @@
                 </a>
             </h1>
             <div class="mallSearch">
-                <form action="commodity.html" class="layui-form" novalidate method="post">
+                <form  action="/product/search" class="layui-form" novalidate method="post" >
                     <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="搜索商品">
                     <!--提交搜索字段到searchstr-->
-                    <input type="hidden" name="searchstr" value="">
+                    <input type="hidden" name="productName" value="">
                     <button class="layui-btn">
                         <i class="layui-icon layui-icon-search"></i>
                     </button>
