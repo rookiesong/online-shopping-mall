@@ -117,110 +117,24 @@
                         <a href="javascript:;" event = 'price'>价格</a>
                     </div>
                     <div class="cont-list layui-clear" id="list-cont">
-                        <div class="item">
+                        <div class="item" th:each="product:${products}">
                             <div class="img" align="center">
                                 <a href="javascript:;"><img src="/main/img/proexam_3.jpg" ></a>
                             </div>
                             <div class="text">
-                                <p class="title" >茶杯</p>
+                                <p class="title" th:text="${product.price}"></p>
                                 <p class="price">
-                                    <span class="pri">200￥</span>
-                                    <span class="nub">库存：1200</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="img" align="center">
-                                <a href="javascript:;"><img src="/main/img/proexam_4.jpg" ></a>
-                            </div>
-                            <div class="text">
-                                <p class="title">茶具组件</p>
-                                <p class="price">
-                                    <span class="pri">200￥</span>
-                                    <span class="nub">库存：800</span>
-                      f          </p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="img" align="center">
-                                <a href="javascript:;"><img src="/main/img/proexam_5.jpg" ></a>
-                            </div>
-                            <div class="text">
-                                <p class="title">茶具组件</p>
-                                <p class="price">
-                                    <span class="pri">300￥</span>
-                                    <span class="nub">库存：1000</span>
+                                    <span class="pri" th:text="${product.price}"></span><a>&nbsp;&nbsp;元</a>
+                                    <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;库存：</a>
+                                    <span class="nub" th:text="${product.productName}"></span>
                                 </p>
                             </div>
                         </div>
                     </div>
-                <!--    引入产品信息-->
-                  <!--  <script type="text/html" id="demo">
-                        {# layui.each(d.menu.milk.content,function(index,item){}}
-                        <div class="item">
-                            <div class="img">
-                                <a href="javascript:;"><img src="{{item.img}}"></a>
-                            </div>
-                            <div class="text">
-                                <p class="title"></p>
-                                <p class="price">
-                                    <span class="pri">{{item.pri}}</span>
-                                    <span class="nub">{{item.nub}}</span>
-                                </p>
-                            </div>
-                        </div>
-                        {{# }); }}
-                    </script>-->
-                    <div id="demo0" style="text-align: center;"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!--
-<script>
-
-    layui.config({
-        base: '/main/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
-    }).use(['mm','laypage','jquery'],function(){
-        var laypage = layui.laypage,$ = layui.$,
-            mm = layui.mm;
-        laypage.render({
-            elem: 'demo0'
-            ,count: 100 //数据总数
-        });
-
-
-        // 模版引擎导入
-        //  var html = demo.innerHTML;
-        //  var listCont = document.getElementById('list-cont');
-        //  // console.log(layui.router("#/about.html"))
-        // mm.request({
-        //     url: '../json/commodity.json',
-        //     success : function(res){
-        //       console.log(res)
-        //       listCont.innerHTML = mm.renderHtml(html,res)
-        //     },
-        //     error: function(res){
-        //       console.log(res);
-        //     }
-        //   })*/
-
-        $('.sort a').on('click',function(){
-            $(this).addClass('active').siblings().removeClass('active');
-        })
-        $('.list-box dt').on('click',function(){
-            if($(this).attr('off')){
-                $(this).removeClass('active').siblings('dd').show()
-                $(this).attr('off','')
-            }else{
-                $(this).addClass('active').siblings('dd').hide()
-                $(this).attr('off',true)
-            }
-        })
-
-    });
-</script>
--->
 </body>
 </html>

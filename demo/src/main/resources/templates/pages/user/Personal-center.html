@@ -60,34 +60,39 @@
                     <div class="layui-form-item">
                         <div class="layui-inline iphone">
                             <div class="layui-input-inline">
-                                <input type="text" name="userName" id="userName"  placeholder="请输入用户名" autocomplete="off" class="layui-input" th:value="${user.userName}">
+                                <i class="layui-icon layui-icon-user iphone-icon"></i>
+                                <input type="text" name="userName" id="userName"  placeholder="请输入用户名" autocomplete="off" class="layui-input" lay-verify="required" th:value="${user.userName}">
                             </div>
                         </div>
                         <div class="layui-inline iphone">
                             <div class="layui-input-inline">
-                                <input type="password" name="passWord" id="passWord"  placeholder="请输入密码" autocomplete="off" class="layui-input" th:value="${user.passWord}">
+                                <i class="layui-icon layui-icon-password iphone-icon"></i>
+                                <input type="password" name="passWord" id="passWord"  placeholder="请输入密码" autocomplete="off" class="layui-input" lay-verify="required" th:value="${user.passWord}">
                             </div>
                         </div>
                         <div class="layui-inline iphone">
                             <div class="layui-input-inline">
-                                <input type="text" name="userPhone" id="userPhone"  placeholder="请输入手机号" autocomplete="off" class="layui-input" th:value="${user.userPhone}">
+                                <i class="layui-icon layui-icon-cellphone iphone-icon"></i>
+                                <input type="text" name="userPhone" id="userPhone"  placeholder="请输入手机号" autocomplete="off" class="layui-input" lay-verify="required" th:value="${user.userPhone}">
                             </div>
                         </div>
                         <div class="layui-inline iphone">
                             <div class="layui-input-inline">
-                                <input type="text" name="userSex" id="userSex"  placeholder="请输入性别" autocomplete="off" class="layui-input"  th:value="${user.userSex}">
+                                <i class="layui-icon layui-icon-male iphone-icon"></i>
+                                <input type="text" name="userSex" id="userSex"  placeholder="请输入性别" autocomplete="off" class="layui-input" lay-verify="required" th:value="${user.userSex}">
                             </div>
                         </div>
 
                         <div class="layui-inline iphone">
                             <div class="layui-input-inline">
-                                <input type="date" name="birthday" id="birthday" autocomplete="off" class="layui-input"  th:value="${#dates.format(user.birthday, 'yyyy-MM-dd')}">
+                                <i class="layui-icon layui-icon-friends iphone-icon"></i>
+                                <input type="date" name="birthday" id="birthday" autocomplete="off" class="layui-input" lay-verify="required" th:value="${#dates.format(user.birthday, 'yyyy-MM-dd')}">
                             </div>
                         </div>
                     </div>
                     <div class="layui-form-item login-btn">
                         <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit type="submit" lay-filter="Personal-center"  >修改</button>
+                            <button class="layui-btn" lay-submit type="submit" lay-filter="Personal-center">修改</button>
                         </div>
                     </div>
                 </form>
