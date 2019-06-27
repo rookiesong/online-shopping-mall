@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="/main/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
+    <script type="text/javascript" src="/layui/layui.js"></script>
+    <script type="text/javascript" src="/main/js/index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+</head>
+<body>
+
+<div class="site-nav-bg">
+    <div class="site-nav w1200">
+        <p class="sn-back-home">
+            <i class="layui-icon layui-icon-home"></i>
+            <a th:href="@{'/home'}">首页</a>
+        </p>
+        <div class="sn-quick-menu">
+            <div class="login"><a th:href="@{'/customer/register'}">注册</a></div>
+            <div class="sp-cart"><a th:href="@{'/shopping-cart'}">购物车</a></div>
+            <div class="layui-icon layui-icon-cart" style="color: #ee0000"></div>
+        </div>
+    </div>
+</div>
+
+<div class="header">
+    <div class="headerLayout w1200">
+        <div class="headerCon">
+            <h1 class="mallLogo">
+                <a th:href="@{'/home'}" title="Mall">
+                    <img src="/main/img/logo.png">
+                </a>
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="content content-nav-base  login-content">
+    <div class="main-nav">
+        <div class="inner-cont0">
+            <div class="inner-cont2">
+            </div>
+        </div>
+    </div>
+    <div class="login-bg">
+        <div class="login-cont w1200">
+            <div class="form-boxone">
+                <form class="layui-form" action="/customer/login" method="post">
+                    <legend>邮箱登录</legend>
+                    <div class="layui-form-item">
+                        <div class="layui-inline iphone">
+                            <div class="layui-input-inline">
+                                <i class="layui-icon layui-icon-username iphone-icon"></i>
+                                <input type="email" name="userMailaddress" id="userName" lay-verify="required|email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline iphone">
+                            <div class="layui-input-inline">
+                                <i class="layui-icon layui-icon-password iphone-icon"></i>
+                                <input type="text" name="passWord" id="passWord" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux" style="margin: 0px 0px 0px 210px"  ><a th:href="@{'/getBackPassword'}" class="layui-word-aux">忘记密码？</a></div>
+                    </div>
+                    <div class="layui-form-item login-btn">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit type="submit" lay-filter="demo1"  >登录</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer">
+    <div class="ng-promise-box">
+        <div class="ng-promise w1200">
+            <p class="text">
+                <a class="icon1" href="javascript:;">品类齐全，轻松购物</a>
+                <a class="icon2" href="javascript:;">正品行货，精致服务</a>
+                <a class="icon3" style="margin-right: 0" href="javascript:;">100%品质保证</a>
+            </p>
+        </div>
+    </div>
+    <div class="mod_help w1200">
+        <p>
+            <a href="javascript:;">关于我们</a>
+            <span>|</span>
+            <a href="javascript:;">帮助中心</a>
+            <span>|</span>
+            <a href="javascript:;">售后服务</a>
+        </p>
+        <p class="coty">IT企业实习Team14版权所有</p>
+    </div>
+</div>
+
+
+</body>
+</html>
