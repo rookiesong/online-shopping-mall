@@ -68,7 +68,7 @@
                     </div>
                     <div class="layui-form-item login-btn">
                         <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit type="submit" lay-filter="login"  >登录</button>
+                            <button class="layui-btn" lay-submit type="submit" lay-filter="demo1"  >登录</button>
                         </div>
                     </div>
                 </form>
@@ -100,35 +100,6 @@
     </div>
 </div>
 
-<script>
-    layui.use("form",function () {
-        var form = layui.form;
-        var $ = layui.$;
 
-        form.on("submit(login)",function (data) {
-            if (1){
-                $.ajax({
-                    url:"/customer/login",
-                    type:"POST",
-                    data:data.field,
-                    async:false,
-                    success:function (text) {
-                        if (text =="3"){
-                            layer.alert("账号不存在!");
-                        }
-                        else if(text=="2"){
-                            layer.alert("密码错误!");
-
-                        }
-                        else if(text=="1"){
-                            window.location.href="/home";
-                        }
-                    }
-                });
-            }
-            return false;
-        });
-    });
-</script>
 </body>
 </html>
