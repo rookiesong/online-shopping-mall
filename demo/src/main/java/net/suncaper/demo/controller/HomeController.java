@@ -23,9 +23,5 @@ public class HomeController {
         return "/pages/index.html";
     }
 
-    @GetMapping("/shopping-cart")
-    public String getShoppingCart(){
-        return "/pages/shopping-cart.html";
-    }
 
 }
