@@ -97,12 +97,10 @@
     $(".clickflag").click(function () {
         var id=$(this).attr("ItemID");
         var numProduct=$("#numProduct").val();
-        var data="productId"+id+"&numProduct"+numProduct;
-        console.log(data);
         $.ajax({
             url:"/addCart",
             type:"POST",
-            data:data,
+            data:{productId:id,numProduct:numProduct},
             async:false,
             success:function () {
                 window.location.href='/home';
