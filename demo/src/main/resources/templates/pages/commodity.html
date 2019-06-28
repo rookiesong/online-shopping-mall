@@ -2,16 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>商品</title>
+    <title>Mall</title>
     <link rel="stylesheet" type="text/css" href="/main/css/index.css">
     <link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 </head>
-<body>
+<body id="list-cont">
 <script type="text/javascript" src="/layui/layui.js"></script>
 <script type="text/javascript" src="/main/js/index.js"></script>
-
+<script type="text/javascript" src="/main/js/jQuary.js"></script>
 <div class="site-nav-bg">
     <div class="site-nav w1200">
         <p class="sn-back-home">
@@ -19,15 +19,12 @@
             <a th:href="@{'/home'}">首页</a>
         </p>
         <div class="sn-quick-menu">
-            <div class="login"><a th:href="@{'/customer/login'}">登录</a></div>
             <div class="login"><a th:href="@{'/customer/register'}">注册</a></div>
             <div class="sp-cart"><a th:href="@{'/shopping-cart'}">购物车</a></div>
             <div class="layui-icon layui-icon-cart" style="color: #ee0000"></div>
         </div>
     </div>
 </div>
-
-
 
 <div class="header">
     <div class="headerLayout w1200">
@@ -42,7 +39,7 @@
 </div>
 
 
-<div class="content content-nav-base commodity-content">
+<div class="content content-nav-base datails-content">
     <div class="main-nav">
         <div class="inner-cont0">
             <div class="inner-cont1 w1200">
@@ -55,86 +52,64 @@
             </div>
         </div>
     </div>
-    <div class="commod-cont-wrap">
-        <div class="commod-cont w1200 layui-clear">
-            <div class="left-nav">
-                <div class="title">商品分类</div>
-                <div class="list-box">
-                    <dl>
-                        <dt>服装</dt>
-                        <dd><a href="javascript:;">男装</a></dd>
-                        <dd><a href="javascript:;">女装</a></dd>
-                        <dd><a href="javascript:;">儿童装</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>运动户外</dt>
-                        <dd><a href="javascript:;">登山鞋</a></dd>
-                        <dd><a href="javascript:;">旅行箱</a></dd>
-                        <dd><a href="javascript:;">户外</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>化妆品</dt>
-                        <dd><a href="javascript:;">护肤品</a></dd>
-                        <dd><a href="javascript:;">漱口水</a></dd>
-                        <dd><a href="javascript:;">彩妆</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>饰品</dt>
-                        <dd><a href="javascript:;">腕表</a></dd>
-                        <dd><a href="javascript:;">烟具</a></dd>
-                        <dd><a href="javascript:;">眼镜</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>数码</dt>
-                        <dd><a href="javascript:;">智能手机</a></dd>
-                        <dd><a href="javascript:;">主机</a></dd>
-                        <dd><a href="javascript:;">电脑</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>母婴用品</dt>
-                        <dd><a href="javascript:;">童装</a></dd>
-                        <dd><a href="javascript:;">玩具</a></dd>
-                        <dd><a href="javascript:;">奶粉</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>家电</dt>
-                        <dd><a href="javascript:;">空调</a></dd>
-                        <dd><a href="javascript:;">冰箱</a></dd>
-                        <dd><a href="javascript:;">洗衣机</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>图书音像</dt>
-                        <dd><a href="javascript:;">小说</a></dd>
-                        <dd><a href="javascript:;">教材</a></dd>
-                        <dd><a href="javascript:;">学习考试</a></dd>
-                    </dl>
-                </div>
+    <div class="data-cont-wrap w1200">
+        <div class="product-intro layui-clear">
+            <div class="preview-wrap">
+                <a href="javascript:;"><img src="/main/img/proexam_3.jpg"></a>
             </div>
-            <div class="right-cont-wrap">
-                <div class="right-cont">
-                    <div class="sort layui-clear">
-                        <a class="active" href="javascript:;" event = 'volume'>库存</a>
-                        <a href="javascript:;" event = 'price'>价格</a>
+            <div class="itemInfo-wrap">
+                <div class="itemInfo">
+                    <div class="title">
+                        <h4 th:text="${productName}"></h4>
                     </div>
-                    <div class="cont-list layui-clear" id="list-cont">
-                        <div class="item" th:each="product:${products}">
-                            <div class="img" align="center">
-                                <a href="javascript:;"><img src="/main/img/proexam_3.jpg" ></a>
-                            </div>
-                            <div class="text">
-                                <p class="title" th:text="${product.price}"></p>
-                                <p class="price">
-                                    <span class="pri" th:text="${product.price}"></span><a>&nbsp;&nbsp;元</a>
-                                    <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;库存：</a>
-                                    <span class="nub" th:text="${product.productName}"></span>
-                                </p>
+                    <div class="summary">
+                        <p class="activity"><span>价格：</span><strong class="price" th:text="${product.price}"></strong></p>
+                        <p class="reference"><span>库存：</span><span th:text="${product.stock}"></span></p>
+                    </div>
+                    <div class="choose-attrs">
+                        <div class="number layui-clear"><span class="title">请输入数目</span>
+                            <div class="layui-form-item">
+                                <div class="layui-input-inline">
+                                    <input type="text" value="" lay-verify="required"  autocomplete="off" class="layui-input">
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="choose-btns">
+                        <button class="layui-btn  layui-btn-danger car-btn" th:ItemID="${product.productId}" ><i class="layui-icon layui-icon-cart-simple"></i>加入购物车</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="layui-clear">
+            <div class="detail">
+                <h4>详情</h4>
+                <div class="item">
+                    <img src="/main/img/prodetails_3.jpg">
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(".layui-btn").click(function () {
+        var id=$(this).attr("ItemID");
+        var number=$("input").value;
+        var data="productId"+id+"&numProduct"+number;
+        console.log(data);
+        $.ajax({
+            url:"/addCart",
+            type:"POST",
+            data:data,
+            async:false,
+            success:function () {
+                window.location.href='/home';
+        }
+
+        });
+    })
+</script>
+
 </body>
 </html>

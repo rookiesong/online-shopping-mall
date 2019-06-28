@@ -147,9 +147,9 @@ i{font-style: normal;}
 .datails-content .crumb a{color:#666;}
 .datails-content .crumb a:hover{color:#ff5500;}
 .datails-content .product-intro{margin-bottom: 85px;}
-.datails-content .product-intro .preview-wrap{width: 430px; fdt: left;}
+.datails-content .product-intro .preview-wrap{width: 430px; fdt: left;margin:auto;}
 .datails-content .product-intro .preview-wrap img{border:1px solid #eaeaea;}
-.datails-content .itemInfo-wrap{float: left; width: 770px;}
+.datails-content .itemInfo-wrap{ width: 770px;margin: auto}
 .datails-content .itemInfo .title{position: relative; margin-bottom: 30px;}
 .datails-content .itemInfo .title h4{font-size: 18px;}
 .datails-content .itemInfo .title span{position: absolute; right: 0; top: 2px; cursor: pointer;}
@@ -173,7 +173,7 @@ i{font-style: normal;}
     -moz-user-select: none;}
 .datails-content .itemInfo .choose-attrs .number .number-cont .cut{}
 .datails-content .itemInfo .choose-attrs .number .number-cont input{width: 35px; height: 28px; text-align: center; margin:0 5px; float: left;}
-.datails-content .itemInfo .choose-btns{padding-left: 34px; margin-top: 22px;}
+.datails-content .itemInfo .choose-btns{padding-left: 34px; margin-top: 22px;     margin-left: 600px}
 .datails-content .itemInfo .choose-btns .purchase-btn{border:1px solid #ff5500; color: #ff5500;width: 116px; height: 40px; line-height: 40px;}
 .datails-content .itemInfo .choose-btns .car-btn{width: 136px; height: 40px; line-height: 40px;}
 
@@ -183,7 +183,7 @@ i{font-style: normal;}
 .datails-content .aside .item-list .item{margin-bottom: 34px;}
 .datails-content .aside .item-list .item p{line-height: 64px; position: relative;}
 .datails-content .aside .item-list .item .pric{color: #ee0000; position: absolute; right: 0;}
-.datails-content .detail{float: right;}
+.datails-content .detail{margin-left: 220px}
 .datails-content .detail h4{line-height: 42px; width: 100px; text-align: center; border-bottom: 2px solid #888888; font-size: 18px; cursor: pointer; color: #888888;}
 .datails-content .detail .item{border:1px solid #ececec;}
 /*end-details*/
