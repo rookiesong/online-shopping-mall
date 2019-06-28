@@ -100,7 +100,8 @@
         $.ajax({
             url:"/addCart",
             type:"POST",
-            data:{productId:id,numProduct:numProduct},
+            data:{"productId":id,"numProduct":numProduct},
+            dataType:"json",
             async:false,
             success:function () {
                 window.location.href='/home';

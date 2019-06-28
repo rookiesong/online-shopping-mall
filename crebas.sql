@@ -19,7 +19,7 @@ drop table if exists user;
 /*==============================================================*/
 create table orders
 (
-   orders_id             varchar(20) not null,
+   orders_id            varchar(20) not null,
    paying_method        varchar(20),
    product_id           varchar(20),
    user_mailaddress     varchar(20),
@@ -47,6 +47,7 @@ create table product
    producer             varchar(20) ,
    producing_area       varchar(20) ,
    stock                bigint not null,
+   price				int not null
    primary key (product_id)
 );
 
@@ -66,6 +67,22 @@ create table user
    primary key (user_mailaddress)
 );
 
+/*==============================================================*/
+/* Table: cart                                                  */
+/*==============================================================*/
+create table cart
+(
+  cart_id				varchar(20) not null,
+  num_product			int NOT NULL ,
+  user_mailaddress     varchar(20) NOT NULL ,
+  product_id           varchar(20) not null,
+
+  primary key (cart_id),
+  FOREIGN KEY (user_mailaddress) REFERENCES user (user_mailaddress),
+  FOREIGN KEY (product_id) REFERENCES product (product_id)
+);
+
+
 alter table orders add constraint FK_Relationship_1 foreign key (product_id)
       references product (product_id) on delete restrict on update restrict;
 
@@ -75,3 +92,8 @@ alter table orders add constraint FK_Relationship_2 foreign key (user_mailaddres
 alter table orders add constraint FK_Relationship_3 foreign key (paying_method)
       references payment (paying_method) on delete restrict on update restrict;
 
+alter table cart add constraint FK_Relationship_4 foreign key (user_mailaddress)
+      references user (user_mailaddress) on delete restrict on update restrict;
+
+alter table cart add constraint FK_Relationship_5 foreign key (product_id)
+      references product (product_id) on delete restrict on update restrict;
