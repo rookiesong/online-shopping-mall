@@ -60,23 +60,23 @@
             <div class="itemInfo-wrap">
                 <div class="itemInfo">
                     <div class="title">
-                        <h4 th:text="${productName}"></h4>
+                        <h4 th:text="${product.productName}"></h4>
                     </div>
                     <div class="summary">
-                        <p class="activity"><span>价格：</span><strong class="price" th:text="${price}"></strong></p>
-                        <p class="reference"><span>库存：</span><span th:text="${stock}"></span></p>
+                        <p class="activity"><span>价格：</span><strong class="price" th:text="${product.price}"></strong></p>
+                        <p class="reference"><span>库存：</span><span th:text="${product.stock}"></span></p>
                     </div>
                     <div class="choose-attrs">
                         <div class="number layui-clear"><span class="title">请输入数目</span>
                             <div class="layui-form-item">
                                 <div class="layui-input-inline">
-                                    <input type="text" value="" lay-verify="required"  autocomplete="off" class="layui-input">
+                                    <input type="text" id="numProduct" value="" lay-verify="required"  autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="choose-btns">
-                        <button class="layui-btn  layui-btn-danger car-btn" th:ItemID="${productId}" ><i class="layui-icon layui-icon-cart-simple" ></i>加入购物车</button>
+                        <button class="layui-btn  layui-btn-danger car-btn clickflag" th:ItemID="${product.productId}" ><i class="layui-icon layui-icon-cart-simple" ></i>加入购物车</button>
                     </div>
                 </div>
 
@@ -94,23 +94,48 @@
 </div>
 <script>
 
-    $(".layui-btn").click(function () {
+    $(".clickflag").click(function () {
         var id=$(this).attr("ItemID");
-        var number=$("input").value;
-        var data="productId"+id+"&numProduct"+number;
-        console.log(data);
+        var numProduct=$("#numProduct").val();
         $.ajax({
             url:"/addCart",
             type:"POST",
-            data:data,
+            data: {"productId":id,"numProduct":numProduct},
+            dataType:"json",
             async:false,
-            success:function () {
-                window.location.href='/home';
-        }
+            success:function (data) {
+                if(data.status=="ok"){
+                    alert("添加购物车成功");
+                }
+                else{
+                    alert("请首先登录！");
+                }
+
+            }
+            /*success:function (text) {
+                if ("ok" == text){
+                    layer.alert("注册成功",function () {
+                        window.location.href = "/home";
+                    });
+                }else{
+                    layer.alert("注册失败");
+                }
+            }*/
+
 
         });
     })
 </script>
+//   $(".clickableimg").click(function () {
+//
+//       var id=$(this).attr("ItemID");
+//       $.ajax({
+//           url:"/product/search",
+//           type:"POST",
+//           data:{id:id},
+//           async:false
+//       });
+//   })
 
 </body>
 </html>

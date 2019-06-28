@@ -47,7 +47,7 @@ create table product
    producer             varchar(20) ,
    producing_area       varchar(20) ,
    stock                bigint not null,
-   price				int not null
+   price				int not null,
    primary key (product_id)
 );
 

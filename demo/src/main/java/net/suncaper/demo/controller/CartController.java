@@ -1,19 +1,19 @@
 package net.suncaper.demo.controller;
 
+import net.suncaper.demo.domain.Cart;
 import net.suncaper.demo.domain.CartProduct;
 import net.suncaper.demo.domain.User;
 import net.suncaper.demo.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static net.suncaper.demo.controller.UserController.getCookieByName;
 
@@ -37,15 +37,33 @@ public class CartController {
             return "redirect:/customer/login";
     }
 
+//    @PostMapping("/addCart")
+//    @ResponseBody
+//    public String addToCart(@RequestParam(value = "productId") String productId, @RequestParam(value = "numProduct") int numProduct,HttpServletRequest request){
+//        if(getCookieByName(request,"userMailAddress") != null){
+//            String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
+//            cartService.addCart(userMailaddress,numProduct,productId);
+//            return "ok";
+//        }
+//        else
+//            return "no";
+//    }
+
     @PostMapping("/addCart")
     @ResponseBody
-    public String addToCart(HttpServletRequest request, @RequestParam(value = "numProduct") int number,@RequestParam(value = "productId") String productId){
+    public Map<String, String> addToCart(@RequestParam(value = "productId") String productId, @RequestParam(value = "numProduct") int numProduct,HttpServletRequest request){
+        Map<String, String> map = new HashMap<String, String>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
-            cartService.addCart(userMailaddress,number,productId);
-            return "ok";
+            cartService.addCart(userMailaddress,numProduct,productId);
+            map.put("status", "ok");
+            return map;        }
+        else {
+            map.put("status","no");
+            return map;
         }
-        else
-            return "no";
     }
+
+
+
 }

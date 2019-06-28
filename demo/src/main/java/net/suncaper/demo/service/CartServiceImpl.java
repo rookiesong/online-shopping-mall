@@ -41,7 +41,7 @@ public class CartServiceImpl implements CartService {
     public Cart findCart(String userMailAddress, String productId) {
         List<Cart> carts = findCart(userMailAddress);
         for (Cart cart:carts) {
-            if(cart.getProductId()==productId)
+            if(cart.getProductId().equals(productId))
                 return cart;
         }
         return null;
