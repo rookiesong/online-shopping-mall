@@ -34,7 +34,7 @@ public class ProductController {
     }
 
     @GetMapping("/detail")
-    public String detailPage(@RequestParam(value = "productId",required = false) String productId,Model model){
+    public String detailPage(@RequestParam(value = "id",required = false) String productId,Model model){
         Product product = productService.findProductById(productId);
         model.addAttribute("product",product);
         return "/pages/productdetails.html";
