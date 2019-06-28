@@ -32,4 +32,11 @@ public class ProductController {
         model.addAttribute("products",productList);
         return "/pages/commodity.html";
     }
+
+    @GetMapping("/detail")
+    public String detailPage(@RequestParam(value = "productId",required = false) String productId,Model model){
+        Product product = productService.findProductById(productId);
+        model.addAttribute("product",product);
+        return "/pages/productdetails.html";
+    }
 }

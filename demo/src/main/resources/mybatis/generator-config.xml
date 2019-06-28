@@ -55,6 +55,10 @@
             <property name="constructorBased" value="true"/>
 
         </table>
+        <table schema="team14" tableName="cart" domainObjectName="Cart">
+            <property name="constructorBased" value="true"/>
+
+        </table>
 
 
     </context>

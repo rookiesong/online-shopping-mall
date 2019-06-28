@@ -11,6 +11,7 @@
 <body>
 <script type="text/javascript" src="/layui/layui.js"></script>
 <script type="text/javascript" src="/main/js/index.js"></script>
+<script type="text/javascript" src="/main/js/jQuary.js"></script>
 
 <div class="site-nav-bg">
     <div class="site-nav w1200">
@@ -119,7 +120,7 @@
                     <div class="cont-list layui-clear" id="list-cont">
                         <div class="item" th:each="product:${products}">
                             <div class="img" align="center">
-                                <a href="javascript:;"><img src="/main/img/proexam_3.jpg" ></a>
+                                <a th:href="'/product/detail?id=' + ${product.productId}"><img class="clickableimg" th:ItemID="${product.productId}" src="/main/img/proexam_3.jpg" ></a>
                             </div>
                             <div class="text">
                                 <p class="title" th:text="${product.price}"></p>
@@ -136,5 +137,17 @@
         </div>
     </div>
 </div>
+<script>
+//   $(".clickableimg").click(function () {
+//
+//       var id=$(this).attr("ItemID");
+//       $.ajax({
+//           url:"/product/search",
+//           type:"POST",
+//           data:{id:id},
+//           async:false
+//       });
+//   })
+</script>
 </body>
 </html>
