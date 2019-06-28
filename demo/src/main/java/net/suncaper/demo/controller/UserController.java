@@ -56,6 +56,7 @@ public class UserController {
     @PostMapping("/center")
     public String editCenter(HttpServletRequest request,User user){
         String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
+
         user.setUserMailaddress(userMailaddress);
         userService.editUser(user);
         return "redirect:/customer/center";

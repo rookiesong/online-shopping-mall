@@ -26,16 +26,4 @@ public class HomeController {
         }
         return "/pages/index.html";
     }
-
-    @GetMapping("/shopping-cart")
-    public String getShoppingCart(HttpServletRequest request){
-//        if(getCookieByName(request,"userMailAddress") != null) {
-//            String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
-//            return "/pages/user/Personal-center.html";
-//        }
-//        else
-//            return "redirect:/home";
-        return "/pages/shoppingcart.html";
-    }
-
 }
