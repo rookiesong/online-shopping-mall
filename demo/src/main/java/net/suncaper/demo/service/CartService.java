@@ -12,6 +12,12 @@ public interface CartService {
 
     Cart findCart(String userMailAddress,String productId);
 
+    Cart findCartByCartId(String cartId);
+
+
     List<CartProduct> returnCartProduct(String userMailAddress);
 
+    void deleteCart(String userMailaddress, String productId);
+
+    void editCart(String userMailaddress, int numProduct, String productId);
 }

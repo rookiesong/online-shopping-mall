@@ -1,34 +1,32 @@
 package net.suncaper.demo.controller;
 
-import net.suncaper.demo.domain.Cart;
-import net.suncaper.demo.service.CartService;
-import net.suncaper.demo.service.OrdersService;
+import net.suncaper.demo.service.DeliveryAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
 import static net.suncaper.demo.controller.UserController.getCookieByName;
 
 @Controller
-@RequestMapping("/orders")
-public class OrdersController {
+@RequestMapping("/delivery")
+public class DeliveryAddressController {
     @Autowired
-    private OrdersService ordersService;
+    private DeliveryAddressService deliveryAddressService;
 
-
-    @PostMapping("/addOrder")
+    @PostMapping("/addAddress")
     @ResponseBody
-    public Map<String, String> addOrder(@RequestParam(value = "cartId") String[] cartIds, HttpServletRequest request){
+    public Map<String, String> addAddress(@RequestParam(value = "address") String address, HttpServletRequest request){
         Map<String, String> map = new HashMap<String, String>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
-            map.put("status", ordersService.addOrder(cartIds,userMailaddress));
+            map.put("status", deliveryAddressService.addDeliveryAddress(userMailaddress,address));
             return map;        }
         else {
             map.put("status","no");
@@ -36,13 +34,13 @@ public class OrdersController {
         }
     }
 
-    @PostMapping("/deleteOrder")
+    @PostMapping("/deleteAddress")
     @ResponseBody
-    public Map<String,String> deleteOrder(@RequestParam(value = "ordersId") String ordersId,HttpServletRequest request){
+    public Map<String,String> deleteCart(@RequestParam(value = "address") String address,HttpServletRequest request){
         Map<String, String> map = new HashMap<String, String>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
-            map.put("status", ordersService.deleteOrder(ordersId));
+            map.put("status",deliveryAddressService.deleteDeliveryAddress(userMailaddress,address));
             return map;        }
         else {
             map.put("status","no");
@@ -50,18 +48,20 @@ public class OrdersController {
         }
     }
 
-    @PostMapping("/editOrder")
+    @PostMapping("/editAddress")
     @ResponseBody
-    public Map<String,String> deleteOrder(@RequestParam(value = "ordersId") String ordersId,@RequestParam(value = "newStatus") String newStatus,HttpServletRequest request){
+    public Map<String,String> editCart(@RequestParam(value = "address") String address,HttpServletRequest request){
         Map<String, String> map = new HashMap<String, String>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
-            map.put("status", ordersService.editOrder(ordersId,newStatus));
+            deliveryAddressService.deleteDeliveryAddress(userMailaddress,address);
+            map.put("status",deliveryAddressService.addDeliveryAddress(userMailaddress,address));
             return map;        }
         else {
             map.put("status","no");
             return map;
         }
     }
+
 
 }

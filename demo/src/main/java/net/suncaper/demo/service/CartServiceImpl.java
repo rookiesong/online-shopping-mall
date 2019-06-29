@@ -28,7 +28,7 @@ public class CartServiceImpl implements CartService {
     public void addCart(String userMailAddress, int number, String productId) {
         Cart cart = findCart(userMailAddress,productId);
         if(cart==null){
-            cart = new Cart((userMailAddress+productId),number,userMailAddress,productId);
+            cart = new Cart((userMailAddress+"&"+productId),number,userMailAddress,productId);
             cartMapper.insert(cart);
         }
         else{
@@ -48,6 +48,11 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    public Cart findCartByCartId(String cartId) {
+        return cartMapper.selectByPrimaryKey(cartId);
+    }
+
+    @Override
     public List<CartProduct> returnCartProduct(String userMailAddress) {
         List<Cart> carts = findCart(userMailAddress);
         List<CartProduct> cartProducts = new ArrayList<>();
@@ -58,6 +63,18 @@ public class CartServiceImpl implements CartService {
                 cartProducts.add(cartProduct);
             }
         return cartProducts;
+    }
+
+    @Override
+    public void deleteCart(String userMailaddress, String productId) {
+        cartMapper.deleteByPrimaryKey(userMailaddress+productId);
+    }
+
+    @Override
+    public void editCart(String userMailaddress, int numProduct, String productId) {
+        Cart cart = findCart(userMailaddress,productId);
+        cart.setNumProduct(numProduct);
+        cartMapper.updateByPrimaryKey(cart);
     }
 
 

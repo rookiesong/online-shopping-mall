@@ -14,16 +14,21 @@ drop table if exists product;
 
 drop table if exists user;
 
+drop table if exists cart;
+
 /*==============================================================*/
 /* Table: "orders"                                               */
 /*==============================================================*/
 create table orders
 (
-   orders_id            varchar(20) not null,
+   orders_id            varchar(60) not null,
    paying_method        varchar(20),
    product_id           varchar(20),
-   user_mailaddress     varchar(20),
-   number               varchar(20) not null,
+   user_mailaddress     varchar(40),
+   number               int not null,
+   price				int not null,
+   delivery_address		varchar(50),
+   status				varchar(20) not null,
    primary key (orders_id)
 );
 
@@ -43,10 +48,11 @@ create table product
 (
    product_id           varchar(20) not null,
    product_name         varchar(40) not null,
-   type                 varchar(20) not null,
+   type                 varchar(20) ,
    producer             varchar(20) ,
    producing_area       varchar(20) ,
    stock                bigint not null,
+   sales_volume			int not null,
    price				int not null,
    primary key (product_id)
 );
@@ -72,15 +78,22 @@ create table user
 /*==============================================================*/
 create table cart
 (
-  cart_id				varchar(20) not null,
+  cart_id				varchar(60) not null,
   num_product			int NOT NULL ,
-  user_mailaddress     varchar(20) NOT NULL ,
+  user_mailaddress     varchar(40) NOT NULL ,
   product_id           varchar(20) not null,
-
-  primary key (cart_id),
-  FOREIGN KEY (user_mailaddress) REFERENCES user (user_mailaddress),
-  FOREIGN KEY (product_id) REFERENCES product (product_id)
+  primary key (cart_id)
 );
+/*==============================================================*/
+/* Table: deliveryAddress                                               */
+/*==============================================================*/
+create table deliveryAddress
+(
+   address        		varchar(40) not null,
+   user_mailaddress		varchar(40) not null,
+   primary key (address)
+);
+
 
 
 alter table orders add constraint FK_Relationship_1 foreign key (product_id)
@@ -97,3 +110,6 @@ alter table cart add constraint FK_Relationship_4 foreign key (user_mailaddress)
 
 alter table cart add constraint FK_Relationship_5 foreign key (product_id)
       references product (product_id) on delete restrict on update restrict;
+
+alter table deliveryAddress add constraint FK_Relationship_6 foreign key (user_mailaddress)
+      references user (user_mailaddress) on delete restrict on update restrict;
