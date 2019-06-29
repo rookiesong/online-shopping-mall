@@ -1,153 +1,341 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>商品</title>
-    <link rel="stylesheet" type="text/css" href="/main/css/index.css">
-    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-</head>
-<body>
-<script type="text/javascript" src="/layui/layui.js"></script>
-<script type="text/javascript" src="/main/js/index.js"></script>
-<script type="text/javascript" src="/main/js/jQuary.js"></script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<div class="site-nav-bg">
-    <div class="site-nav w1200">
-        <p class="sn-back-home">
-            <i class="layui-icon layui-icon-home"></i>
-            <a th:href="@{'/home'}">首页</a>
-        </p>
-        <div class="sn-quick-menu">
-            <div class="login"><a th:href="@{'/customer/login'}">登录</a></div>
-            <div class="login"><a th:href="@{'/customer/register'}">注册</a></div>
-            <div class="sp-cart"><a th:href="@{'/shopping-cart'}">购物车</a></div>
-            <div class="layui-icon layui-icon-cart" style="color: #ee0000"></div>
-        </div>
-    </div>
-</div>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+		<title>搜索页面</title>
 
+		<link href="/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+		<link href="/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
 
-<div class="header">
-    <div class="headerLayout w1200">
-        <div class="headerCon">
-            <h1 class="mallLogo">
-                <a th:href="@{'/home'}" title="Mall">
-                    <img src="/main/img/logo.png">
-                </a>
-            </h1>
-        </div>
-    </div>
-</div>
+		<link href="/basic/css/demo.css" rel="stylesheet" type="text/css" />
 
+		<link href="/css/seastyle.css" rel="stylesheet" type="text/css" />
 
-<div class="content content-nav-base commodity-content">
-    <div class="main-nav">
-        <div class="inner-cont0">
-            <div class="inner-cont1 w1200">
-                <div class="inner-cont2">
-                    <a>&nbsp;</a>
-                    <a>&nbsp;</a>
-                    <a>&nbsp;</a>
-                    <a>&nbsp;</a>
+		<script type="text/javascript" src="/basic/js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" src="/js/script.js"></script>
+	</head>
+
+	<body>
+
+    <!--顶部导航条 -->
+    <div class="am-container header">
+        <ul class="message-l">
+            <div class="topMessage">
+                <div class="menu-hd">
+                    <a th:href="@{'/customer/login'}" target="_top" class="h"><(*￣▽￣*)/登录</a>
+                    <a th:href="@{'/customer/register'}" target="_top">&nbsp;&nbsp;&nbsp;&nbsp;注册</a>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="commod-cont-wrap">
-        <div class="commod-cont w1200 layui-clear">
-            <div class="left-nav">
-                <div class="title">商品分类</div>
-                <div class="list-box">
-                    <dl>
-                        <dt>服装</dt>
-                        <dd><a href="javascript:;">男装</a></dd>
-                        <dd><a href="javascript:;">女装</a></dd>
-                        <dd><a href="javascript:;">儿童装</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>运动户外</dt>
-                        <dd><a href="javascript:;">登山鞋</a></dd>
-                        <dd><a href="javascript:;">旅行箱</a></dd>
-                        <dd><a href="javascript:;">户外</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>化妆品</dt>
-                        <dd><a href="javascript:;">护肤品</a></dd>
-                        <dd><a href="javascript:;">漱口水</a></dd>
-                        <dd><a href="javascript:;">彩妆</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>饰品</dt>
-                        <dd><a href="javascript:;">腕表</a></dd>
-                        <dd><a href="javascript:;">烟具</a></dd>
-                        <dd><a href="javascript:;">眼镜</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>数码</dt>
-                        <dd><a href="javascript:;">智能手机</a></dd>
-                        <dd><a href="javascript:;">主机</a></dd>
-                        <dd><a href="javascript:;">电脑</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>母婴用品</dt>
-                        <dd><a href="javascript:;">童装</a></dd>
-                        <dd><a href="javascript:;">玩具</a></dd>
-                        <dd><a href="javascript:;">奶粉</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>家电</dt>
-                        <dd><a href="javascript:;">空调</a></dd>
-                        <dd><a href="javascript:;">冰箱</a></dd>
-                        <dd><a href="javascript:;">洗衣机</a></dd>
-                    </dl>
-                    <dl>
-                        <dt>图书音像</dt>
-                        <dd><a href="javascript:;">小说</a></dd>
-                        <dd><a href="javascript:;">教材</a></dd>
-                        <dd><a href="javascript:;">学习考试</a></dd>
-                    </dl>
-                </div>
+        </ul>
+        <ul class="message-r">
+            <div class="topMessage my-shangcheng">
+                <div class="menu-hd MyShangcheng"><a th:href="@{'/customer/center'}" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
             </div>
-            <div class="right-cont-wrap">
-                <div class="right-cont">
-                    <div class="sort layui-clear">
-                        <a class="active" href="javascript:;" event = 'volume'>库存</a>
-                        <a href="javascript:;" event = 'price'>价格</a>
+            <div class="topMessage mini-cart">
+                <div class="menu-hd"><a id="mc-menu-hd" th:href="@{'/shopping-cart'}" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
+            </div>
+            <div class="topMessage favorite">
+                <div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+            </div>
+        </ul>
+    </div>
+
+			<!--悬浮搜索框-->
+
+
+        <div class="nav white">
+            <div class="logo"><img src="/images/logo.png" /></div>
+            <div class="logoBig">
+                <a th:href="@{/home}"><img src="/images/logobig.png"/></a>
+            </div>
+
+            <div class="search-bar pr">
+                <form action="/product/search" method="post" >
+                    <input type="text"  name="productName" placeholder="请输入商品" autocomplete="off">
+                    <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+                </form>
+            </div>
+        </div>
+
+			<div class="clear"></div>
+			<b class="line"></b>
+           <div class="search">
+			<div class="search-list">
+			<div class="nav-table">
+					   <div class="long-title"><span class="all-goods">全部结果</span></div>
+			</div>
+			<div class="am-g am-g-fixed">
+						<div class="am-u-sm-12 am-u-md-12" >
+							<div class="search-content" >
+								<div class="sort">
+									<li id="pricesort" class="first"><a title="价格">价格排序</a></li>
+									<li id="stocksort"><a title="销量">库存排序</a></li>
+								</div>
+								<div class="clear"></div>
+
+								<ul id="productsort" class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes" >
+                                    <li th:each="product:${products}" th:price=${product.price} th:stock=${product.stock}>
+                                        <div class="i-pic limit">
+                                            <a th:href="'/product/detail?id=' + ${product.productId}"><img src="/images/imgsearch1.jpg" /></a>
+                                            <p class="title fl" th:text="${product.productName}"></p>
+                                            <p class="price fl">
+                                                <b>价格：¥</b>
+                                                <strong th:text="${product.price}"></strong>
+                                            </p>
+                                            <p class="number fl">
+                                                库存：<span th:text="${product.stock}"></span>
+                                            </p>
+                                        </div>
+                                    </li>
+
+                                </ul>
+							</div>
+							<div class="clear"></div>
+							<!--分页 -->
+							<ul class="am-pagination am-pagination-right">
+								<li class="am-disabled"><a href="#">&laquo;</a></li>
+								<li class="am-active"><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#">&raquo;</a></li>
+							</ul>
+
+						</div>
+					</div>
+                <div class="footer ">
+                    <div class="footer-hd ">
+                        <p>
+                            <a href="# ">关于我们</a>
+                            <b>|</b>
+                            <a href="# ">帮助中心</a>
+                            <b>|</b>
+                            <a href="# ">售后服务</a>
+                        </p>
                     </div>
-                    <div class="cont-list layui-clear" id="list-cont">
-                        <div class="item" th:each="product:${products}">
-                            <div class="img" align="center">
-                                <a th:href="'/product/detail?id=' + ${product.productId}"><img class="clickableimg" th:ItemID="${product.productId}" src="/main/img/proexam_3.jpg" ></a>
-                            </div>
-                            <div class="text">
-                                <p class="title" th:text="${product.price}"></p>
-                                <p class="price">
-                                    <span class="pri" th:text="${product.price}"></span><a>&nbsp;&nbsp;元</a>
-                                    <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;库存：</a>
-                                    <span class="nub" th:text="${product.productName}"></span>
-                                </p>
-                            </div>
-                        </div>
+                    <div class="footer-bd ">
+                        <p>
+                            <em>IT企业实习Team14版权所有</em>
+                        </p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-//   $(".clickableimg").click(function () {
-//
-//       var id=$(this).attr("ItemID");
-//       $.ajax({
-//           url:"/product/search",
-//           type:"POST",
-//           data:{id:id},
-//           async:false
-//       });
-//   })
-</script>
-</body>
+				</div>
+
+			</div>
+
+		<!--引导 -->
+		<div class="navCir">
+			<li><a href="home.html"><i class="am-icon-home "></i>首页</a></li>
+			<li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
+			<li><a href="shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>	
+			<li><a href="/person/index.html"><i class="am-icon-user"></i>我的</a></li>
+		</div>
+
+		<!--菜单 -->
+		<div class=tip>
+			<div id="sidebar">
+				<div id="wrap">
+					<div id="prof" class="item">
+						<a href="#">
+							<span class="setting"></span>
+						</a>
+						<div class="ibar_login_box status_login">
+							<div class="avatar_box">
+								<p class="avatar_imgbox"><img src="/images/no-img_mid_.jpg" /></p>
+								<ul class="user_info">
+									<li>用户名：sl1903</li>
+									<li>级&nbsp;别：普通会员</li>
+								</ul>
+							</div>
+							<div class="login_btnbox">
+								<a href="#" class="login_order">我的订单</a>
+								<a href="#" class="login_favorite">我的收藏</a>
+							</div>
+							<i class="icon_arrow_white"></i>
+						</div>
+
+					</div>
+					<div id="shopCart" class="item">
+						<a href="#">
+							<span class="message"></span>
+						</a>
+						<p>
+							购物车
+						</p>
+					</div>
+					<div id="asset" class="item">
+						<a href="#">
+							<span class="view"></span>
+						</a>
+						<div class="mp_tooltip">
+							我的资产
+							<i class="icon_arrow_right_black"></i>
+						</div>
+					</div>
+
+					<div id="foot" class="item">
+						<a href="#">
+							<span class="zuji"></span>
+						</a>
+						<div class="mp_tooltip">
+							我的足迹
+							<i class="icon_arrow_right_black"></i>
+						</div>
+					</div>
+
+					<div id="brand" class="item">
+						<a href="#">
+							<span class="wdsc"><img src="/images/wdsc.png" /></span>
+						</a>
+						<div class="mp_tooltip">
+							我的收藏
+							<i class="icon_arrow_right_black"></i>
+						</div>
+					</div>
+
+					<div id="broadcast" class="item">
+						<a href="#">
+							<span class="chongzhi"><img src="/images/chongzhi.png" /></span>
+						</a>
+						<div class="mp_tooltip">
+							我要充值
+							<i class="icon_arrow_right_black"></i>
+						</div>
+					</div>
+
+					<div class="quick_toggle">
+						<li class="qtitem">
+							<a href="#"><span class="kfzx"></span></a>
+							<div class="mp_tooltip">客服中心<i class="icon_arrow_right_black"></i></div>
+						</li>
+						<!--二维码 -->
+						<li class="qtitem">
+							<a href="#none"><span class="mpbtn_qrcode"></span></a>
+							<div class="mp_qrcode" style="display:none;"><img src="/images/weixin_code_145.png" /><i class="icon_arrow_white"></i></div>
+						</li>
+						<li class="qtitem">
+							<a href="#top" class="return_top"><span class="top"></span></a>
+						</li>
+					</div>
+
+					<!--回到顶部 -->
+					<div id="quick_links_pop" class="quick_links_pop hide"></div>
+
+				</div>
+
+			</div>
+			<div id="prof-content" class="nav-content">
+				<div class="nav-con-close">
+					<i class="am-icon-angle-right am-icon-fw"></i>
+				</div>
+				<div>
+					我
+				</div>
+			</div>
+			<div id="shopCart-content" class="nav-content">
+				<div class="nav-con-close">
+					<i class="am-icon-angle-right am-icon-fw"></i>
+				</div>
+				<div>
+					购物车
+				</div>
+			</div>
+			<div id="asset-content" class="nav-content">
+				<div class="nav-con-close">
+					<i class="am-icon-angle-right am-icon-fw"></i>
+				</div>
+				<div>
+					资产
+				</div>
+
+				<div class="ia-head-list">
+					<a href="#" target="_blank" class="pl">
+						<div class="num">0</div>
+						<div class="text">优惠券</div>
+					</a>
+					<a href="#" target="_blank" class="pl">
+						<div class="num">0</div>
+						<div class="text">红包</div>
+					</a>
+					<a href="#" target="_blank" class="pl money">
+						<div class="num">￥0</div>
+						<div class="text">余额</div>
+					</a>
+				</div>
+
+			</div>
+			<div id="foot-content" class="nav-content">
+				<div class="nav-con-close">
+					<i class="am-icon-angle-right am-icon-fw"></i>
+				</div>
+				<div>
+					足迹
+				</div>
+			</div>
+			<div id="brand-content" class="nav-content">
+				<div class="nav-con-close">
+					<i class="am-icon-angle-right am-icon-fw"></i>
+				</div>
+				<div>
+					收藏
+				</div>
+			</div>
+			<div id="broadcast-content" class="nav-content">
+				<div class="nav-con-close">
+					<i class="am-icon-angle-right am-icon-fw"></i>
+				</div>
+				<div>
+					充值
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="/basic/js/quick_links.js"></script>
+
+<div class="theme-popover-mask"></div>
+    <!--价格库存排序-->
+    <script>
+        function sortitem(attr,flag) {
+            var sort=document.getElementById("productsort").childNodes;
+            var arr=[];
+            for(var i=1;i<sort.length;i++){
+                if(sort[i].nodeName=="LI"){
+                    arr.push(sort[i]);
+                }
+            }
+
+            if(flag)
+            {
+                arr.sort(function (a,b) {
+                return a.getAttribute(attr)-b.getAttribute(attr);
+                });
+            }
+            else{
+                arr.sort(function (a,b) {
+                    return -(a.getAttribute(attr)-b.getAttribute(attr));
+                });
+            }
+
+            for(var i=0;i<arr.length;i++){
+                document.getElementById("productsort").appendChild(arr[i]);
+            }
+        }
+        /*对价格排序*/
+        var flagone=false;
+        $("#pricesort").click(function ( ){
+            flagone=!flagone;
+            sortitem("price",flagone);
+        })
+        /*对库存排序*/
+        var flagtwo=false;
+        $("#stocksort").click(function ( ){
+            flagtwo=!flagtwo;
+            sortitem("stock",flagtwo);
+        })
+    </script>
+    </body>
+
 </html>
