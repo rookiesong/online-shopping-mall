@@ -46,18 +46,15 @@ public class OrdersController {
     }
 
     @GetMapping("/addOrderPage")
-    @ResponseBody
-    public Map<String, String> addOrderPage(@RequestParam(value = "cartIds") String[] cartIds,HttpServletRequest request,Model model){
-        Map<String, String> map = new HashMap<String, String>();
+    public String addOrderPage(@RequestParam(value = "cartIds") String[] cartIds,HttpServletRequest request,Model model){
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
             model.addAttribute("cartProducts",cartService.addOrderCartProduct(cartIds));
             model.addAttribute("payments",paymentService.allPayment());
-            map.put("status", "ok");
-            return map;        }
+            return "/pages/addorderpage.html";        }
         else {
-            map.put("status","no");
-            return map;
+
+            return "redirect:/customer/login";
         }
     }
 
@@ -94,6 +91,7 @@ public class OrdersController {
     @GetMapping("/showOrders")
     @ResponseBody
     public Map<String,String> orderPage(HttpServletRequest request,Model model){
+        //所有的订单
         Map<String, String> map = new HashMap<String, String>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
