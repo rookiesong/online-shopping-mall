@@ -16,6 +16,10 @@ drop table if exists user;
 
 drop table if exists cart;
 
+drop table if exists deliveryAddress;
+
+drop table if exists paymentRecord;
+
 /*==============================================================*/
 /* Table: "orders"                                               */
 /*==============================================================*/
@@ -85,7 +89,7 @@ create table cart
   primary key (cart_id)
 );
 /*==============================================================*/
-/* Table: deliveryAddress                                               */
+/* Table: deliveryAddress                                       */
 /*==============================================================*/
 create table deliveryAddress
 (
@@ -93,7 +97,17 @@ create table deliveryAddress
    user_mailaddress		varchar(40) not null,
    primary key (address)
 );
-
+/*==============================================================*/
+/* Table: paymentRecord                                         */
+/*==============================================================*/
+create table paymentRecord
+(
+	record_id			 varchar(80) not null,
+	orders_id            varchar(60) not null,
+	paying_method        varchar(20) not null,
+	amount				 int not null,
+	primary key (record_id)
+);
 
 
 alter table orders add constraint FK_Relationship_1 foreign key (product_id)
@@ -113,3 +127,9 @@ alter table cart add constraint FK_Relationship_5 foreign key (product_id)
 
 alter table deliveryAddress add constraint FK_Relationship_6 foreign key (user_mailaddress)
       references user (user_mailaddress) on delete restrict on update restrict;
+	  
+alter table paymentRecord add constraint FK_Relationship_7 foreign key (orders_id)
+      references orders (orders_id) on delete restrict on update restrict;
+	  
+alter table paymentRecord add constraint FK_Relationship_8 foreign key (paying_method)
+      references payment (paying_method) on delete restrict on update restrict;

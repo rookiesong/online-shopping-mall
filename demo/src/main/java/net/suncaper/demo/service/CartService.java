@@ -17,7 +17,12 @@ public interface CartService {
 
     List<CartProduct> returnCartProduct(String userMailAddress);
 
+    List<CartProduct> addOrderCartProduct(String[] cartIds);
+
+
     void deleteCart(String userMailaddress, String productId);
+
+    void deleteCart(String cartId);
 
     void editCart(String userMailaddress, int numProduct, String productId);
 }

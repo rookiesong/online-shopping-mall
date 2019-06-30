@@ -66,8 +66,26 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    public List<CartProduct> addOrderCartProduct(String[] cartIds) {
+        //添加订单时需要的CartProduct
+        List<CartProduct> cartProducts = new ArrayList<>();
+        for (String cartId:cartIds
+                ){
+            Cart cart = cartMapper.selectByPrimaryKey(cartId);
+            Product product = productService.findProductById(cart.getProductId());
+            CartProduct cartProduct = new CartProduct(cart.getCartId(),cart.getNumProduct(),cart.getUserMailaddress(),cart.getProductId(),product.getProductName(),product.getProducer(),product.getProducingArea(),product.getStock(),product.getType(),product.getPrice());
+            cartProducts.add(cartProduct);
+        }
+        return cartProducts;    }
+
+    @Override
     public void deleteCart(String userMailaddress, String productId) {
-        cartMapper.deleteByPrimaryKey(userMailaddress+productId);
+        cartMapper.deleteByPrimaryKey(userMailaddress+"&"+productId);
+    }
+
+    @Override
+    public void deleteCart(String cartId) {
+        cartMapper.deleteByPrimaryKey(cartId);
     }
 
     @Override

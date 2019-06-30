@@ -2,6 +2,7 @@ package net.suncaper.demo.service;
 
 import net.suncaper.demo.domain.Cart;
 import net.suncaper.demo.domain.Orders;
+import net.suncaper.demo.domain.OrdersExample;
 import net.suncaper.demo.mapper.OrdersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,10 @@ public class OrdersServiceImpl implements OrdersService {
 
     @Override
     public String addOrder(String[] cartIds, String userMailaddress) {
-        Timestamp build_day = new Timestamp(System.currentTimeMillis());
-        String ordersId = build_day.toString()+"&"+userMailaddress;
         for (String cartId:cartIds
                 ) {
+            Timestamp build_day = new Timestamp(System.currentTimeMillis());
+            String ordersId = build_day.toString()+"&"+userMailaddress;
             Cart cart=cartService.findCartByCartId(cartId);
             Integer price = productService.findProductById(cart.getProductId()).getPrice();
             Orders orders = new Orders(ordersId,null,cart.getProductId(),userMailaddress,cart.getNumProduct(),price,null,"正常");
@@ -53,7 +54,8 @@ public class OrdersServiceImpl implements OrdersService {
 
     @Override
     public List<Orders> showOrder(String userMailAddress) {
-
-        return null;
+        OrdersExample example = new OrdersExample();
+        example.createCriteria().andUserMailaddressEqualTo(userMailAddress);
+        return ordersMapper.selectByExample(example);
     }
 }
