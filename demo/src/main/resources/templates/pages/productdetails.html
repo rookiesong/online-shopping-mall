@@ -593,6 +593,8 @@
                     var id = $(this).attr("ItemID");
                     var numProduct = $("#text_box").val();
                     var attr = [[${product}]];
+                    console.log(attr.stock);
+                    console.log(numProduct);
                     if(numProduct<=attr.stock) {
                         $.ajax({
                             url: "/cart/addCart",
