@@ -35,7 +35,7 @@
                 <div class="menu-hd MyShangcheng"><a th:href="@{'/customer/center'}" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
             </div>
             <div class="topMessage mini-cart">
-                <div class="menu-hd"><a id="mc-menu-hd" th:href="@{'/shopping-cart'}" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
+                <div class="menu-hd"><a id="mc-menu-hd" th:href="@{'/cart/shopping-cart'}" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
             </div>
             <div class="topMessage favorite">
                 <div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
@@ -72,12 +72,12 @@
 							<div class="search-content" >
 								<div class="sort">
 									<li id="pricesort" class="first"><a title="价格">价格排序</a></li>
-									<li id="stocksort"><a title="销量">库存排序</a></li>
+									<li id="stocksort"><a title="销量">销量排序</a></li>
 								</div>
 								<div class="clear"></div>
 
 								<ul id="productsort" class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes" >
-                                    <li th:each="product:${products}" th:price=${product.price} th:stock=${product.stock}>
+                                    <li th:each="product:${products}" th:price=${product.price} th:salesVolume=${product.salesVolume}>
                                         <div class="i-pic limit">
                                             <a th:href="'/product/detail?id=' + ${product.productId}"><img src="/images/imgsearch1.jpg" /></a>
                                             <p class="title fl" th:text="${product.productName}"></p>
@@ -86,7 +86,7 @@
                                                 <strong th:text="${product.price}"></strong>
                                             </p>
                                             <p class="number fl">
-                                                库存：<span th:text="${product.stock}"></span>
+                                                销量：<span th:text="${product.salesVolume}"></span>
                                             </p>
                                         </div>
                                     </li>
@@ -333,7 +333,7 @@
         var flagtwo=false;
         $("#stocksort").click(function ( ){
             flagtwo=!flagtwo;
-            sortitem("stock",flagtwo);
+            sortitem("salesVolume",flagtwo);
         })
     </script>
     </body>
