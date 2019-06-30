@@ -180,7 +180,6 @@
 					</div>
 				</div>
 			</div>
-	</body>
 	<!--计算合计价格-->
 	<script th:inline="javascript">
         var attr = [[${cartProducts}]];
@@ -193,13 +192,11 @@
         document.getElementById("J_Total").innerHTML=sum;
 	</script>
     <!--提交数目修改-->
-	<script type="text/javascript">
+	<script type="text/javascript" th:inline="javascript">
             layui.use('layer',function () {
                 $(".changenum").click(function () {
                     var id = $(this).attr("ItemID");
                     var numProduct = $("#numProduct").val();
-                    console.log(id);
-                    console.log(numProduct);
                 $.ajax({
                     url: "/cart/editCart",
                     type: "POST",
@@ -215,7 +212,7 @@
             })
         });
 	</script>
-    <!--删除订单-->
+    <!--删除购物车-->
 	<script type="text/javascript">
         layui.use('layer',function () {
             $(".delete").click(function () {
@@ -236,8 +233,5 @@
             })
         });
 	</script>
-
-
-
-
+	</body>
 </html>

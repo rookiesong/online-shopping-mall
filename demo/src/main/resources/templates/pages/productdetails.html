@@ -587,27 +587,33 @@
 					</div>
 				</div>
 			</div>
-		<script type="text/javascript">
+		<script th:inline="javascript">
             layui.use('layer',function () {
                 $(".clickflag").click(function () {
                     var id = $(this).attr("ItemID");
                     var numProduct = $("#text_box").val();
-                    $.ajax({
-                        url: "/cart/addCart",
-                        type: "POST",
-                        data: {"productId": id, "numProduct": numProduct},
-                        dataType: "json",
-                        async: false,
-                        success: function (data) {
-                            if (data.status == "ok") {
-                                layer.alert("添加购物车成功！")
-                            }
-                            else {
-                                layer.alert("请首先登录！");
-                            }
+                    var attr = [[${product}]];
+                    if(numProduct<=attr.stock) {
+                        $.ajax({
+                            url: "/cart/addCart",
+                            type: "POST",
+                            data: {"productId": id, "numProduct": numProduct},
+                            dataType: "json",
+                            async: false,
+                            success: function (data) {
+                                if (data.status == "ok") {
+                                    layer.alert("添加购物车成功！")
+                                }
+                                else {
+                                    layer.alert("请首先登录！");
+                                }
 
-                        }
-                    });
+                            }
+                        });
+                    }
+                    else {
+                        layer.alert("超出库存！");
+					}
                 })
             });
 		</script>
