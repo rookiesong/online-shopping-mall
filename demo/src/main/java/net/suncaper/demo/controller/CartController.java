@@ -68,7 +68,7 @@ public class CartController {
         }
     }
 
-    @PostMapping("/deleteCart")
+    @PostMapping("/editCart")
     @ResponseBody
     public Map<String,String> editCart(@RequestParam(value = "productId") String productId,@RequestParam(value = "numProduct") int numProduct,HttpServletRequest request){
         Map<String, String> map = new HashMap<String, String>();
