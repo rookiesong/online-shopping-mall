@@ -165,33 +165,14 @@
 
 							<!--地址-->
 							<dl class="iteminfo_parameter freight">
-								<dt>配送至</dt>
-								<div class="iteminfo_freprice">
-									<div class="am-form-content address">
-										<select data-am-selected>
-											<option value="a">浙江省</option>
-											<option value="b">湖北省</option>
-										</select>
-										<select data-am-selected>
-											<option value="a">温州市</option>
-											<option value="b">武汉市</option>
-										</select>
-										<select data-am-selected>
-											<option value="a">瑞安区</option>
-											<option value="b">洪山区</option>
-										</select>
-									</div>
-								</div>
+
 							</dl>
 							<div class="clear"></div>
 
 							<!--销量-->
 							<ul class="tm-ind-panel">
 								<li class="tm-ind-item tm-ind-sellCount canClick">
-									<div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">50</span></div>
-								</li>
-								<li class="tm-ind-item tm-ind-sumCount canClick">
-									<div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">4000</span></div>
+									<div class="tm-indcon"><span class="tm-label">销量：</span><span class="tm-count" th:text="${product.salesVolume}"></span></div>
 								</li>
 							</ul>
 							<div class="clear"></div>
