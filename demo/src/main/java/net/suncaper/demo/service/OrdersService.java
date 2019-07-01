@@ -15,4 +15,6 @@ public interface OrdersService {
 
     public List<Orders> showOrder(String userMailAddress);
 
+    public int countPrice(List<Orders> ordersList);
+
 }

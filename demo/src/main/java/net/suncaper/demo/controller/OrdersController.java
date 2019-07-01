@@ -1,6 +1,7 @@
 package net.suncaper.demo.controller;
 
 import net.suncaper.demo.domain.Cart;
+import net.suncaper.demo.domain.Orders;
 import net.suncaper.demo.service.CartService;
 import net.suncaper.demo.service.OrdersService;
 import net.suncaper.demo.service.PaymentService;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static net.suncaper.demo.controller.UserController.getCookieByName;
@@ -32,6 +34,9 @@ public class OrdersController {
     @GetMapping("/addOrderPage")
     public String addOrderPage(Model model,HttpServletRequest request){
         model.addAttribute("payments",paymentService.allPayment());
+        HttpSession httpSession = request.getSession();
+        int sum = ordersService.countPrice((List<Orders>)httpSession.getAttribute("ordersList"));
+        model.addAttribute("sum",sum);
         return "/pages/addorderpage.html";
     }
 
@@ -41,12 +46,12 @@ public class OrdersController {
         Map<String, String> map = new HashMap<String, String>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
-            ordersService.addOrder(cartIds,userMailaddress);
             HttpSession httpSession = request.getSession();
             httpSession.removeAttribute("cartProducts");
-            map.put("status", "ok");
+            httpSession.removeAttribute("ordersList");
             httpSession.setAttribute("cartProducts",cartService.addOrderCartProduct(cartIds));
             httpSession.setAttribute("ordersList",ordersService.addOrder(cartIds,userMailaddress));
+            map.put("status", "ok");
             return map;        }
         else {
             map.put("status","no");

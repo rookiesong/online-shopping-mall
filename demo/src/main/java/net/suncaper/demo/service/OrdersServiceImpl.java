@@ -63,4 +63,14 @@ public class OrdersServiceImpl implements OrdersService {
         example.createCriteria().andUserMailaddressEqualTo(userMailAddress);
         return ordersMapper.selectByExample(example);
     }
+
+    @Override
+    public int countPrice(List<Orders> ordersList) {
+        int sum = 0;
+        for (Orders orders:ordersList
+             ) {
+            sum += orders.getNumber()*orders.getPrice();
+        }
+        return sum;
+    }
 }
