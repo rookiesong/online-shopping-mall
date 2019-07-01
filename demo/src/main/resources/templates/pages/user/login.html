@@ -12,6 +12,14 @@
 </head>
 <body>
 
+<div class="site-nav-bg">
+    <div class="site-nav w1200">
+        <p class="sn-back-home">
+            <a th:href="@{'/customer/register'}">(=ˇωˇ=)注册</a>
+        </p>
+    </div>
+</div>
+
 <div class="header">
     <div class="headerLayout w1200">
         <div class="headerCon">
@@ -47,7 +55,7 @@
                         <div class="layui-inline iphone">
                             <div class="layui-input-inline">
                                 <i class="layui-icon layui-icon-password iphone-icon"></i>
-                                <input type="text" name="passWord" id="passWord" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                <input type="password" name="passWord" id="passWord" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-mid layui-word-aux" style="margin: 0px 0px 0px 210px"  ><a th:href="@{'/getBackPassword'}" class="layui-word-aux">忘记密码？</a></div>
