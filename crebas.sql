@@ -20,6 +20,8 @@ drop table if exists deliveryAddress;
 
 drop table if exists paymentRecord;
 
+set character_set_results=utf8;
+
 /*==============================================================*/
 /* Table: "orders"                                               */
 /*==============================================================*/
