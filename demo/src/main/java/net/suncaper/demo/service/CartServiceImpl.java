@@ -75,6 +75,7 @@ public class CartServiceImpl implements CartService {
             Product product = productService.findProductById(cart.getProductId());
             CartProduct cartProduct = new CartProduct(cart.getCartId(),cart.getNumProduct(),cart.getUserMailaddress(),cart.getProductId(),product.getProductName(),product.getProducer(),product.getProducingArea(),product.getStock(),product.getType(),product.getPrice());
             cartProducts.add(cartProduct);
+            cartMapper.deleteByPrimaryKey(cartId);
         }
         return cartProducts;    }
 

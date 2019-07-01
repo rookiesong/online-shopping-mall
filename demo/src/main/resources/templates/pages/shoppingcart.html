@@ -1,257 +1,264 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>购物车页面</title>
+	<title>购物车页面</title>
 
-		<link href="/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-		<link href="/basic/css/demo.css" rel="stylesheet" type="text/css" />
-		<link href="/css/cartstyle.css" rel="stylesheet" type="text/css" />
-		<link href="/css/optstyle.css" rel="stylesheet" type="text/css" />
+	<link href="/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+	<link href="/basic/css/demo.css" rel="stylesheet" type="text/css" />
+	<link href="/css/cartstyle.css" rel="stylesheet" type="text/css" />
+	<link href="/css/optstyle.css" rel="stylesheet" type="text/css" />
 
-		<script type="text/javascript" src="/js/jquery.js"></script>
-		<link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
-		<script type="text/javascript" src="/layui/layui.js"></script>
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
+	<script type="text/javascript" src="/layui/layui.js"></script>
 
-	</head>
+</head>
 
-	<body>
-	<!--顶部导航条 -->
-	<div class="am-container header">
-		<ul class="message-l">
-			<div class="topMessage">
-				<div class="menu-hd">
-					<a th:href="@{'/customer/login'}" target="_top" class="h"><(*￣▽￣*)/登录</a>
-					<a th:href="@{'/customer/register'}" target="_top">&nbsp;&nbsp;&nbsp;&nbsp;注册</a>
+<body>
+<!--顶部导航条 -->
+<div class="am-container header">
+	<ul class="message-l">
+		<div class="topMessage">
+			<div class="menu-hd">
+				<a th:href="@{'/customer/login'}" target="_top" class="h"><(*￣▽￣*)/登录</a>
+				<a th:href="@{'/customer/register'}" target="_top">&nbsp;&nbsp;&nbsp;&nbsp;注册</a>
+			</div>
+		</div>
+	</ul>
+	<ul class="message-r">
+		<div class="topMessage my-shangcheng">
+			<div class="menu-hd MyShangcheng"><a th:href="@{'/customer/center'}" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+		</div>
+		<div class="topMessage mini-cart">
+			<div class="menu-hd"><a id="mc-menu-hd" th:href="@{'/cart/shopping-cart'}" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
+		</div>
+		<div class="topMessage favorite">
+			<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+		</div>
+	</ul>
+</div>
+
+<!--悬浮搜索框-->
+
+
+<div class="nav white">
+	<div class="logo"><img src="/images/logo.png" /></div>
+	<div class="logoBig">
+		<a th:href="@{/home}"><img src="/images/logobig.png"/></a>
+	</div>
+
+	<div class="search-bar pr">
+		<form action="/product/search" method="post" >
+			<input type="text"  name="productName" placeholder="请输入商品" autocomplete="off">
+			<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+		</form>
+	</div>
+</div>
+
+<div class="clear"></div>
+
+<!--购物车 -->
+<div class="concent">
+	<div id="cartTable">
+		<div class="cart-table-th">
+			<div class="wp">
+				<div class="th th-chk">
+					<div id="J_SelectAll1" class="select-all J_SelectAll">
+
+					</div>
+				</div>
+				<div class="th th-item">
+					<div class="td-inner">商品信息</div>
+				</div>
+				<div class="th th-price">
+					<div class="td-inner">单价</div>
+				</div>
+				<div class="th th-amount">
+					<div class="td-inner">数量</div>
+				</div>
+				<div class="th th-op">
+					<div class="td-inner">操作</div>
 				</div>
 			</div>
-		</ul>
-		<ul class="message-r">
-			<div class="topMessage my-shangcheng">
-				<div class="menu-hd MyShangcheng"><a th:href="@{'/customer/center'}" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
-			</div>
-			<div class="topMessage mini-cart">
-				<div class="menu-hd"><a id="mc-menu-hd" th:href="@{'/cart/shopping-cart'}" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
-			</div>
-			<div class="topMessage favorite">
-				<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
-			</div>
-		</ul>
-	</div>
-
-	<!--悬浮搜索框-->
-
-
-	<div class="nav white">
-		<div class="logo"><img src="/images/logo.png" /></div>
-		<div class="logoBig">
-			<a th:href="@{/home}"><img src="/images/logobig.png"/></a>
 		</div>
+		<div class="clear"></div>
 
-		<div class="search-bar pr">
-			<form action="/product/search" method="post" >
-				<input type="text"  name="productName" placeholder="请输入商品" autocomplete="off">
-				<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
-			</form>
-		</div>
-	</div>
+		<tr class="item-list" th:each="cartProduct:${cartProducts}">
+			<div class="bundle  bundle-last ">
+				<div class="clear"></div>
+				<div class="bundle-main">
 
-			<div class="clear"></div>
-
-			<!--购物车 -->
-			<div class="concent">
-				<div id="cartTable">
-					<div class="cart-table-th">
-						<div class="wp">
-							<div class="th th-chk">
-								<div id="J_SelectAll1" class="select-all J_SelectAll">
-
+					<ul class="item-content clearfix">
+						<li class="td td-item">
+							<div class="item-pic">
+								<a th:href="'/product/detail?id=' + ${cartProduct.productId}" target="_blank"  class="J_MakePoint" data-point="tbcart.8.12">
+									<img src="/images/imgsearch1_80x80.jpg" class="itempic J_ItemImg"></a>
+							</div>
+							<div class="item-info">
+								<div class="item-basic-info">
+									<a  target="_blank" th:text="${cartProduct.productName}" class="item-title J_MakePoint" data-point="tbcart.8.11"></a>
 								</div>
 							</div>
-							<div class="th th-item">
-								<div class="td-inner">商品信息</div>
+						</li>
+						<li class="td td-info">
+							<div class="item-props item-props-can">
+								<span class="sku-line">口味：原味</span>
+								<span class="sku-line">包装：手袋单人份</span>
+								<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
+								<i class="theme-login am-icon-sort-desc"></i>
 							</div>
-							<div class="th th-price">
-								<div class="td-inner">单价</div>
+						</li>
+						<li class="td td-price">
+							<div class="item-price price-promo-promo">
+								<div class="price-content">
+									<div class="price-line">
+										<em class="J_Price price-now" tabindex="0" th:text="${cartProduct.price}"></em>
+										<span>￥</span>
+									</div>
+								</div>
 							</div>
-							<div class="th th-amount">
-								<div class="td-inner">数量</div>
+						</li>
+						<li class="td td-amount">
+							<div class="amount-wrapper ">
+								<div class="item-amount ">
+									<div class="sl">
+										<input class="text_box" th:value="${cartProduct.numProduct}" id="numProduct" value="" type="text"  style="width:30px;">
+										<button class="changenum" th:ItemID="${cartProduct.productId}">修改</button>
+									</div>
+								</div>
 							</div>
-							<div class="th th-op">
-								<div class="td-inner">操作</div>
+						</li>
+						<li class="td td-op">
+							<div class="td-inner">
+								<a class="delete" th:ItemID="${cartProduct.productId}">&nbsp;&nbsp;删除</a>
 							</div>
-						</div>
-					</div>
-					<div class="clear"></div>
-
-					<tr class="item-list" th:each="cartProduct:${cartProducts}">
-						<div class="bundle  bundle-last ">
-							<div class="clear"></div>
-							<div class="bundle-main">
-
-								<ul class="item-content clearfix">
-									<li class="td td-item">
-										<div class="item-pic">
-											<a th:href="'/product/detail?id=' + ${cartProduct.productId}" target="_blank"  class="J_MakePoint" data-point="tbcart.8.12">
-												<img src="/images/imgsearch1_80x80.jpg" class="itempic J_ItemImg"></a>
-										</div>
-										<div class="item-info">
-											<div class="item-basic-info">
-												<a  target="_blank" th:text="${cartProduct.productName}" class="item-title J_MakePoint" data-point="tbcart.8.11"></a>
-											</div>
-										</div>
-									</li>
-									<li class="td td-info">
-										<div class="item-props item-props-can">
-											<span class="sku-line">口味：原味</span>
-											<span class="sku-line">包装：手袋单人份</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i>
-										</div>
-									</li>
-									<li class="td td-price">
-										<div class="item-price price-promo-promo">
-											<div class="price-content">
-												<div class="price-line">
-													<em class="J_Price price-now" tabindex="0" th:text="${cartProduct.price}"></em>
-													<span>￥</span>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li class="td td-amount">
-										<div class="amount-wrapper ">
-											<div class="item-amount ">
-												<div class="sl">
-												<input class="text_box" th:value="${cartProduct.numProduct}" id="numProduct" value="" type="text"  style="width:30px;">
-												<button class="changenum" th:ItemID="${cartProduct.productId}">修改</button>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li class="td td-op">
-										<div class="td-inner">
-											<a class="delete" th:ItemID="${cartProduct.productId}">&nbsp;&nbsp;删除</a>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</tr>
-				</div>
-				<div class="clear"></div>
-
-				<div class="float-bar-wrapper">
-					<div class="float-bar-right">
-
-						<div class="price-sum">
-							<span class="txt">合计:</span>
-							<strong class="price">￥<em id="J_Total"></em></strong>
-						</div>
-						<div class="btn-area">
-							<a id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
-								<span class="getorderpage">生成订单</span></a>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="footer ">
-					<div class="footer-hd ">
-						<p>
-							<a href="# ">关于我们</a>
-							<b>|</b>
-							<a href="# ">帮助中心</a>
-							<b>|</b>
-							<a href="# ">售后服务</a>
-						</p>
-					</div>
-					<div class="footer-bd ">
-						<p>
-							<em>IT企业实习Team14版权所有</em>
-						</p>
-					</div>
+						</li>
+					</ul>
 				</div>
 			</div>
-	<!--计算合计价格-->
-	<script th:inline="javascript">
-        var attr = [[${cartProducts}]];
-        console.log(attr);
-        var singlesum=[];
-        var sum=0;
-        for(i=0;i<attr.length;i++){
-            singlesum[i]=attr[i].price*attr[i].numProduct;
-            sum=singlesum[i]+sum;
-		}
-        document.getElementById("J_Total").innerHTML=sum;
-	</script>
-    <!--提交数目修改-->
-	<script type="text/javascript" th:inline="javascript">
-            layui.use('layer',function () {
-                $(".changenum").click(function () {
-                    var id = $(this).attr("ItemID");
-                    var numProduct = $("#numProduct").val();
-                $.ajax({
-                    url: "/cart/editCart",
-                    type: "POST",
-                    data: {"productId": id, "numProduct": numProduct},
-                    dataType: "json",
-                    async: false,
-                    success: function (data) {
-                        if (data.status == "ok") {
-                            window.location.href='/cart/shopping-cart';
-                        }
+		</tr>
+	</div>
+	<div class="clear"></div>
+
+	<div class="float-bar-wrapper">
+		<div class="float-bar-right">
+
+			<div class="price-sum">
+				<span class="txt">合计:</span>
+				<strong class="price">￥<em id="J_Total"></em></strong>
+			</div>
+			<div class="btn-area">
+				<a id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
+					<span class="getorderpage">生成订单</span></a>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="footer ">
+		<div class="footer-hd ">
+			<p>
+				<a href="# ">关于我们</a>
+				<b>|</b>
+				<a href="# ">帮助中心</a>
+				<b>|</b>
+				<a href="# ">售后服务</a>
+			</p>
+		</div>
+		<div class="footer-bd ">
+			<p>
+				<em>IT企业实习Team14版权所有</em>
+			</p>
+		</div>
+	</div>
+</div>
+<!--计算合计价格-->
+<script th:inline="javascript">
+    var attr = [[${cartProducts}]];
+    console.log(attr);
+    var singlesum=[];
+    var sum=0;
+    for(i=0;i<attr.length;i++){
+        singlesum[i]=attr[i].price*attr[i].numProduct;
+        sum=singlesum[i]+sum;
+    }
+    document.getElementById("J_Total").innerHTML=sum;
+</script>
+<!--提交数目修改-->
+<script type="text/javascript" th:inline="javascript">
+    layui.use('layer',function () {
+        $(".changenum").click(function () {
+            var id = $(this).attr("ItemID");
+            var numProduct = $("#numProduct").val();
+            $.ajax({
+                url: "/cart/editCart",
+                type: "POST",
+                data: {"productId": id, "numProduct": numProduct},
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    if (data.status == "ok") {
+                        window.location.href='/cart/shopping-cart';
                     }
-                });
-            })
-        });
-	</script>
-    <!--删除购物车-->
-	<script type="text/javascript">
-        layui.use('layer',function () {
-            $(".delete").click(function () {
-                var id = $(this).attr("ItemID");
-                console.log(id);
-                $.ajax({
-                    url: "/cart/deleteCart",
-                    type: "POST",
-                    data: {"productId": id},
-                    dataType: "json",
-                    async: false,
-                    success: function (data) {
-                        if (data.status == "ok") {
-                            window.location.href='/cart/shopping-cart';
-                        }
+                }
+            });
+        })
+    });
+</script>
+<!--删除购物车-->
+<script type="text/javascript">
+    layui.use('layer',function () {
+        $(".delete").click(function () {
+            var id = $(this).attr("ItemID");
+            console.log(id);
+            $.ajax({
+                url: "/cart/deleteCart",
+                type: "POST",
+                data: {"productId": id},
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    if (data.status == "ok") {
+                        window.location.href='/cart/shopping-cart';
                     }
-                });
-            })
-        });
-	</script>
-	<!--生成订单-->
-	<script type="text/javascript" th:inline="javascript">
-        layui.use('layer',function () {
-            $(".getorderpage").click(function () {
-                var cartIds=[];
-                var attr = [[${cartProducts}]];
-                for(i=0;i<attr.length;i++)
+                }
+            });
+        })
+    });
+</script>
+<!--生成订单-->
+<script type="text/javascript" th:inline="javascript">
+    layui.use('layer',function () {
+        $(".getorderpage").click(function () {
+            var cartIds=[];
+            var attr = [[${cartProducts}]];
+            for(i=0;i<attr.length;i++)
                 cartIds[i]=attr[i].cartId;
-                console.log(cartIds);
-                $.ajax({
-                    url: "/orders/addOrderPage",
-                    type: "POST",
-                    data: {cartIds:cartIds},
-                    dataType: "json",
-                    async: false,
-                    success: function (data) {
-                        if(data.status == "ok")
-                            window.location.href="/orders/addOrderPage";
-                    }
-                });
-            })
-        });
-	</script>
-	</body>
+            console.log(cartIds);
+            $.ajax({
+                url: "/orders/addOrder",
+                type: "POST",
+                data: {cartIds:cartIds},
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    if(data.status== "ok"){
+                        console.log("test");
+                        window.location.href = "/orders/addOrderPage";
+
+					}
+
+                },
+                error:function () {
+					alert("调用了错误方法");
+                }
+            });
+        })
+    });
+</script>
+</body>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,17 +21,21 @@ public class OrdersServiceImpl implements OrdersService {
     private ProductService productService;
 
     @Override
-    public String addOrder(String[] cartIds, String userMailaddress) {
+    public List<Orders> addOrder(String[] cartIds, String userMailaddress) {
+        List<Orders> ordersList = new ArrayList<>();
         for (String cartId:cartIds
                 ) {
             Timestamp build_day = new Timestamp(System.currentTimeMillis());
             String ordersId = build_day.toString()+"&"+userMailaddress;
             Cart cart=cartService.findCartByCartId(cartId);
             Integer price = productService.findProductById(cart.getProductId()).getPrice();
-            Orders orders = new Orders(ordersId,null,cart.getProductId(),userMailaddress,cart.getNumProduct(),price,null,"正常");
+            String productName = productService.findProductById(cart.getProductId()).getProductName();
+            Orders orders = new Orders(ordersId,null,cart.getProductId(),userMailaddress,cart.getNumProduct(),price,null,"正常",productName);
             ordersMapper.insert(orders);
+            ordersList.add(orders);
+            cartService.deleteCart(cartId);
         }
-        return "ok";
+        return ordersList;
     }
 
     @Override

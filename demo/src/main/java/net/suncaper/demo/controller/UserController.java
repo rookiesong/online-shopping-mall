@@ -6,15 +6,13 @@ import net.suncaper.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,14 +51,27 @@ public class UserController {
             return "redirect:/home";
     }
 
-    @PostMapping("/center")
-    public String editCenter(HttpServletRequest request,User user){
-        String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
+//    @PostMapping("/center")
+//    public String editCenter(HttpServletRequest request,User user){
+//        String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
+//
+//        user.setUserMailaddress(userMailaddress);
+//        userService.editUser(user);
+//        return "redirect:/customer/center";
+//    }
 
+    @PostMapping("/center")
+    @ResponseBody
+    public Map<String,String> editCenter(HttpServletRequest request, @RequestParam(value = "userName") String userName, @RequestParam(value = "passWord") String passWord, @RequestParam(value = "userPhone") Long userPhone, @RequestParam(value = "userSex") Byte userSex, @RequestParam(value = "birthday")Date birthday){
+        String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
+        User user = new User(null,userName,passWord,userPhone,userSex,birthday,null,null);
         user.setUserMailaddress(userMailaddress);
         userService.editUser(user);
-        return "redirect:/customer/center";
+        Map<String,String> map = new HashMap<String, String>();
+        map.put("status", "ok");
+        return map;
     }
+
 
     @PostMapping("/register")
     @ResponseBody
