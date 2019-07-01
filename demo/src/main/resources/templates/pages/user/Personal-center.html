@@ -1,129 +1,250 @@
-﻿<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>会员中心</title>
-    <link rel="stylesheet" type="text/css" href="/main/css/index.css">
-    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-</head>
-<body id="list-cont">
-<script type="text/javascript" src="/layui/layui.js"></script>
-<script type="text/javascript" src="/main/js/index.js"></script>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<div class="site-nav-bg">
-    <div class="site-nav w1200">
-        <p class="sn-back-home">
-            <i class="layui-icon layui-icon-home"></i>
-            <a th:href="@{'/home'}">首页</a>
-        </p>
-        <div class="sn-quick-menu">
-            <div class="login"><a th:href="@{'/customer/login'}">登录</a></div>
-            <div class="login"><a th:href="@{'/customer/register'}">注册</a></div>
-            <div class="sp-cart"><a th:href="@{'/cart/shopping-cart'}">购物车</a></div>
-            <div class="layui-icon layui-icon-cart" style="color: #ee0000"></div>
-        </div>
-    </div>
-</div>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
-<div class="header">
-    <div class="headerLayout w1200">
-        <div class="headerCon">
-            <h1 class="mallLogo">
-                <a th:href="@{'/home'}" title="Mall">
-                    <img src="/main/img/logo.png">
-                </a>
-            </h1>
-        </div>
-    </div>
-</div>
+		<title>个人资料</title>
 
-<div class="content content-nav-base  login-content">
-    <div class="main-nav">
-        <div class="inner-cont0">
-            <div class="inner-cont2">
-            </div>
-        </div>
-    </div>
-    <div class="login-bg">
-        <div class="login-cont w1200">
-            <div class="form-boxtwo">
-                <form class="layui-form" action="" method="post">
-                    <legend>会员中心</legend>
-                    <div class="main-nav">
-                        <div class="inner-cont0">
-                            <div class="inner-cont2">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-inline iphone">
-                            <div class="layui-input-inline">
-                                <i class="layui-icon layui-icon-user iphone-icon"></i>
-                                <input type="text" name="userName" id="userName"  placeholder="请输入用户名" autocomplete="off" class="layui-input" lay-verify="required" th:value="${user.userName}">
-                            </div>
-                        </div>
-                        <div class="layui-inline iphone">
-                            <div class="layui-input-inline">
-                                <i class="layui-icon layui-icon-password iphone-icon"></i>
-                                <input type="password" name="passWord" id="passWord"  placeholder="请输入密码" autocomplete="off" class="layui-input" lay-verify="required" th:value="${user.passWord}">
-                            </div>
-                        </div>
-                        <div class="layui-inline iphone">
-                            <div class="layui-input-inline">
-                                <i class="layui-icon layui-icon-cellphone iphone-icon"></i>
-                                <input type="text" name="userPhone" id="userPhone"  placeholder="请输入手机号" autocomplete="off" class="layui-input" lay-verify="required" th:value="${user.userPhone}">
-                            </div>
-                        </div>
-                        <div class="layui-inline iphone">
-                            <div class="layui-input-inline">
-                                <i class="layui-icon layui-icon-male iphone-icon"></i>
-                                <input type="text" name="userSex" id="userSex"  placeholder="请输入性别" autocomplete="off" class="layui-input" lay-verify="required" th:value="${user.userSex}">
-                            </div>
-                        </div>
+		<link href="/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
-                        <div class="layui-inline iphone">
-                            <div class="layui-input-inline">
-                                <i class="layui-icon layui-icon-friends iphone-icon"></i>
-                                <input type="date" name="birthday" id="birthday" autocomplete="off" class="layui-input" lay-verify="required" th:value="${#dates.format(user.birthday, 'yyyy-MM-dd')}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="layui-form-item login-btn">
-                        <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit type="submit" lay-filter="Personal-center">修改</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+		<link href="/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="/css/infstyle.css" rel="stylesheet" type="text/css">
+        <link href="/main/css/index.css" rel="stylesheet" type="text/css">
+		<script src="/AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
+		<script src="/AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
+        <script type="text/javascript" src="/layui/layui.js"></script>
+	</head>
 
+	<body>
+					<!--顶部导航条 -->
+					<div class="am-container header">
+						<ul class="message-l">
+							<div class="topMessage">
+								<div class="menu-hd">
+									<a th:href="@{'/customer/login'}" target="_top" class="h"><(*￣▽￣*)/登录</a>
+									<a th:href="@{'/customer/register'}" target="_top">&nbsp;&nbsp;(=ˇωˇ=)注册</a>
+								</div>
+							</div>
+						</ul>
+						<ul class="message-r">
+							<div class="topMessage mini-cart">
+								<div class="menu-hd"><a id="mc-menu-hd" th:href="@{'/cart/shopping-cart'}" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
+							</div>
+							<div class="topMessage favorite">
+								<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+						</ul>
+					</div>
 
-<div class="footer">
-    <div class="ng-promise-box">
-        <div class="ng-promise w1200">
-            <p class="text">
-                <a class="icon1" href="javascript:;">品类齐全，轻松购物</a>
-                <a class="icon2" href="javascript:;">正品行货，精致服务</a>
-                <a class="icon3" style="margin-right: 0" href="javascript:;">100%品质保证</a>
-            </p>
-        </div>
-    </div>
-    <div class="mod_help w1200">
-        <p>
-            <a href="javascript:;">关于我们</a>
-            <span>|</span>
-            <a href="javascript:;">帮助中心</a>
-            <span>|</span>
-            <a href="javascript:;">售后服务</a>
-        </p>
-        <p class="coty">IT企业实习Team14版权所有</p>
-    </div>
-</div>
+					<!--悬浮搜索框-->
 
+					<div class="nav white">
+						<div class="logoBig">
+							<a th:href="@{/home}"><img src="/images/logobig.png"/></a>
+						</div>
 
-</body>
+						<div class="search-bar pr">
+							<form action="/product/search" method="post" >
+								<input type="text"  name="productName" placeholder="请输入商品" autocomplete="off">
+								<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+							</form>
+						</div>
+					</div>
+						<div class="clear"></div>
+            <div class="nav-table">
+                <div class="long-title"><span class="all-goods">个人资料</span></div>
+			</div>
+			<b class="line"></b>
+		<div class="center">
+			<div class="col-main">
+				<div class="main-wrap">
+
+					<div class="user-info">
+						<!--标题 -->
+						<div class="am-cf am-padding">
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
+						</div>
+						<hr/>
+
+						<!--个人信息 -->
+						<div class="info-main">
+							<form class="am-form am-form-horizontal">
+								<div class="am-form-group">
+									<label  class="am-form-label">用户名</label>
+									<div class="am-form-content">
+                                        <input type="text" name="userName" id="userName" th:value="${user.userName}">
+									</div>
+								</div>
+                                <div class="am-form-group">
+                                    <label  class="am-form-label">密码</label>
+                                    <div class="am-form-content">
+                                        <input type="password" name="passWord" id="passWord"  th:value="${user.passWord}">
+                                    </div>
+                                </div>
+								<div class="am-form-group">
+									<label class="am-form-label">性别</label>
+                                    <div class="am-form-content">
+                                        <input type="text" name="userSex" id="userSex" value="">
+                                    </div>
+								</div>
+
+								<div class="am-form-group">
+									<label  class="am-form-label">生日</label>
+                                    <div class="layui-inline iphone">
+                                        <div class="layui-input-inline" style="margin-left: 57px">
+                                            <input type="date" name="birthday" id="birthday"  th:value="${#dates.format(user.birthday, 'yyyy-MM-dd')}">
+                                        </div>
+                                    </div>
+								</div>
+								<div class="am-form-group">
+									<label  class="am-form-label">手机号</label>
+									<div class="am-form-content">
+										<input  type="text" name="userPhone" id="userPhone" th:value="${user.userPhone}">
+									</div>
+								</div>
+
+                                <div class="am-form-group">
+                                    <label  class="am-form-label"><span>邮箱</span><span class="useremailstyle" style="font-weight: normal;margin-left: 57px" th:text="${user.userMailaddress}"></span></label>
+                                </div>
+
+								<div class="info-btn">
+                                    <div class="am-btn am-btn-danger">保存修改</div>
+								</div>
+
+							</form>
+						</div>
+
+					</div>
+
+				</div>
+				<!--底部-->
+				<div class="footer ">
+					<div class="footer-hd ">
+						<p>
+							<a href="# ">关于我们</a>
+							<b>|</b>
+							<a href="# ">帮助中心</a>
+							<b>|</b>
+							<a href="# ">售后服务</a>
+						</p>
+					</div>
+					<div class="footer-bd ">
+						<p>
+							<em>IT企业实习Team14版权所有</em>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<aside class="menu">
+				<ul>
+					<li class="person">
+						<a href="index.html">个人中心</a>
+					</li>
+					<li class="person">
+						<a href="#">个人资料</a>
+						<ul>
+							<li class="active"> <a href="Personal-information.html">个人信息</a></li>
+							<li> <a href="safety.html">安全设置</a></li>
+							<li> <a href="address.html">收货地址</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="#">我的交易</a>
+						<ul>
+							<li><a href="order.html">订单管理</a></li>
+							<li> <a href="change.html">退款售后</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="#">我的资产</a>
+						<ul>
+							<li> <a href="coupon.html">优惠券 </a></li>
+							<li> <a href="bonus.html">红包</a></li>
+							<li> <a href="bill.html">账单明细</a></li>
+						</ul>
+					</li>
+
+					<li class="person">
+						<a href="#">我的小窝</a>
+						<ul>
+							<li> <a href="collection.html">收藏</a></li>
+							<li> <a href="foot.html">足迹</a></li>
+							<li> <a href="comment.html">评价</a></li>
+							<li> <a href="news.html">消息</a></li>
+						</ul>
+					</li>
+				</ul>
+			</aside>
+		</div>
+    <script type="text/javascript" th:inline="javascript">
+        /*给予页面性别返回*/
+		var user = [[${user}]];
+		if(user.userSex=1)
+		    document.getElementById("userSex").value="男";
+		else
+            document.getElementById("userSex").value="女";
+
+        layui.use('layer',function () {
+            $(".am-btn").click(function () {
+                var userName = $("#userName").val();
+                var passWord=$("#passWord").val();
+                var userSex=$("#userSex").val();
+                var date=$("#birthday").val();
+                var userPhone=$("#userPhone").val();
+                if(userSex!="男" && userSex!="女"){
+                    layer.msg("性别格式错误！");
+				}
+				else if(IsValidDate(date)){
+                    console.log(date);
+                    layer.msg("请输入有效生日！");
+				}
+				else{
+                    if(userSex=="男")
+                        userSex=1;
+                    else
+                        userSex=0;
+                    var birthday = new Date(date);
+                    var data={"userName":userName, "passWord": passWord,"userPhone":userPhone,"userSex":userSex,"birthday":birthday};
+                    console.log(data);
+                    $.ajax({
+                        url: "/customer/center",
+                        type: "POST",
+                        data: data,
+                        dataType: "json",
+                        async: false,
+                        success: function (data) {
+                            if (data.status == "ok") {
+                                layer.alert("修改成功！")
+                            }
+                        }
+                    });
+				}
+            })
+
+        });
+
+        function IsValidDate(DateStr){
+            var sDate=DateStr.replace(/(^\s+|\s+$)/g,'');
+            if(sDate==''){
+                return true;
+            }
+
+            var s=sDate.replace(/[\d]{ 4,4 }[\-/]{1}[\d]{1,2}[\-/]{1}[\d]{1,2}/g,'');
+            if(s==''){
+                var t=new Date(sDate.replace(/\-/g,'/'));
+                var ar=sDate.split(/[-/:]/);
+                if(ar[0]!=t.getYear()||ar[1]!=t.getMonth()+1||ar[2]!=t.getDate()){
+                }
+            }else{
+                return false;
+            }
+            return true;
+        }
+	</script>
+	</body>
+
 </html>
