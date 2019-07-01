@@ -138,10 +138,6 @@
 										</div>
 									</li>
 								</ul>
-
-
-
-
 							</div>
 						</div>
 					</tr>
@@ -156,8 +152,8 @@
 							<strong class="price">￥<em id="J_Total"></em></strong>
 						</div>
 						<div class="btn-area">
-							<a href="pay.html" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
-								<span>生成订单</span></a>
+							<a id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
+								<span class="getorderpage">生成订单</span></a>
 						</div>
 					</div>
 
@@ -183,6 +179,7 @@
 	<!--计算合计价格-->
 	<script th:inline="javascript">
         var attr = [[${cartProducts}]];
+        console.log(attr);
         var singlesum=[];
         var sum=0;
         for(i=0;i<attr.length;i++){
@@ -228,6 +225,29 @@
                         if (data.status == "ok") {
                             window.location.href='/cart/shopping-cart';
                         }
+                    }
+                });
+            })
+        });
+	</script>
+	<!--生成订单-->
+	<script type="text/javascript" th:inline="javascript">
+        layui.use('layer',function () {
+            $(".getorderpage").click(function () {
+                var cartIds=[];
+                var attr = [[${cartProducts}]];
+                for(i=0;i<attr.length;i++)
+                cartIds[i]=attr[i].cartId;
+                console.log(cartIds);
+                $.ajax({
+                    url: "/orders/addOrderPage",
+                    type: "POST",
+                    data: {cartIds:cartIds},
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        if(data.status == "ok")
+                            window.location.href="/orders/addOrderPage";
                     }
                 });
             })
