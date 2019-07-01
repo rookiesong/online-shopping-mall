@@ -176,99 +176,38 @@
 										<div class="td-inner">单价</div>
 									</div>
 									<div class="th th-amount">
-										<div class="td-inner">数量</div>
+										<div class="td-inner" style="margin-left: 150px">数量</div>
 									</div>
-									<div class="th th-sum">
-										<div class="td-inner">金额</div>
-									</div>
-
-
 								</div>
 							</div>
 							<div class="clear"></div>
-
-							<tr class="item-list">
-								<div class="bundle  bundle-last">
-
-									<div class="bundle-main">
-										<ul class="item-content clearfix">
-											<div class="pay-phone">
-												<li class="td td-item">
-													<div class="item-pic">
-														<a href="#" class="J_MakePoint">
-															<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
-													</div>
-													<div class="item-info">
-														<div class="item-basic-info">
-															<a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-														</div>
-													</div>
-												</li>
-												<li class="td td-info">
-													<div class="item-props">
-														<span class="sku-line">颜色：12#川南玛瑙</span>
-														<span class="sku-line">包装：裸装</span>
-													</div>
-												</li>
-												<li class="td td-price">
-													<div class="item-price price-promo-promo">
-														<div class="price-content">
-															<em class="J_Price price-now">39.00</em>
-														</div>
-													</div>
-												</li>
-											</div>
-											<li class="td td-amount">
-												<div class="amount-wrapper ">
-													<div class="item-amount ">
-														<span class="phone-title">购买数量</span>
-														<div class="sl">
-															<input class="min am-btn" name="" type="button" value="-" />
-															<input class="text_box" name="" type="text" value="3" style="width:30px;" />
-															<input class="add am-btn" name="" type="button" value="+" />
-														</div>
-													</div>
-												</div>
-											</li>
-											<li class="td td-sum">
-												<div class="td-inner">
-													<em tabindex="0" class="J_ItemSum number">117.00</em>
-												</div>
-											</li>
-										</ul>
-										<div class="clear"></div>
-
-									</div>
-							</tr>
-							<div class="clear"></div>
 							</div>
-
 							<tr id="J_BundleList_s_1911116345_1" class="item-list">
 								<div id="J_Bundle_s_1911116345_1_0" class="bundle  bundle-last">
 									<div class="bundle-main">
-										<ul class="item-content clearfix">
+										<ul class="item-content clearfix" th:each="cartProduct:${session.cartProducts}">
 											<div class="pay-phone">
 												<li class="td td-item">
 													<div class="item-pic">
-														<a href="#" class="J_MakePoint">
-															<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
+														<a th:href="'/product/detail?id=' + ${cartProduct.productId}" target="_blank"  class="J_MakePoint" data-point="tbcart.8.12">
+															<img src="/images/imgsearch1_80x80.jpg" class="itempic J_ItemImg"></a>
 													</div>
 													<div class="item-info">
 														<div class="item-basic-info">
-															<a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
+															<a   th:text="${cartProduct.productName}" class="item-title J_MakePoint" data-point="tbcart.8.11"></a>
 														</div>
 													</div>
 												</li>
 												<li class="td td-info">
 													<div class="item-props">
-														<span class="sku-line">颜色：10#蜜橘色+17#樱花粉</span>
-														<span class="sku-line">包装：两支手袋装（送彩带）</span>
+														<span class="sku-line">口味：原味</span>
+														<span class="sku-line">包装：手袋单人份</span>
 													</div>
 												</li>
 												<li class="td td-price">
 													<div class="item-price price-promo-promo">
 														<div class="price-content">
-															<em class="J_Price price-now">39.00</em>
+															<em class="J_Price price-now" style="color: #ee0000" th:text="${cartProduct.price}"></em><span style="color: #ee0000">￥</span>
 														</div>
 													</div>
 												</li>
@@ -278,17 +217,10 @@
 												<div class="amount-wrapper ">
 													<div class="item-amount ">
 														<span class="phone-title">购买数量</span>
-														<div class="sl">
-															<input class="min am-btn" name="" type="button" value="-" />
-															<input class="text_box" name="" type="text" value="3" style="width:30px;" />
-															<input class="add am-btn" name="" type="button" value="+" />
+														<div class="sl" style="margin-left: 150px">
+															<span style="font-weight: normal" th:text="${cartProduct.numProduct}"></span>
 														</div>
 													</div>
-												</div>
-											</li>
-											<li class="td td-sum">
-												<div class="td-inner">
-													<em tabindex="0" class="J_ItemSum number">117.00</em>
 												</div>
 											</li>
 
@@ -297,6 +229,8 @@
 
 									</div>
 							</tr>
+
+
 							</div>
 							<div class="clear"></div>
 							<div class="pay-total">
@@ -319,7 +253,15 @@
 
 									<span class="coupon-title">优惠券</span>
 									<select data-am-selected>
-										<option value="a">
+										<option value="a" selected>
+											<div class="c-price">
+												<strong>￥4</strong>
+											</div>
+											<div class="c-limit">
+												【无使用门槛】
+											</div>
+										</option>
+										<option value="c">
 											<div class="c-price">
 												<strong>￥8</strong>
 											</div>
@@ -329,12 +271,14 @@
 										</option>
 										<option value="b" selected>
 											<div class="c-price">
-												<strong>￥3</strong>
+												<strong>╮(๑•́ ₃•̀๑)╭</strong>
 											</div>
 											<div class="c-limit">
-												【无使用门槛】
+												【无优惠券】
 											</div>
 										</option>
+
+
 									</select>
 								</li>
 
@@ -350,12 +294,20 @@
 												<span>还剩</span>10.40<span>元</span>
 											</div>
 										</option>
-										<option value="b" selected>
+										<option value="c">
 											<div class="item-info">
 												¥50.00<span>元</span>
 											</div>
 											<div class="item-remainderprice">
-												<span>还剩</span>50.00<span>元</span>
+												<span>还剩</span>10.40<span>元</span>
+											</div>
+										</option>
+										<option value="b" selected>
+											<div class="item-info">
+												<span><strong>╮(๑•́ ₃•̀๑)╭</strong></span>
+											</div>
+											<div class="item-remainderprice">
+												<span>【无红包】</span>
 											</div>
 										</option>
 									</select>
@@ -368,7 +320,7 @@
 							<!--含运费小计 -->
 							<div class="buy-point-discharge ">
 								<p class="price g_price ">
-									合计（含运费） <span>¥</span><em class="pay-sum">244.00</em>
+									合计 <span style="color: #ee0000">￥</span><em class="pay-sum" id="J_Total"></em>
 								</p>
 							</div>
 
@@ -378,7 +330,7 @@
 									<div class="box">
 										<div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
 											<span class="price g_price ">
-                                    <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">244.00</em>
+                                    <span style="color: #ee0000">￥</span> <em class="style-large-bold-red " id="J_ActualFee"></em>
 											</span>
 										</div>
 
@@ -473,12 +425,29 @@
 								<div class="am-btn am-btn-danger close">取消</div>
 							</div>
 						</div>
+
 					</form>
 				</div>
 
 			</div>
+	<div class="clear"></div>
+	<script th:inline="javascript">
 
-			<div class="clear"></div>
+        var cartProducts=[[${session.cartProducts}]];
+        var ordersList=[[${session.ordersList}]];
+        /*计算总价格*/
+        var singlesum=[];
+        var sum=0;
+        for(i=0;i<cartProducts.length;i++){
+            singlesum[i]=cartProducts[i].price*cartProducts[i].numProduct;
+            sum=singlesum[i]+sum;
+        }
+        sum=sum+".00";
+        document.getElementById("J_Total").innerHTML=sum;
+        document.getElementById("J_ActualFee").innerHTML=sum;
+
+
+	</script>
 	</body>
 
 </html>
