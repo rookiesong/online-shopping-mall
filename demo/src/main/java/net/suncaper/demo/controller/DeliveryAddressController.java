@@ -18,6 +18,17 @@ public class DeliveryAddressController {
     @Autowired
     private DeliveryAddressService deliveryAddressService;
 
+    @GetMapping("/addressPage")
+    public String addressPage(HttpServletRequest request,Model model){
+        if(getCookieByName(request,"userMailAddress") != null){
+            String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
+            model.addAttribute("deliveryAddresses",deliveryAddressService.findDeliveryAddress(userMailaddress));
+            return "/pages/user/Address-list.html";        }
+        else {
+            return "redirect:/customer/login";
+        }
+    }
+
     @PostMapping("/addAddress")
     @ResponseBody
     public Map<String, String> addAddress(@RequestParam(value = "name")String name,@RequestParam(value = "address") String address,@RequestParam(value = "user_phone")int user_phone, HttpServletRequest request){
