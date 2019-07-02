@@ -18,12 +18,12 @@ import static net.suncaper.demo.controller.UserController.getCookieByName;
 public class HomeController {
     @GetMapping("/home")
     public String getHomePage(HttpServletRequest request) {
-        Cookie[] cookies =  request.getCookies();
-        if(cookies != null){
-            for(Cookie cookie : cookies){
-                    System.out.println(cookie.getValue());
-            }
-        }
+//        Cookie[] cookies =  request.getCookies();
+//        if(cookies != null){
+//            for(Cookie cookie : cookies){
+//                    System.out.println(cookie.getValue());
+//            }
+//        }
         return "/pages/index.html";
     }
 }

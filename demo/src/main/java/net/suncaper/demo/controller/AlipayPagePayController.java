@@ -43,7 +43,7 @@ public class AlipayPagePayController {
         //String Amount="100"; //支付金额设置
         String productCode = "FAST_INSTANT_TRADE_PAY";
         AlipayTradePagePayModel model = new AlipayTradePagePayModel();
-        String orderNo =UUID.randomUUID().toString();
+        String orderNo =UUID.randomUUID().toString();//支付宝订单
         model.setOutTradeNo(orderNo);
         model.setSubject("支付测试");
         model.setTotalAmount(Amount);

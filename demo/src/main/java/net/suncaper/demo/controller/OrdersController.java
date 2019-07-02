@@ -2,8 +2,10 @@ package net.suncaper.demo.controller;
 
 import net.suncaper.demo.domain.Cart;
 import net.suncaper.demo.domain.Orders;
+import net.suncaper.demo.domain.PaymentRecord;
 import net.suncaper.demo.service.CartService;
 import net.suncaper.demo.service.OrdersService;
+import net.suncaper.demo.service.PaymentRecordService;
 import net.suncaper.demo.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,8 @@ public class OrdersController {
     private CartService cartService;
     @Autowired
     private PaymentService paymentService;
+    @Autowired
+    private PaymentRecordService paymentRecordService;
 
 
     @GetMapping("/addOrderPage")
@@ -86,6 +90,21 @@ public class OrdersController {
         else {
             map.put("status","no");
             return map;
+        }
+    }
+    @GetMapping("/refundOrder")
+    public String refundOrder(@RequestParam(value = "ordersId") String ordersId,HttpServletRequest request){
+        if(getCookieByName(request,"userMailAddress") != null){
+            String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
+            Orders orders = ordersService.findOrder(ordersId);
+            PaymentRecord paymentRecord = paymentRecordService.findPaymentRecord(ordersId);
+            HttpSession session = request.getSession();
+            session.setAttribute("refundSum",orders.getNumber()*orders.getPrice()+"");
+            session.setAttribute("orderNo",paymentRecord.getRecordId());
+            ordersService.editOrder(ordersId,"退款");
+            return "redirect:/alipay/refund";        }
+        else {
+            return "redirect:/customer/login";
         }
     }
 

@@ -8,11 +8,10 @@ public interface DeliveryAddressService {
 
     List<DeliveryAddress> findDeliveryAddress(String userMailAddress);
 
-    String deleteDeliveryAddress(String name,String userMailAddress,String address,int user_phone);
+    String deleteDeliveryAddress(int id);
 
-    String addDeliveryAddress(String name,String userMailAddress,String address,int user_phone);
+    String addDeliveryAddress(String name,String userMailAddress,String address,String user_phone);
 
-    String findDeliveryAddress(String userMailAddress,String address);
 
 
 }

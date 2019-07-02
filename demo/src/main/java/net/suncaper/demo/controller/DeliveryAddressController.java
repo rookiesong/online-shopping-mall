@@ -31,7 +31,7 @@ public class DeliveryAddressController {
 
     @PostMapping("/addAddress")
     @ResponseBody
-    public Map<String, String> addAddress(@RequestParam(value = "name")String name,@RequestParam(value = "address") String address,@RequestParam(value = "user_phone")int user_phone, HttpServletRequest request){
+    public Map<String, String> addAddress(@RequestParam(value = "name")String name,@RequestParam(value = "address") String address,@RequestParam(value = "user_phone")String user_phone, HttpServletRequest request){
         Map<String, String> map = new HashMap<String, String>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
@@ -45,11 +45,11 @@ public class DeliveryAddressController {
 
     @PostMapping("/deleteAddress")
     @ResponseBody
-    public Map<String,String> deleteAddress(@RequestParam(value = "name")String name,@RequestParam(value = "address") String address,@RequestParam(value = "user_phone")int user_phone, HttpServletRequest request){
+    public Map<String,String> deleteAddress(@RequestParam(value = "id")int id, HttpServletRequest request){
         Map<String, String> map = new HashMap<String, String>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
-            map.put("status",deliveryAddressService.deleteDeliveryAddress(name,userMailaddress,address,user_phone));
+            map.put("status",deliveryAddressService.deleteDeliveryAddress(id));
             return map;        }
         else {
             map.put("status","no");
@@ -59,11 +59,11 @@ public class DeliveryAddressController {
 
     @PostMapping("/editAddress")
     @ResponseBody
-    public Map<String,String> editAddress(@RequestParam(value = "name")String name,@RequestParam(value = "address") String address,@RequestParam(value = "user_phone")int user_phone,HttpServletRequest request){
+    public Map<String,String> editAddress(@RequestParam(value = "id") int id,@RequestParam(value = "name")String name,@RequestParam(value = "address") String address,@RequestParam(value = "user_phone")String user_phone,HttpServletRequest request){
         Map<String, String> map = new HashMap<String, String>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
-            deliveryAddressService.deleteDeliveryAddress(name,userMailaddress,address,user_phone);
+            deliveryAddressService.deleteDeliveryAddress(id);
             map.put("status",deliveryAddressService.addDeliveryAddress(name,userMailaddress,address,user_phone));
             return map;        }
         else {

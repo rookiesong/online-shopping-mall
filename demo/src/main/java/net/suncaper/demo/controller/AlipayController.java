@@ -28,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -169,10 +170,15 @@ public class AlipayController {
      */
     @GetMapping("/refund")
     @ResponseBody
-    public String refund(String orderNo,String amount) throws AlipayApiException {
+    public String refund(HttpServletRequest request) throws AlipayApiException {
         AlipayTradeRefundRequest alipayRequest = new AlipayTradeRefundRequest();
 
         AlipayTradeRefundModel model=new AlipayTradeRefundModel();
+        HttpSession session = request.getSession();
+        String orderNo = (String)session.getAttribute("orderNo");
+        String amount = (String)session.getAttribute("amount");
+        session.removeAttribute("orderNo");
+        session.removeAttribute("amount");
         // 商户订单号
         model.setOutTradeNo(orderNo);
         // 退款金额

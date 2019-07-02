@@ -3,12 +3,14 @@ package net.suncaper.demo.service;
 import net.suncaper.demo.domain.DeliveryAddress;
 import net.suncaper.demo.domain.DeliveryAddressExample;
 import net.suncaper.demo.mapper.DeliveryAddressMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class DeliveryAddressServiceImpl implements DeliveryAddressService{
+    @Autowired
     private DeliveryAddressMapper deliveryAddressMapper;
     @Override
     public List<DeliveryAddress> findDeliveryAddress(String userMailAddress) {
@@ -18,16 +20,14 @@ public class DeliveryAddressServiceImpl implements DeliveryAddressService{
     }
 
     @Override
-    public String deleteDeliveryAddress(String name,String userMailAddress,String address,int user_phone) {
-        DeliveryAddressExample example = new DeliveryAddressExample();
-        example.or().andUserMailaddressEqualTo(userMailAddress).andAddressEqualTo(address).andNameEqualTo(name).andUserPhoneEqualTo((long)user_phone);
-        deliveryAddressMapper.deleteByExample(example);
+    public String deleteDeliveryAddress(int id) {
+        deliveryAddressMapper.deleteByPrimaryKey(id);
         return "ok";
     }
 
     @Override
-    public String addDeliveryAddress(String name,String userMailAddress, String address,int user_phone) {
-        DeliveryAddress deliveryAddress = new DeliveryAddress(address,(long)user_phone,name,userMailAddress);
+    public String addDeliveryAddress(String name,String userMailAddress, String address,String user_phone) {
+        DeliveryAddress deliveryAddress = new DeliveryAddress(null,address,(String)user_phone,name,userMailAddress);
         try{
             deliveryAddressMapper.insert(deliveryAddress);
             return "ok";
@@ -36,14 +36,5 @@ public class DeliveryAddressServiceImpl implements DeliveryAddressService{
         }
     }
 
-    @Override
-    public String findDeliveryAddress(String userMailAddress, String address) {
-        DeliveryAddressExample example = new DeliveryAddressExample();
-        example.or().andUserMailaddressEqualTo(userMailAddress).andAddressEqualTo(address);
-        List<DeliveryAddress> deliveryAddresses= deliveryAddressMapper.selectByExample(example);
-        if(deliveryAddresses ==null)
-            return "no";
-        else
-            return "ok";
-    }
+
 }

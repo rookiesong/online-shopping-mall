@@ -96,12 +96,15 @@ create table cart
 /*==============================================================*/
 create table deliveryAddress
 (
+   id   				int not null AUTO_INCREMENT,
    address        		varchar(200) not null,
    user_mailaddress		varchar(40) not null,
-   user_phone           numeric(11,0) not null,
+   user_phone           varchar(20) not null,
    name					varchar(20) not null,
-   primary key (address,user_phone,name)
+   primary key (id)
 );
+alter table deliveryAddress  auto_increment = 1;
+
 /*==============================================================*/
 /* Table: paymentRecord                                         */
 /*==============================================================*/
@@ -113,9 +116,6 @@ create table paymentRecord
 	amount				 int not null,
 	primary key (record_id)
 );
-INSERT INTO team14.product (product_id, product_name, type, producer, producing_area, stock, sales_volume, price) VALUES ('1', '流行牛仔裤', '服装', null, null, 25, 30, 40);
-INSERT INTO team14.product (product_id, product_name, type, producer, producing_area, stock, sales_volume, price) VALUES ('2', '流行衬衫', '服装', null, null, 30, 50, 70);
-INSERT INTO team14.product (product_id, product_name, type, producer, producing_area, stock, sales_volume, price) VALUES ('3', '流行T恤', '服装', null, null, 50, 80, 60);
 
 alter table orders add constraint FK_Relationship_1 foreign key (product_id)
       references product (product_id) on delete restrict on update restrict;
