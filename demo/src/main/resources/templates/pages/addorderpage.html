@@ -358,7 +358,7 @@
 
 									<div id="holyshit269" class="submitOrder">
 										<div class="go-btn-wrap">
-											<a id="J_Go" href="success.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+											<a id="J_Go"  class="btn-go" >结算</a>
 										</div>
 									</div>
 									<div class="clear"></div>
@@ -445,8 +445,12 @@
         sum=sum+".00";
         document.getElementById("J_Total").innerHTML=sum;
         document.getElementById("J_ActualFee").innerHTML=sum;
-
-
+	</script>
+	<!--进入结算页面-->
+	<script type="text/javascript">
+		$(".btn-go").click(function () {
+			window.location.href="/payment/payorders";
+        });
 	</script>
 	</body>
 

@@ -167,7 +167,7 @@ public class AlipayController {
      * @param orderNo 商户订单号
      * @return
      */
-    @PostMapping("/refund")
+    @GetMapping("/refund")
     @ResponseBody
     public String refund(String orderNo) throws AlipayApiException {
         AlipayTradeRefundRequest alipayRequest = new AlipayTradeRefundRequest();
