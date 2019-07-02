@@ -96,9 +96,11 @@ create table cart
 /*==============================================================*/
 create table deliveryAddress
 (
-   address        		varchar(40) not null,
+   address        		varchar(200) not null,
    user_mailaddress		varchar(40) not null,
-   primary key (address)
+   user_phone           numeric(11,0) not null,
+   name					varchar(20) not null,
+   primary key (address,user_phone,name)
 );
 /*==============================================================*/
 /* Table: paymentRecord                                         */
