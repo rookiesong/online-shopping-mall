@@ -1,31 +1,99 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
-!**/src/test/**
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-
-### VS Code ###
-.vscode/
+<hr>
+<form action="/study/login.jsp">
+<table>
+  <tr>
+      <td colspan="2" >注册页面：</td>
+  </tr>
+  <tr>
+      <td width="100px" align="right"><font color="red" >*</font>用户名：</td>
+      <td ><input type="text" size="10"><font color="red">用户名不得小于3个字符</font></td>
+  </tr>
+ <tr>
+ 
+        <td  align="right"><font color="red">*</font>密码：</td>
+        <td><input type="password" size="10"></td>
+ </tr>
+ <tr>
+        <td  align="right"><font color="red">*</font>确认密码：</td>
+        <td><input type="password" size="10"></td>
+ </tr>
+  <tr>
+        <td  align="right"><font color="red">*</font>Email:</td>
+        <td><input type="text" size="10"></td>
+ </tr>
+  <tr>
+        <td  align="right"><font color="red">*</font>真实姓名:</td>
+        <td><input type="text" size="10"></td>
+ </tr>
+ 
+   <tr>
+        <td  align="right"><font color="red">*</font>性别:</td>
+        <td>
+            <select >
+                <option >男</option>
+                <option >女</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td  align="right"><font color="red">*</font>生日:</td>
+        <td>
+            <select>
+                <option>1980</option>
+                <option>1985</option>
+                <option>1990</option>
+            </select>
+            <select>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+            <select>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td  align="right"><font color="red">*</font>手机:</td>
+        <td><input type="text" size="10"></td>
+    </tr>
+        <tr>
+        <td  align="right"><font color="red">*</font>居住地:</td>
+        <td>
+            <select>
+                <option>四川省</option>
+                <option>浙江省</option>
+                <option>安徽省</option>
+            </select>
+            <select>
+                <option>成都市</option>
+                <option>慈溪市</option>
+                <option>北京市</option>
+            </select>
+            <select>
+                <option>成华区</option>
+                <option>武当区</option>
+                <option>少林区</option>
+            </select>
+            <select>
+                <option>三圣乡</option>
+                <option>白云公寓</option>
+                <option>天鸿香榭里</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td  align="right" rowspan="2"><font color="red">*</font>QQ:</td>
+        <td><input type="text" size="10"></td>
+    </tr>
+    <tr>
+        <td><font color="#0099FF" size="-2">设置我的QQ在线状态</font></td>
+    </tr>
+    <tr>
+        <td><button type="submit">登陆</button><button type="reset">重置</button></td>
+    </tr>
+</table>
+</form>
+<hr>
