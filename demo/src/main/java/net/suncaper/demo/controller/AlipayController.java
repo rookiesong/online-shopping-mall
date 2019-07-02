@@ -167,20 +167,22 @@ public class AlipayController {
      * @param orderNo 商户订单号
      * @return
      */
+    //http://localhost:8180/alipay/refund
+
     @GetMapping("/refund")
     @ResponseBody
-    public String refund(String orderNo) throws AlipayApiException {
+    public String refund(String orderNo, String amount) throws AlipayApiException {
         AlipayTradeRefundRequest alipayRequest = new AlipayTradeRefundRequest();
 
         AlipayTradeRefundModel model=new AlipayTradeRefundModel();
         // 商户订单号
         model.setOutTradeNo(orderNo);
         // 退款金额
-        model.setRefundAmount("0.01");
+        model.setRefundAmount("10");//改为amount
         // 退款原因
         model.setRefundReason("无理由退货");
         // 退款订单号(同一个订单可以分多次部分退款，当分多次时必传)
-//        model.setOutRequestNo(UUID.randomUUID().toString());
+        model.setOutRequestNo(UUID.randomUUID().toString());
         alipayRequest.setBizModel(model);
 
         AlipayTradeRefundResponse alipayResponse = alipayClient.execute(alipayRequest);
