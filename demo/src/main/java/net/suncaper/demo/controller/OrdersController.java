@@ -89,19 +89,31 @@ public class OrdersController {
         }
     }
 
+//    @GetMapping("/showOrders")
+//    @ResponseBody
+//    public Map<String,String> orderPage(HttpServletRequest request,Model model){
+//        //所有的订单
+//        Map<String, String> map = new HashMap<String, String>();
+//        if(getCookieByName(request,"userMailAddress") != null){
+//            String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
+//            model.addAttribute("orders",ordersService.showOrder(userMailaddress));
+//            map.put("status", "ok");
+//            return map;        }
+//        else {
+//            map.put("status","no");
+//            return map;
+//        }
+//    }
     @GetMapping("/showOrders")
-    @ResponseBody
-    public Map<String,String> orderPage(HttpServletRequest request,Model model){
+    public String orderPage(HttpServletRequest request,Model model){
         //所有的订单
         Map<String, String> map = new HashMap<String, String>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
             model.addAttribute("orders",ordersService.showOrder(userMailaddress));
-            map.put("status", "ok");
-            return map;        }
+            return "redirect:/home";        }
         else {
-            map.put("status","no");
-            return map;
+            return "redirect:/customer/login";
         }
     }
 

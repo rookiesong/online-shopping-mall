@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.UUID;
@@ -32,15 +33,17 @@ public class AlipayPagePayController {
 
 
     @GetMapping("/gotoPayPage")
-    public void gotoPayPage(HttpServletResponse response) throws AlipayApiException, IOException {
+    public void gotoPayPage(HttpServletResponse response,HttpServletRequest request) throws AlipayApiException, IOException {
         // 订单模型
         //测试url为 localhost:8180/alipay/page/gotoPayPage
 // 此处为测试环境，若要传递amount值，在上文response变量后添加如下变量，将测试金额“100”改为amount，并由前端传入amount值
 // @RequestParam(value = "amount")String amount
-        String Amount="100"; //支付金额设置
+        HttpSession session = request.getSession();
+        String Amount = (String) session.getAttribute("sum");
+        //String Amount="100"; //支付金额设置
         String productCode = "FAST_INSTANT_TRADE_PAY";
         AlipayTradePagePayModel model = new AlipayTradePagePayModel();
-        String orderNo = UUID.randomUUID().toString();//支付订单号
+        String orderNo =UUID.randomUUID().toString();
         model.setOutTradeNo(orderNo);
         model.setSubject("支付测试");
         model.setTotalAmount(Amount);
@@ -48,7 +51,7 @@ public class AlipayPagePayController {
         model.setProductCode(productCode);
 
         AlipayTradePagePayRequest pagePayRequest =new AlipayTradePagePayRequest();
-
+        //pagePayRequest.setReturnUrl("http://s9v2cw.natappfree.cc/alipay/page/returnUrl");
         //支付结束后的ReturnUrl
         pagePayRequest.setReturnUrl("http://localhost:8180/home");
         pagePayRequest.setNotifyUrl(alipayProperties.getNotifyUrl());

@@ -113,7 +113,9 @@ create table paymentRecord
 	amount				 int not null,
 	primary key (record_id)
 );
-
+INSERT INTO team14.product (product_id, product_name, type, producer, producing_area, stock, sales_volume, price) VALUES ('1', '流行牛仔裤', '服装', null, null, 25, 30, 40);
+INSERT INTO team14.product (product_id, product_name, type, producer, producing_area, stock, sales_volume, price) VALUES ('2', '流行衬衫', '服装', null, null, 30, 50, 70);
+INSERT INTO team14.product (product_id, product_name, type, producer, producing_area, stock, sales_volume, price) VALUES ('3', '流行T恤', '服装', null, null, 50, 80, 60);
 
 alter table orders add constraint FK_Relationship_1 foreign key (product_id)
       references product (product_id) on delete restrict on update restrict;
