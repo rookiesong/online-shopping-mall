@@ -5,13 +5,13 @@ import net.suncaper.demo.service.OrdersService;
 import net.suncaper.demo.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static net.suncaper.demo.controller.UserController.getCookieByName;
 
@@ -30,17 +30,22 @@ public class PaymentContoller {
         session.setAttribute("sum",countSum(ordersList));
         return "redirect:/alipay/page/gotoPayPage";
     }
-    @GetMapping("/payOneOrder")
-    public String payOneOrder(HttpServletRequest request,@RequestParam(value = "ordersId") String ordersId){
+    @PostMapping("/payOneOrder")
+    @ResponseBody
+    public Map<String,String> payOneOrder(HttpServletRequest request, @RequestParam(value = "ordersId") String ordersId){
+        Map<String,String> map = new HashMap<>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
             HttpSession httpSession = request.getSession();
             Orders orders = ordersService.findOrder(ordersId);
             int sum = orders.getNumber() * orders.getPrice();
             httpSession.setAttribute("sum",sum+"");
-            return "redirect:/alipay/page/gotoPayPage";        }
+            httpSession.setAttribute("oneOrders",orders);
+            map.put("status","ok");
+            return map;        }
         else {
-            return "redirect:/customer/login";
+            map.put("status","no");
+            return map;
         }
     }
 

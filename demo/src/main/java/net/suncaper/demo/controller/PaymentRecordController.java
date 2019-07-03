@@ -28,15 +28,25 @@ public class PaymentRecordController {
         List<Orders> ordersList = (List<Orders>) session.getAttribute("ordersList");
         for (Orders orders:ordersList
              ) {
-            paymentRecordService.addPaymentRecord(recordId,orders.getOrdersId(),"支付宝",orders.getNumber()*orders.getPrice());
-            ordersService.editOrder(orders.getOrdersId(),"付款成功");
+            paymentRecordService.addPaymentRecord(recordId,orders.getOrdersId(),"alipay",orders.getNumber()*orders.getPrice());
+            ordersService.editOrder(orders.getOrdersId(),"paied");
         }
         session.removeAttribute("orderNo");
         session.removeAttribute("ordersList");
         session.removeAttribute("cartProducts");
-        return "pages/user/orders.html";
+        return "redirect:/orders/showOrders";
     }
 
+    @GetMapping("/payOne")
+    public String addOnePaymentRecord(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        String recordId = (String)session.getAttribute("orderNo");
+        Orders orders = (Orders) session.getAttribute("oneOrders");
+        paymentRecordService.addPaymentRecord(recordId,orders.getOrdersId(),"alipay",orders.getNumber()*orders.getPrice());
+        ordersService.editOrder(orders.getOrdersId(),"paied");
 
+        session.removeAttribute("orderNo");
+        return "redirect:/orders/showOrders";
+    }
 
 }

@@ -1,5 +1,12 @@
 package net.suncaper.demo.controller;
 
+import com.alipay.api.AlipayApiException;
+import com.alipay.api.AlipayClient;
+import com.alipay.api.domain.AlipayTradeRefundModel;
+import com.alipay.api.request.AlipayTradeRefundRequest;
+import com.alipay.api.response.AlipayTradeRefundResponse;
+import com.alipay.demo.trade.service.AlipayTradeService;
+import net.suncaper.demo.configuration.AlipayProperties;
 import net.suncaper.demo.domain.Cart;
 import net.suncaper.demo.domain.Orders;
 import net.suncaper.demo.domain.PaymentRecord;
@@ -13,9 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static net.suncaper.demo.controller.UserController.getCookieByName;
 
@@ -32,6 +37,14 @@ public class OrdersController {
     private PaymentRecordService paymentRecordService;
     @Autowired
     private DeliveryAddressService deliveryAddressService;
+    @Autowired
+    private AlipayProperties aliPayProperties;
+
+    @Autowired
+    private AlipayClient alipayClient;
+
+    @Autowired
+    private AlipayTradeService alipayTradeService;
 
 
     @GetMapping("/addOrderPage")
@@ -93,8 +106,10 @@ public class OrdersController {
             return map;
         }
     }
-    @GetMapping("/refundOrder")
-    public String refundOrder(@RequestParam(value = "ordersId") String ordersId,HttpServletRequest request){
+    @PostMapping("/refundOrder")
+    @ResponseBody
+    public Map<String,String> refundOrder(@RequestParam(value = "ordersId") String ordersId,HttpServletRequest request) throws AlipayApiException {
+        Map<String,String> map = new HashMap<>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
             Orders orders = ordersService.findOrder(ordersId);
@@ -102,10 +117,13 @@ public class OrdersController {
             HttpSession session = request.getSession();
             session.setAttribute("refundSum",orders.getNumber()*orders.getPrice()+"");
             session.setAttribute("orderNo",paymentRecord.getRecordId());
-            ordersService.editOrder(ordersId,"退款成功");
-            return "redirect:/alipay/refund";        }
+            refund(request);
+            ordersService.editOrder(ordersId,"success");
+            map.put("status","ok");
+            return map;        }
         else {
-            return "redirect:/customer/login";
+            map.put("status","no");
+            return map;
         }
     }
 
@@ -115,12 +133,46 @@ public class OrdersController {
         Map<String, String> map = new HashMap<String, String>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
-            model.addAttribute("orders",ordersService.showOrder(userMailaddress));
-            return "/pages/user/myorders";        }
+            List<Orders> ordersList = ordersService.showOrder(userMailaddress);
+            model.addAttribute("ordersList",ordersList);
+            List<Map<String,Object>> results = new ArrayList<>();
+            for (Orders orders:ordersList
+                 ) {
+                Map<String,Object> result = new HashMap<>();
+                result.put("orders",orders);
+                result.put("sum",""+orders.getNumber()*orders.getPrice());
+                results.add(result);
+            }
+            model.addAttribute("results",results);
+            return "/pages/user/myorders.html";        }
         else {
             return "redirect:/customer/login";
         }
     }
 
 
+    public String refund(HttpServletRequest request) throws AlipayApiException {
+        AlipayTradeRefundRequest alipayRequest = new AlipayTradeRefundRequest();
+
+        AlipayTradeRefundModel model=new AlipayTradeRefundModel();
+        HttpSession session = request.getSession();
+        String orderNo = (String)session.getAttribute("orderNo");
+        String amount = (String)session.getAttribute("refundSum");
+        session.removeAttribute("orderNo");
+        session.removeAttribute("refundSum");
+        // 商户订单号
+        model.setOutTradeNo(orderNo);
+        // 退款金额
+        model.setRefundAmount(amount);
+        // 退款原因
+        model.setRefundReason("无理由退货");
+        // 退款订单号(同一个订单可以分多次部分退款，当分多次时必传)
+        model.setOutRequestNo(UUID.randomUUID().toString());
+        alipayRequest.setBizModel(model);
+
+        AlipayTradeRefundResponse alipayResponse = alipayClient.execute(alipayRequest);
+        System.out.println(alipayResponse.getBody());
+
+        return alipayResponse.getBody();
+    }
 }

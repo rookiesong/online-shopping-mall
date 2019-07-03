@@ -30,7 +30,7 @@ public class OrdersServiceImpl implements OrdersService {
             Cart cart=cartService.findCartByCartId(cartId);
             Integer price = productService.findProductById(cart.getProductId()).getPrice();
             String productName = productService.findProductById(cart.getProductId()).getProductName();
-            Orders orders = new Orders(ordersId,null,cart.getProductId(),userMailaddress,cart.getNumProduct(),price,null,"未付款",productName);
+            Orders orders = new Orders(ordersId,null,cart.getProductId(),userMailaddress,cart.getNumProduct(),price,null,"unpaied",productName);
             ordersMapper.insert(orders);
             ordersList.add(orders);
             cartService.deleteCart(cartId);

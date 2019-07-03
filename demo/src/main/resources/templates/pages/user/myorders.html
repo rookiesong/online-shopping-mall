@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+		<title>订单管理</title>
+		<link href="/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="/css/orstyle.css" rel="stylesheet" type="text/css">
+		<script src="/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+	    <script src="/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+	    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
+	    <script type="text/javascript" src="/layui/layui.js"></script>
+	</head>
+
+	<body>
+	<!--顶部导航条 -->
+	<div class="am-container">
+		<ul class="message-l">
+			<div class="topMessage">
+				<div class="menu-hd">
+					<a th:href="@{'/customer/login'}" target="_top" class="h"><(*￣▽￣*)/登录</a>
+					<a th:href="@{'/customer/register'}" target="_top">&nbsp;&nbsp;(=ˇωˇ=)注册</a>
+				</div>
+			</div>
+		</ul>
+		<ul class="message-r">
+			<div class="topMessage mini-cart">
+				<div class="menu-hd"><a id="mc-menu-hd" th:href="@{'/cart/shopping-cart'}" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
+			</div>
+			<div class="topMessage favorite">
+				<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+		</ul>
+	</div>
+
+	<!--悬浮搜索框-->
+
+	<div class="nav white">
+		<div class="logoBig">
+			<a th:href="@{/home}"><img src="/images/logobig.png"/></a>
+		</div>
+
+		<div class="search-bar pr">
+			<form action="/product/search" method="post" >
+				<input type="text"  name="productName" placeholder="请输入商品" autocomplete="off">
+				<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+			</form>
+		</div>
+	</div>
+
+						<div class="clear"></div>
+					</div>
+	<div class="nav-table">
+		<div class="long-title"><span class="all-goods">个人资料</span></div>
+	</div>
+	<b class="line"></b>
+	<div class="center">
+		<div class="col-main">
+			<div class="main-wrap">
+
+					<div class="user-order">
+
+						<!--标题 -->
+						<div class="am-cf am-padding">
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">订单管理</strong> / <small>Order</small></div>
+						</div>
+						<hr/>
+
+						<div class="am-tabs am-tabs-d2 am-margin" data-am-tabs>
+
+							<ul class="am-avg-sm-5 am-tabs-nav am-nav am-nav-tabs">
+								<li class="am-active"><a href="#tab1">所有订单</a></li>
+							</ul>
+
+							<div class="am-tabs-bd">
+								<div class="am-tab-panel am-fade am-in am-active" id="tab1">
+									<div class="order-top">
+										<div class="th th-item">
+											<td class="td-inner">商品</td>
+										</div>
+										<div class="th th-price">
+											<td class="td-inner">单价</td>
+										</div>
+										<div class="th th-number">
+											<td class="td-inner">数量</td>
+										</div>
+										<div class="th th-amount">
+											<td class="td-inner">合计</td>
+										</div>
+										<div class="th th-status">
+											<td class="td-inner">交易状态</td>
+										</div>
+										<div class="th th-status" style="margin-left:20px">
+											<td class="td-inner">交易操作</td>
+										</div>
+										<div class="th th-change" style="margin-left:25px">
+											<td class="td-inner" >订单操作</td>
+										</div>
+									</div>
+
+									<div class="order-main">
+										<div class="order-list">
+											
+											<!--交易成功-->
+											<div class="order-status5" th:each="result:${results}" >
+												<div class="order-title">
+													<div class="dd-num">订单编号：<a th:text="${result.orders.ordersId}">1601430</a></div>
+												</div>
+												<div class="order-content">
+													<div class="order-left">
+														<ul class="item-list">
+															<li class="td td-item">
+																<div class="item-pic">
+																	<a th:href="'/product/detail?id=' + ${result.orders.productId}" class="J_MakePoint">
+																		<img src="/images/imgsearch1_80x80.jpg" class="itempic J_ItemImg">
+																	</a>
+																</div>
+																<div class="item-info">
+																	<div class="item-basic-info">
+																		<a >
+																			<p th:text="${result.orders.productName}"></p>
+																			<p class="info-little">口味：原味
+																				<br/>包装：手袋单人份 </p>
+																		</a>
+																	</div>
+																</div>
+															</li>
+															<li class="td td-number">
+																<div class="item-number">
+																	<span style="margin-left: 30px;color: #ee0000" th:text="${result.orders.price}"></span>
+																</div>
+															</li>
+															<li class="td td-number">
+																<div class="item-number">
+																	<span style="margin-left: 60px;margin-top: 10px" th:text="${result.orders.number}"></span>
+																</div>
+															</li>
+														</ul>
+													</div>
+													<div class="order-right">
+														<li class="td td-amount" >
+															<div class="item-amount" style="margin-top:-11px;margin-left: -300px;color: #ee0000" th:text="${result.sum}">
+															</div>
+														</li>
+														<div class="move-right">
+															<li class="td td-status">
+																<div class="item-status">
+																	<p class="Mystatus" style="margin-left:-148px;margin-top:-11px;" th:text="${result.orders.status}"></p>
+																</div>
+															</li>
+															<li class="td td-status">
+																<div class="item-status">
+																	<input style="border:none;margin-left: -185px;color: #ee0000;" th:ordersID="${result.orders.ordersId}" class="Operation" id="operation" value="立即支付/退款">
+																</div>
+															</li>
+															<li class="td td-change">
+																<div class="am-btn am-btn-danger anniu deleteorder" th:ordersId="${result.orders.ordersId}" style="margin-top:-33px;margin-left: 200px">
+																	删除订单</div>
+															</li>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<!--底部-->
+			<div class="footer ">
+				<div class="footer-hd ">
+					<p>
+						<a href="# ">关于我们</a>
+						<b>|</b>
+						<a href="# ">帮助中心</a>
+						<b>|</b>
+						<a href="# ">售后服务</a>
+					</p>
+				</div>
+				<div class="footer-bd ">
+					<p>
+						<em>IT企业实习Team14版权所有</em>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<aside class="menu">
+			<ul>
+				<li class="person">
+					<a th:href="@{'/customer/center'}">个人中心</a>
+				</li>
+				<li class="person">
+					<ul>
+						<li > <a th:href="@{'/customer/center'}">个人资料</a></li>
+						<li> <a th:href="@{'/delivery/addressPage'}">地址管理</a></li>
+						<li class="active"> <a th:href="@{'/orders/showOrders'}">订单管理</a></li>
+						<li> <a href="#">账户管理</a></li>
+					</ul>
+				</li>
+			</ul>
+		</aside>
+		</div>
+	<script type="text/javascript" th:inline="javascript">
+		/*删除订单*/
+        layui.use('layer',function () {
+            $(".deleteorder").click(function () {
+                var ordersId=$(this).attr("ordersId");
+                var data={"ordersId":ordersId};
+                $.ajax({
+                    url: "/orders/deleteOrder",
+                    type: "POST",
+                    data: data,
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        if (data.status == "ok") {
+                            layer.alert("删除成功！");
+                            setTimeout(function () {
+                                window.location.href="/orders/showOrders";
+                            }, 1000);
+                        }
+                    }
+                });
+            });
+		});
+        /*支付退款模块*/
+        layui.use('layer',function () {
+            $(".Operation").click(function () {
+                var ordersId=$(this).attr("ordersID");
+                var results=[[${results}]];
+                var allorders=[];
+                for(i=0;i<results.length;i++)
+                    allorders[i]=results[i].orders
+                /*执行退款*/
+				if(allorders[findi(ordersId,allorders)].status=="paied"){
+                    var newid=allorders[findi(ordersId,allorders)].ordersId;
+                    $.ajax({
+                        url: "/orders/refundOrder",
+                        type: "POST",
+                        data: {"ordersId":newid},
+                        dataType: "json",
+                        async: false,
+                        success: function (data) {
+                            if (data.status == "ok") {
+                                layer.alert("退款成功！");
+                                setTimeout(function () {
+                                    window.location.href="/orders/showOrders";
+                                }, 1000);
+                            }
+                        }
+                    });
+				}
+				/*执行再支付*/
+				if(allorders[findi(ordersId,allorders)].status=="unpaied"){
+                    var newid=allorders[findi(ordersId,allorders)].ordersId;
+                    $.ajax({
+                        url: "/payment/payOneOrder",
+                        type: "POST",
+                        data: {"ordersId":newid},
+                        dataType: "json",
+                        async: false,
+                        success: function (data) {
+                            if (data.status == "ok") {
+                                window.location.href="/alipay/page/onePayPage";
+                            }
+                        }
+                    });
+				}
+                /*进行交易状态比对*/
+                function findi(id,allorders) {
+                    for(i=0;i<allorders.length;i++) {
+                        if(allorders[i].ordersId==id){
+                            return i;
+						}
+					}
+                }
+            });
+		});
+	</script>
+	</body>
+
+</html>
