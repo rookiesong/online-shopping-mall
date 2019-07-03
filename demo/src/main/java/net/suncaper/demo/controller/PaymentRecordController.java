@@ -1,15 +1,42 @@
 package net.suncaper.demo.controller;
 
 
+import net.suncaper.demo.domain.Orders;
+import net.suncaper.demo.service.OrdersService;
 import net.suncaper.demo.service.PaymentRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/paymentrecord")
 public class PaymentRecordController {
     @Autowired
     private PaymentRecordService paymentRecordService;
+    @Autowired
+    private OrdersService ordersService;
+
+    @GetMapping("/payAll")
+    public String addPaymentRecord(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        String recordId = (String)session.getAttribute("orderNo");
+        List<Orders> ordersList = (List<Orders>) session.getAttribute("ordersList");
+        for (Orders orders:ordersList
+             ) {
+            paymentRecordService.addPaymentRecord(recordId,orders.getOrdersId(),"支付宝",orders.getNumber()*orders.getPrice());
+            ordersService.editOrder(orders.getOrdersId(),"付款成功");
+        }
+        session.removeAttribute("orderNo");
+        session.removeAttribute("ordersList");
+        session.removeAttribute("cartProducts");
+        return "pages/user/orders.html";
+    }
+
+
 
 }

@@ -71,6 +71,17 @@ public class UserController {
         map.put("status", "ok");
         return map;
     }
+    @PostMapping("/test")
+    @ResponseBody
+    public Map<String,String> editTest(HttpServletRequest request){
+        String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
+        User user = new User(userMailaddress,"sb","111111",null,null,null,null,null);
+        user.setUserMailaddress(userMailaddress);
+        userService.editUser(user);
+        Map<String,String> map = new HashMap<String, String>();
+        map.put("status", "ok");
+        return map;
+    }
 
 
     @PostMapping("/register")

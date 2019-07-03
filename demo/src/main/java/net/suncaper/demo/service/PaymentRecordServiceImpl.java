@@ -16,4 +16,10 @@ public class PaymentRecordServiceImpl implements PaymentRecordService {
         example.createCriteria().andOrdersIdEqualTo(ordersId);
         return paymentRecordMapper.selectByExample(example).get(0);
     }
+
+    @Override
+    public void addPaymentRecord(String recordId, String ordersId, String payingMethod, int amount) {
+        PaymentRecord paymentRecord = new PaymentRecord(recordId,ordersId,payingMethod,amount);
+        paymentRecordMapper.insert(paymentRecord);
+    }
 }

@@ -49,11 +49,11 @@ public class AlipayPagePayController {
         model.setTotalAmount(Amount);
         model.setBody("支付测试，共"+Amount+"元");
         model.setProductCode(productCode);
-
+        session.setAttribute("orderNo",orderNo);
         AlipayTradePagePayRequest pagePayRequest =new AlipayTradePagePayRequest();
         //pagePayRequest.setReturnUrl("http://s9v2cw.natappfree.cc/alipay/page/returnUrl");
         //支付结束后的ReturnUrl
-        pagePayRequest.setReturnUrl("http://localhost:8180/home");
+        pagePayRequest.setReturnUrl("http://localhost:8180/paymentrecord/payAll");
         pagePayRequest.setNotifyUrl(alipayProperties.getNotifyUrl());
         pagePayRequest.setBizModel(model);
 

@@ -3,10 +3,7 @@ package net.suncaper.demo.controller;
 import net.suncaper.demo.domain.Cart;
 import net.suncaper.demo.domain.Orders;
 import net.suncaper.demo.domain.PaymentRecord;
-import net.suncaper.demo.service.CartService;
-import net.suncaper.demo.service.OrdersService;
-import net.suncaper.demo.service.PaymentRecordService;
-import net.suncaper.demo.service.PaymentService;
+import net.suncaper.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,12 +30,16 @@ public class OrdersController {
     private PaymentService paymentService;
     @Autowired
     private PaymentRecordService paymentRecordService;
+    @Autowired
+    private DeliveryAddressService deliveryAddressService;
 
 
     @GetMapping("/addOrderPage")
     public String addOrderPage(Model model,HttpServletRequest request){
-        model.addAttribute("payments",paymentService.allPayment());
         HttpSession httpSession = request.getSession();
+        String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
+        model.addAttribute("payments",paymentService.allPayment());
+        model.addAttribute("deliveryAddresses",deliveryAddressService.findDeliveryAddress(userMailaddress));
         int sum = ordersService.countPrice((List<Orders>)httpSession.getAttribute("ordersList"));
         model.addAttribute("sum",sum);
         return "/pages/addorderpage.html";
@@ -101,28 +102,13 @@ public class OrdersController {
             HttpSession session = request.getSession();
             session.setAttribute("refundSum",orders.getNumber()*orders.getPrice()+"");
             session.setAttribute("orderNo",paymentRecord.getRecordId());
-            ordersService.editOrder(ordersId,"退款");
+            ordersService.editOrder(ordersId,"退款成功");
             return "redirect:/alipay/refund";        }
         else {
             return "redirect:/customer/login";
         }
     }
 
-//    @GetMapping("/showOrders")
-//    @ResponseBody
-//    public Map<String,String> orderPage(HttpServletRequest request,Model model){
-//        //所有的订单
-//        Map<String, String> map = new HashMap<String, String>();
-//        if(getCookieByName(request,"userMailAddress") != null){
-//            String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
-//            model.addAttribute("orders",ordersService.showOrder(userMailaddress));
-//            map.put("status", "ok");
-//            return map;        }
-//        else {
-//            map.put("status","no");
-//            return map;
-//        }
-//    }
     @GetMapping("/showOrders")
     public String orderPage(HttpServletRequest request,Model model){
         //所有的订单
@@ -130,10 +116,11 @@ public class OrdersController {
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
             model.addAttribute("orders",ordersService.showOrder(userMailaddress));
-            return "redirect:/home";        }
+            return "/pages/user/myorders";        }
         else {
             return "redirect:/customer/login";
         }
     }
+
 
 }

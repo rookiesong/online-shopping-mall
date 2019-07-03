@@ -2,10 +2,7 @@ package net.suncaper.demo.controller;
 
 import net.suncaper.demo.domain.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -26,4 +23,6 @@ public class HomeController {
 //        }
         return "/pages/index.html";
     }
+
+
 }

@@ -33,9 +33,11 @@ create table orders
    user_mailaddress     varchar(40),
    number               int not null,
    price				int not null,
-   delivery_address		varchar(50),
    status				varchar(20) not null,
    product_name			varchar(40) not null,
+   address        		varchar(200) not null,
+   user_phone           varchar(20) not null,
+   name					varchar(20) not null,
    primary key (orders_id)
 );
 
