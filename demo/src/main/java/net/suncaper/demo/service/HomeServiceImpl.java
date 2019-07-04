@@ -11,34 +11,18 @@ import java.util.Comparator;
 import java.util.List;
 
 @Service
-public class ProductServiceImpl implements ProductService {
+public class HomeServiceImpl implements HomeService {
 
     @Autowired
     private ProductMapper productMapper;
 
     @Override
-    public List<Product> findProduct(String name) {
+    public List<Product> recommendBySale() {
         ProductExample example = new ProductExample();
-        if(name != null && !name.equals("")){
-            example.createCriteria().andProductNameLike("%"+name+"%");
-        }
-        return productMapper.selectByExample(example);
-    }
+        example.createCriteria().andProductNameLike("%"+""+"%");
+        List<Product> list=productMapper.selectByExample(example);
 
-    @Override
-    public Product findProductById(String productId){
-        return productMapper.selectByPrimaryKey(productId);
-    }
-
-    @Override
-    public List<Product> recommendByType(String type){
-        ProductExample recommendexample = new ProductExample();
-        if(type != null && !type.equals("")){
-            recommendexample.createCriteria().andTypeEqualTo(type);
-        }
-        List<Product> similarlist= productMapper.selectByExample(recommendexample);
-
-        Collections.sort(similarlist, new Comparator<Product>() {
+        Collections.sort(list, new Comparator<Product>() {
 
             public int compare(Product product1, Product product2) {
                 if (product1.getSalesVolume().compareTo(product2.getSalesVolume()) == 0) {
@@ -49,8 +33,7 @@ public class ProductServiceImpl implements ProductService {
                 }
             }
         });
-
-        return similarlist;
+        return list;
     }
 
-}
+    }

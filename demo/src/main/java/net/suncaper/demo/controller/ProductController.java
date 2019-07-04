@@ -34,9 +34,11 @@ public class ProductController {
     }
 
     @GetMapping("/detail")
-    public String detailPage(@RequestParam(value = "id",required = false) String productId,Model model){
+    public String detailPage(@RequestParam(value = "id",required = false) String productId,@RequestParam(value = "type",required = false) String type,Model model){
         Product product = productService.findProductById(productId);
+        List<Product> recommendlist = (List<Product>) productService.recommendByType(type);
         model.addAttribute("product",product);
+        model.addAttribute("recommendlist",recommendlist);
         return "/pages/productdetails.html";
     }
 }
