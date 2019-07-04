@@ -31,10 +31,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> recommendByType(String type){
+    public List<Product> recommendByType(String productId,String type){
         ProductExample recommendexample = new ProductExample();
         if(type != null && !type.equals("")){
-            recommendexample.createCriteria().andTypeEqualTo(type);
+            recommendexample.or().andTypeEqualTo(type).andProductIdNotEqualTo(productId);
         }
         List<Product> similarlist= productMapper.selectByExample(recommendexample);
 

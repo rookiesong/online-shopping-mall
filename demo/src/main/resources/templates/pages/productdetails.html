@@ -300,14 +300,14 @@
 						            <h2>相似产品</h2>
 					            </div>
 
-							      <li>
+							      <li th:each="recommend:${recommendlist}">
 							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="../images/browse1.jpg"> </a>
+							      		<a  th:href="'/product/detail?id=' + ${recommend.productId}"> <img class="" src="/images/imgsearch1.jpg"> </a>
 							      	</div>
-							      	<div class="p-name"><a href="#" th:text="fashion_eat_2">
+							      	<div class="p-name"><a th:text="${recommend.productName}">
 							      	</a>
 							      	</div>
-									  <div class="p-price">价格：<strong th:text="300"></strong><b>￥</b></div>
+									  <div class="p-price">价格：<strong th:text="${recommend.price}"></strong><b style="color: #ee0000">￥</b></div>
 							      </li>							      
 					      
 						     </ul>					

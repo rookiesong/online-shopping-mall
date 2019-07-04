@@ -687,37 +687,18 @@
 
 					<div class="am-g am-g-fixed recommendation">
 						<div class="clock am-u-sm-3">
-							<img src="/images/2016.png ">
+							<img src="/images/2019.png ">
 							<p>今日<br>推荐</p>
 						</div>
-						<div class="am-u-sm-4 am-u-lg-3 ">
+						<div class="am-u-sm-4 am-u-lg-3 " th:each="homeRecommend:${homeRecommendlist}">
 							<div class="info ">
-								<h3>真的有鱼</h3>
-								<h4>开年福利篇</h4>
+								<h3 th:text="${homeRecommend.productName}"></h3>
+								<span>销量：</span><span th:text="${homeRecommend.salesVolume}"></span>
 							</div>
 							<div class="recommendationMain one">
-								<a href="introduction.html"><img src="./images/tj.png "></img></a>
-							</div>
-						</div>						
-						<div class="am-u-sm-4 am-u-lg-3 ">
-							<div class="info ">
-								<h3>囤货过冬</h3>
-								<h4>让爱早回家</h4>
-							</div>
-							<div class="recommendationMain two">
-								<img src="./images/tj1.png "></img>
+								<a th:href="'/product/detail?id=' + ${homeRecommend.productId}"><img src="/images/imgsearch1.jpg "></a>
 							</div>
 						</div>
-						<div class="am-u-sm-4 am-u-lg-3 ">
-							<div class="info ">
-								<h3>浪漫情人节</h3>
-								<h4>甜甜蜜蜜</h4>
-							</div>
-							<div class="recommendationMain three">
-								<img src="./images/tj2.png "></img>
-							</div>
-						</div>
-
 					</div>
 					<div class="clear "></div>
 					<!--热门活动 -->

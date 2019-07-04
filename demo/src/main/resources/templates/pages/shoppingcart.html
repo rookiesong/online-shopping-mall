@@ -116,8 +116,8 @@
 										<div class="item-price price-promo-promo">
 											<div class="price-content">
 												<div class="price-line">
-													<em class="J_Price price-now" tabindex="0" th:text="${cartProduct.price}"></em>
-													<span>￥</span>
+													<em class="J_Price price-now" style="margin-left: 20px;color: #ee0000" tabindex="0" th:text="${cartProduct.price}+'.00'"></em>
+													<span style="color: #ee0000">￥</span>
 												</div>
 											</div>
 										</div>
@@ -125,7 +125,7 @@
 									<li class="td td-amount">
 										<div class="amount-wrapper ">
 											<div class="item-amount ">
-												<div class="sl">
+												<div class="sl" style="margin-top: -4px;">
 												<input class="text_box" th:value="${cartProduct.numProduct}" id="numProduct" value="" type="text"  style="width:30px;">
 												<button class="changenum" th:ItemID="${cartProduct.productId}">修改</button>
 												</div>

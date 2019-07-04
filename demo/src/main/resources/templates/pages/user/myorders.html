@@ -105,7 +105,7 @@
 											<!--交易成功-->
 											<div class="order-status5" th:each="result:${results}" >
 												<div class="order-title">
-													<div class="dd-num">订单编号：<a th:text="${result.orders.ordersId}">1601430</a></div>
+													<div class="dd-num">订单编号：<a th:text="${result.orders.ordersId}"></a></div>
 												</div>
 												<div class="order-content">
 													<div class="order-left">
@@ -128,7 +128,7 @@
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span style="margin-left: 30px;color: #ee0000" th:text="${result.orders.price}"></span>
+																	<span style="margin-left: 30px;color: #ee0000" th:text="${result.orders.price}+'.00'"></span>
 																</div>
 															</li>
 															<li class="td td-number">
@@ -140,7 +140,7 @@
 													</div>
 													<div class="order-right">
 														<li class="td td-amount" >
-															<div class="item-amount" style="margin-top:-11px;margin-left: -300px;color: #ee0000" th:text="${result.sum}">
+															<div class="item-amount" style="margin-top:-11px;margin-left: -300px;color: #ee0000" th:text="${result.sum}+'.00'">
 															</div>
 														</li>
 														<div class="move-right">
