@@ -1,6 +1,7 @@
 package net.suncaper.demo.service;
 
 import net.suncaper.demo.domain.Cart;
+import net.suncaper.demo.domain.DeliveryAddress;
 import net.suncaper.demo.domain.Orders;
 import net.suncaper.demo.domain.OrdersExample;
 import net.suncaper.demo.mapper.OrdersMapper;
@@ -19,9 +20,11 @@ public class OrdersServiceImpl implements OrdersService {
     private CartService cartService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private DeliveryAddressService deliveryAddressService;
 
     @Override
-    public List<Orders> addOrder(String[] cartIds, String userMailaddress) {
+    public List<Orders> addOrder(String[] cartIds, String userMailaddress,int id) {
         List<Orders> ordersList = new ArrayList<>();
         for (String cartId:cartIds
                 ) {
@@ -30,8 +33,12 @@ public class OrdersServiceImpl implements OrdersService {
             Cart cart=cartService.findCartByCartId(cartId);
             Integer price = productService.findProductById(cart.getProductId()).getPrice();
             String productName = productService.findProductById(cart.getProductId()).getProductName();
-            Orders orders = new Orders(ordersId,null,cart.getProductId(),userMailaddress,cart.getNumProduct(),price,null,"unpaied",productName);
-            ordersMapper.insert(orders);
+            DeliveryAddress deliveryAddress = deliveryAddressService.findExactOne(id);
+            String address = deliveryAddress.getAddress();
+            String userPhone = deliveryAddress.getUserPhone();
+            String name = deliveryAddress.getName();
+            Orders orders = new Orders(ordersId,null,cart.getProductId(),userMailaddress,cart.getNumProduct(),price,"unpaied",productName,address,userPhone,name);
+            ordersMapper.insertSelective(orders);
             ordersList.add(orders);
             cartService.deleteCart(cartId);
         }

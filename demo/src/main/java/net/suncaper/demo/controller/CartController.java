@@ -4,6 +4,7 @@ import net.suncaper.demo.domain.Cart;
 import net.suncaper.demo.domain.CartProduct;
 import net.suncaper.demo.domain.User;
 import net.suncaper.demo.service.CartService;
+import net.suncaper.demo.service.DeliveryAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,8 @@ import static net.suncaper.demo.controller.UserController.getCookieByName;
 public class CartController {
     @Autowired
     private CartService cartService;
+    @Autowired
+    private DeliveryAddressService deliveryAddressService;
 
     @GetMapping("/shopping-cart")
     public String CartPage(HttpServletRequest request,Model model){
@@ -30,6 +33,7 @@ public class CartController {
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
             List<CartProduct> cartProducts = cartService.returnCartProduct(userMailaddress);
             model.addAttribute("cartProducts",cartProducts);
+            model.addAttribute("deliveryAddresses",deliveryAddressService.findDeliveryAddress(userMailaddress));
 //            User user = userService.findUserByUserMailAddress(userMailaddress);
 //            model.addAttribute("user",user);
             return "/pages/shoppingcart.html";

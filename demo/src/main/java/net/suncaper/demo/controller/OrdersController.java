@@ -60,7 +60,7 @@ public class OrdersController {
 
     @PostMapping("/addOrder")
     @ResponseBody
-    public Map<String,String> addOrder(@RequestParam(value = "cartIds[]") String[] cartIds,HttpServletRequest request){
+    public Map<String,String> addOrder(@RequestParam(value = "cartIds[]") String[] cartIds,@RequestParam(value = "id") int id, HttpServletRequest request){
         Map<String, String> map = new HashMap<String, String>();
         if(getCookieByName(request,"userMailAddress") != null){
             String userMailaddress = getCookieByName(request,"userMailAddress").getValue();
@@ -68,7 +68,7 @@ public class OrdersController {
             httpSession.removeAttribute("cartProducts");
             httpSession.removeAttribute("ordersList");
             httpSession.setAttribute("cartProducts",cartService.addOrderCartProduct(cartIds));
-            httpSession.setAttribute("ordersList",ordersService.addOrder(cartIds,userMailaddress));
+            httpSession.setAttribute("ordersList",ordersService.addOrder(cartIds,userMailaddress,id));
             map.put("status", "ok");
             return map;        }
         else {

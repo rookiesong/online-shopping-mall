@@ -12,6 +12,6 @@ public interface DeliveryAddressService {
 
     String addDeliveryAddress(String name,String userMailAddress,String address,String user_phone);
 
-
+    DeliveryAddress findExactOne(int id);
 
 }

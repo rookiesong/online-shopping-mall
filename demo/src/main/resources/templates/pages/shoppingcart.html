@@ -15,6 +15,11 @@
 		<script type="text/javascript" src="/js/jquery.js"></script>
 		<link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
 		<script type="text/javascript" src="/layui/layui.js"></script>
+		<link href="/css/jsstyle.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="/js/address.js"></script>
+		<link href="/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="/css/addstyle.css" rel="stylesheet" type="text/css">
+
 
 	</head>
 
@@ -104,7 +109,7 @@
 											</div>
 										</div>
 									</li>
-									<li class="td td-info">
+									<li class="td td-info" style="margin-top: -38px;margin-left: 85px;">
 										<div class="item-props item-props-can">
 											<span class="sku-line">口味：原味</span>
 											<span class="sku-line">包装：手袋单人份</span>
@@ -112,7 +117,7 @@
 											<i class="theme-login am-icon-sort-desc"></i>
 										</div>
 									</li>
-									<li class="td td-price">
+									<li class="td td-price" style="margin-left: 36px;">
 										<div class="item-price price-promo-promo">
 											<div class="price-content">
 												<div class="price-line">
@@ -122,7 +127,7 @@
 											</div>
 										</div>
 									</li>
-									<li class="td td-amount">
+									<li class="td td-amount" style="margin-top: 21px;">
 										<div class="amount-wrapper ">
 											<div class="item-amount ">
 												<div class="sl" style="margin-top: -4px;">
@@ -142,10 +147,44 @@
 						</div>
 					</tr>
 				</div>
+				<div class="float-bar-wrapper">
+					<div class="float-bar-right" style="margin-right: 875px">
+
+						<div class="price-sum">
+							<span class="txt">确认收货地址</span>
+						</div>
+					</div>
+
+				</div>
+				<div class="address">
+					<div class="control">
+						<div class="tc-btn createAddr theme-login am-btn am-btn-danger" style="margin-left: 875px;margin-top: -51px;">使用新地址</div>
+					</div>
+					<div class="clear"></div>
+					<ul class="am-avg-sm-1 am-avg-md-3 am-thumbnails"  >
+						<li  class="user-addresslist" th:each="deliveryAddress:${deliveryAddresses}" th:addressid="${deliveryAddress.id}">
+							<p class="new-tit new-p-re">
+								<input style="border-style:none" class="new-txt" id="newname" th:value="${deliveryAddress.name}">
+								<input style="border-style:none" class="new-txt-rd2" id="newphone" th:value="${deliveryAddress.userPhone}">
+							</p>
+							<div class="new-mu_l2a new-p-re">
+								<p class="new-mu_l2cw">
+									<textarea style="resize:none;overflow-x:hidden;overflow-y:hidden;width:100%;border: 0;margin-top: -8px;" class="street" rows="4" id="newaddress" th:text="${deliveryAddress.address}"></textarea></p>
+							</div>
+							<div class="new-addr-btn" style="margin-bottom: -17px;" >
+								<a class="changeaddress" th:itemid="${deliveryAddress.id}"><i class="am-icon-edit" ></i>更改</a>
+								<span class="new-addr-bar">|</span>
+								<a class="deleteaddress" th:itemId="${deliveryAddress.id}"><i class="am-icon-trash"></i>删除</a>
+							</div>
+						</li>
+					</ul>
+
+					<div class="clear"></div>
+				</div>
 				<div class="clear"></div>
 
 				<div class="float-bar-wrapper">
-					<div class="float-bar-right">
+					<div class="float-bar-right" >
 
 						<div class="price-sum">
 							<span class="txt">合计:</span>
@@ -235,27 +274,97 @@
 	<script type="text/javascript" th:inline="javascript">
         layui.use('layer',function () {
             $(".getorderpage").click(function () {
-                var cartIds=[];
-                var attr = [[${cartProducts}]];
-                for(i=0;i<attr.length;i++)
-                    cartIds[i]=attr[i].cartId;
-                console.log(cartIds);
-                if(attr.length==0)
-                    layer.alert("购物车不能为空！");
-                else{
-                    $.ajax({
-                        url: "/orders/addOrder",
-                        type: "POST",
-                        data: {cartIds:cartIds},
-                        dataType: "json",
-                        async: false,
-                        success: function (data) {
-                            if(data.status == "ok")
-                                window.location.href="/orders/addOrderPage";
-                        }
-                    });
+                var id=$(".defaultAddr").attr("addressid");
+                if(id!=undefined){
+                    var cartIds=[];
+                    var attr = [[${cartProducts}]];
+                    for(i=0;i<attr.length;i++)
+                        cartIds[i]=attr[i].cartId;
+                    console.log(cartIds);
+                    if(attr.length==0)
+                        layer.alert("购物车不能为空！");
+                    else{
+                        $.ajax({
+                            url: "/orders/addOrder",
+                            type: "POST",
+                            data: {cartIds:cartIds,id:id},
+                            dataType: "json",
+                            async: false,
+                            success: function (data) {
+                                if(data.status == "ok")
+                                    window.location.href="/orders/addOrderPage";
+                            }
+                        });
+                    }
 				}
-            })
+				else {
+                    layer.alert("请确认地址！");
+				}
+
+            });
+        });
+        $(".tc-btn").click(function () {
+			window.location.href="/delivery/addressPage";
+        })
+	</script>
+	<script type="text/javascript" th:inline="javascript">
+        var deliveryAddresses=[[${deliveryAddresses}]];
+        console.log(deliveryAddresses);
+        /*修改地址*/
+        layui.use('layer',function () {
+            $(".changeaddress").click(function () {
+                var address = $("#newaddress").val();
+                var user_phone = $("#newphone").val();
+                var name = $("#newname").val();
+                var newid=$(this).attr("itemid");
+                var id=parseInt(newid);
+                var data={"id":id,"name": name, "address": address,"user_phone":user_phone};
+                console.log(data);
+                $.ajax({
+                    url: "/delivery/editAddress",
+                    type: "POST",
+                    data: data,
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        if (data.status == "ok") {
+                            layer.alert("修改成功！")
+                            setTimeout(function () {
+                                window.location.href="/cart/shopping-cart";
+                            }, 1000);
+                        }
+                        else {
+                            layer.alert("修改失败！");
+                        }
+
+                    }
+                });
+
+            });
+        });
+        /*删除地址*/
+        layui.use('layer',function () {
+            $(".deleteaddress").click(function () {
+                var newid=$(this).attr("itemId");
+                var id=parseInt(newid);
+                var data={"id": id};
+
+                $.ajax({
+                    url: "/delivery/deleteAddress",
+                    type: "POST",
+                    data: data,
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        if (data.status == "ok") {
+                            setTimeout(function () {
+                                window.location.href="/cart/shopping-cart";
+                            }, 1000);
+                        }
+                    }
+                });
+
+            });
         });
 	</script>
 	</body>

@@ -35,9 +35,9 @@ create table orders
    price				int not null,
    status				varchar(20) not null,
    product_name			varchar(40) not null,
-   address        		varchar(200) not null,
-   user_phone           varchar(20) not null,
-   name					varchar(20) not null,
+   address        		varchar(200),
+   user_phone           varchar(20),
+   name					varchar(20),
    primary key (orders_id)
 );
 
@@ -116,7 +116,8 @@ create table paymentRecord
 	orders_id            varchar(60) not null,
 	paying_method        varchar(20) not null,
 	amount				 int not null,
-	primary key (record_id)
+	build_day			 varchar(30),
+	primary key (record_id,orders_id,build_day)
 );
 
 alter table orders add constraint FK_Relationship_1 foreign key (product_id)
@@ -137,8 +138,5 @@ alter table cart add constraint FK_Relationship_5 foreign key (product_id)
 alter table deliveryAddress add constraint FK_Relationship_6 foreign key (user_mailaddress)
       references user (user_mailaddress) on delete restrict on update restrict;
 	  
-alter table paymentRecord add constraint FK_Relationship_7 foreign key (orders_id)
-      references orders (orders_id) on delete restrict on update restrict;
-	  
-alter table paymentRecord add constraint FK_Relationship_8 foreign key (paying_method)
+alter table paymentRecord add constraint FK_Relationship_7 foreign key (paying_method)
       references payment (paying_method) on delete restrict on update restrict;
