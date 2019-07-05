@@ -1,0 +1,90 @@
+<style>
+table{
+ border-collapse:collapse;
+}
+td{
+  border:1px silver solid;
+  padding: 5px;
+  font-size:12px;
+}
+input{
+  width:180px;
+}
+</style>
+<script>
+/*取幂函数*/
+function p(base, power){
+	if(1==power)
+	   return base
+	if(0==power)
+	   return 1;
+	var result = base;
+	for(var i = 0; i<power-1; i++){
+		result = result*base;
+	}
+	return result;
+}
+
+/*取复利*/
+function fuli(rate, year){
+	var result = 0;
+	for(var i=year;i>0;i--){
+	  result+=p(rate,i);
+	}
+	return result;
+}
+
+function calc(){
+	var initMoney= getNumberValue("initMoney");
+	var rate= getNumberValue("rate") +0.0;
+	var year= getNumberValue("year");
+	var each= getNumberValue("each");
+	var sum1 = (year-1)*each+initMoney;
+	var sum3=each* fuli(  (1+rate/100),(year-1)) + initMoney*p( (1+rate/100) ,year);
+
+	var sum2 = sum3-sum1;
+	setValue("sum1",sum1);
+	setValue("sum2",sum2);
+	setValue("sum3",sum3);
+}
+
+function setValue(id,value){
+	document.getElementById(id).value=value;
+}
+
+function getNumberValue(id){
+	return parseFloat(document.getElementById(id).value);
+}
+</script>
+<table>
+<tr>
+  <td>起始资金</td>
+  <td><input type="text" id="initMoney" value='10000'> ￥</td>
+<tr>
+  <td>每年收益</td>
+  <td><input type="text" id="rate" value='5'> %</td>
+</tr>
+<tr>
+  <td>复利年数</td>
+  <td><input type="text" id="year" value='10'> 年</td>
+</tr>
+<tr>
+  <td>每年追加资金</td>
+  <td><input type="text" id="each" value='10000'> ￥</td>
+</tr>
+<tr>
+   <td colspan="2" align="center"><input type="button" value="计算" onclick="calc()"></td>
+</tr>
+<tr>
+  <td>本金和</td>
+  <td><input type="text" id="sum1" disabled="disabled"  value='0'> ￥</td>
+</tr>
+<tr>
+  <td>利息和</td>
+  <td><input type="text" id="sum2"  disabled="disabled" value='0'> ￥</td>
+</tr>
+<tr>
+  <td>本息和</td>
+  <td><input type="text" id="sum3"  disabled="disabled" value='0'> ￥</td>
+</tr>
+</table>
