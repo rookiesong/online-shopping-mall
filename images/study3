@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+ 
+    <style>
+ 
+body{
+   font-family: 宋体;
+}
+span{
+   display:inline-block;
+   border: 1px solid lightgray;
+   width:120px;
+   margin-bottom:5px;
+}
+  
+button#generate{
+   width:80px;
+   height:30px;
+}
+  
+textarea{
+     width:100%;
+     height:150px;
+     margin-top:20px;
+}
+  
+</style>
+</head>
+<body>
+    <span>地名:</span> <input type="text" id ="location"  value="浙江">
+    <span>公司类型:</span> <input type="text" id ="companyType"  value="互联网公司">
+    <br>
+    <span>公司名称:</span> <input type="text" id ="companyName" value="阿里九九">
+    <span>老板姓名:</span> <input type="text" id ="bossName" value="牛风">
+    <br>
+    <span>money:</span> <input type="text" id ="money" value="一万">
+    <span>产品:</span> <input type="text" id ="product" value="贴膜">
+    <br>
+    <span>价格计量单位:</span> <input type="text" id ="unit" value="百">
+      
+    <br>
+    <div align="center">
+    <button id="generate" onclick="generate()">生成</button>
+    <br>
+    <textarea id="result">浙江最大互联网公司<b>阿里九九</b>倒闭了，王八蛋老板牛风吃喝嫖赌，欠下了一万个亿，带着他的小姨子跑了!我们没有办法，拿着贴膜抵工资!原价都是一百多、两百多、三百多的贴膜，现在全部只卖二十块，统统只要二十块!牛风王八蛋，你不是人!我们辛辛苦苦给你干了大半年，你不发工资，你还我血汗钱，还我血汗钱!</textarea>
+    </div>
+      
+    <br>
+    <script>
+    function generate(){
+   var location = $("location");
+   var companyType= $("companyType");
+   var companyName= $("companyName");
+   var bossName= $("bossName");
+   var money= $("money");
+   var product= $("product");
+   var unit= $("unit");
+  
+   var result  = location +"最大"+companyType+companyName+"倒闭了，王八蛋老板"+bossName+"吃喝嫖赌，欠下了"+money+"个亿，"
+                            + "带着他的小姨子跑了!我们没有办法，拿着"+product+"抵工资!原价都是一"+unit+"多、两"+unit+"多、三"+unit+"多的"+product+"，"
+                            + "现在全部只卖二十块，统统只要二十块!"+bossName+"王八蛋，你不是人!我们辛辛苦苦给你干了大半年，"
+                            + "你不发工资，你还我血汗钱，还我血汗钱!";  
+  
+   document.getElementById("result").value=result; 
+  
+}
+  
+function $(id){
+   var value = document.getElementById(id).value;
+   return value;
+}
+  
+</script>
+</body>
+</html>
