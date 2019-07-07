@@ -36,5 +36,8 @@ public class DeliveryAddressServiceImpl implements DeliveryAddressService{
         }
     }
 
-
+    @Override
+    public DeliveryAddress findExactOne(int id) {
+        return deliveryAddressMapper.selectByPrimaryKey(id);
+    }
 }

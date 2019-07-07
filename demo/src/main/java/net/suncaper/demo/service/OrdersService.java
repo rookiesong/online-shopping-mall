@@ -5,7 +5,7 @@ import net.suncaper.demo.domain.Orders;
 import java.util.List;
 
 public interface OrdersService {
-    public List<Orders> addOrder(String[] cartIds,String userMailAddress);
+    public List<Orders> addOrder(String[] cartIds,String userMailAddress,int id);
 
     public String deleteOrder(String ordersId);
 

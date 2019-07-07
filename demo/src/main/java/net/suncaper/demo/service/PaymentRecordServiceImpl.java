@@ -18,8 +18,8 @@ public class PaymentRecordServiceImpl implements PaymentRecordService {
     }
 
     @Override
-    public void addPaymentRecord(String recordId, String ordersId, String payingMethod, int amount) {
-        PaymentRecord paymentRecord = new PaymentRecord(recordId,ordersId,payingMethod,amount);
+    public void addPaymentRecord(String recordId, String ordersId, String payingMethod, int amount,String buildDay) {
+        PaymentRecord paymentRecord = new PaymentRecord(recordId,ordersId,buildDay,payingMethod,amount);
         paymentRecordMapper.insert(paymentRecord);
     }
 }

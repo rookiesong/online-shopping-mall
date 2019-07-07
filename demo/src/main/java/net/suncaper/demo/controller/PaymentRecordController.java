@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Controller
@@ -28,7 +29,8 @@ public class PaymentRecordController {
         List<Orders> ordersList = (List<Orders>) session.getAttribute("ordersList");
         for (Orders orders:ordersList
              ) {
-            paymentRecordService.addPaymentRecord(recordId,orders.getOrdersId(),"alipay",orders.getNumber()*orders.getPrice());
+            Timestamp build_day = new Timestamp(System.currentTimeMillis());
+            paymentRecordService.addPaymentRecord(recordId,orders.getOrdersId(),"alipay",orders.getNumber()*orders.getPrice(),build_day.toString());
             ordersService.editOrder(orders.getOrdersId(),"paied");
         }
         session.removeAttribute("orderNo");
@@ -42,7 +44,8 @@ public class PaymentRecordController {
         HttpSession session = request.getSession();
         String recordId = (String)session.getAttribute("orderNo");
         Orders orders = (Orders) session.getAttribute("oneOrders");
-        paymentRecordService.addPaymentRecord(recordId,orders.getOrdersId(),"alipay",orders.getNumber()*orders.getPrice());
+        Timestamp build_day = new Timestamp(System.currentTimeMillis());
+        paymentRecordService.addPaymentRecord(recordId,orders.getOrdersId(),"alipay",orders.getNumber()*orders.getPrice(),build_day.toString());
         ordersService.editOrder(orders.getOrdersId(),"paied");
 
         session.removeAttribute("orderNo");
